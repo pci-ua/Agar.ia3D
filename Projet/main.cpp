@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 
-#include "axes.h"
 #include "actions.h"
 #include "terrain.h"
 
