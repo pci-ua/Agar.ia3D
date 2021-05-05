@@ -17,6 +17,7 @@ extern GLfloat y_cam;
 extern GLfloat z_cam;
 
 extern GLfloat z;
+extern Joueur J;
 
 void touche_pressee(unsigned char key, int x, int y)
 {
@@ -80,28 +81,34 @@ void touche_speciale_pressee(int key, int x, int y)
 	}
 }
 
-GLvoid souris (int x, int y){
+void souris (int x, int y){
+	J.setX(x);
+	J.setY(y);
+}
+
+void Joueur::deplacement (){
 	float width=glutGet(GLUT_WINDOW_WIDTH);
 	float height=glutGet(GLUT_WINDOW_HEIGHT);
 	float coeffdirecteur=0.0;
-	if(x!=width/2){
-		coeffdirecteur= (y-height/2)/(x-width/2);
+	if(_posSourisX!=width/2){
+		coeffdirecteur= (_posSourisY-height/2)/(_posSourisX-width/2);
 	}
-	printf("Souris a: %d %d %f %f %f %f %f \n",x,y, x_objet,z_objet, coeffdirecteur, width, height);
+	printf("Souris a: %d %d %f %f %f %f %f \n",_posSourisX,_posSourisY, x_objet,z_objet, coeffdirecteur, width, height);
 	//float tangente=(coeffdirecteur-0.0)/(1.0+coeffdirecteur*0.0);
+
 	float angle=atan(coeffdirecteur);
 	printf("angle: %f \n", angle);
 	float test=cos(angle);
 	float test2=sin(angle);
 	printf("angle: %f %f \n", test, test2);
 	if(angle>0){
-		if((width/2>x) && (x_objet>-10+0.5) && (z_objet>-10+0.5)) {
+		if((width/2>_posSourisX) && (x_objet>-10+0.5) && (z_objet>-10+0.5)) {
 			x_objet=x_objet-0.1*(cos(angle));
 			x_cam=x_cam-0.1*(cos(angle));
 			z_objet=z_objet-0.1*(sin(angle));
 			z_cam=z_cam-0.1*(sin(angle));
 		}
-		else if((width/2<x) && (x_objet<10-0.5) && (z_objet<10-0.5)){
+		else if((width/2<_posSourisX) && (x_objet<10-0.5) && (z_objet<10-0.5)){
 			x_objet=x_objet+0.1*(cos(angle));
 			x_cam=x_cam+0.1*(cos(angle));
 			z_objet=z_objet+0.1*(sin(angle));
@@ -109,13 +116,13 @@ GLvoid souris (int x, int y){
 		}
 	}
 	if(angle<0){
-		if((width/2>x) && (x_objet>-10+0.5) && (z_objet<10-0.5)) {
+		if((width/2>_posSourisX) && (x_objet>-10+0.5) && (z_objet<10-0.5)) {
 			x_objet=x_objet-0.1*(cos(angle));
 			x_cam=x_cam-0.1*(cos(angle));
 			z_objet=z_objet-0.1*(sin(angle));
 			z_cam=z_cam-0.1*(sin(angle));
 		}
-		else if((width/2<x) && (x_objet<10-0.5) && (z_objet>-10+0.5)){
+		else if((width/2<_posSourisX) && (x_objet<10-0.5) && (z_objet>-10+0.5)){
 			x_objet=x_objet+0.1*(cos(angle));
 			x_cam=x_cam+0.1*(cos(angle));
 			z_objet=z_objet+0.1*(sin(angle));
@@ -123,22 +130,21 @@ GLvoid souris (int x, int y){
 		}
 	}
 	if(angle==0){
-		if((width/2>x) && (x_objet>-10+0.5)){
+		if((width/2>_posSourisX) && (x_objet>-10+0.5)){
 			x_objet=x_objet-0.1*(cos(angle));
 			x_cam=x_cam-0.1*(cos(angle));
 		}
-		if((width/2<x) && (x_objet<10-0.5)){
+		if((width/2<_posSourisX) && (x_objet<10-0.5)){
 			x_objet=x_objet+0.1*(cos(angle));
 			x_cam=x_cam+0.1*(cos(angle));
 		}
-		if((height/2>x) && (z_objet>-10+0.5)){
+		if((height/2>_posSourisX) && (z_objet>-10+0.5)){
 			z_objet=z_objet-0.1*(sin(angle));
 			z_cam=z_cam-0.1*(sin(angle));
 		}
-		if((height/2<x) && (z_objet<10-0.5)){
+		if((height/2<_posSourisX) && (z_objet<10-0.5)){
 			z_objet=z_objet+0.1*(sin(angle));
 			z_cam=z_cam+0.1*(sin(angle));
 		}
-
 	}
 }

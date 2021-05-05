@@ -7,6 +7,7 @@
 
 #include "actions.h"
 #include "terrain.h"
+#include "boule.h"
 
 GLfloat xrot_camera=0.0;
 GLfloat yrot_camera=0.0;
@@ -19,6 +20,11 @@ int xboules=0.0;
 int zboules=0.0;
 
 int window;
+
+Joueur J(0,0);
+
+int const nbfood(200);
+food Food[nbfood];
 
 GLfloat z=-10.0f;
 
@@ -45,11 +51,16 @@ GLvoid Modelisation()
 	glPushMatrix();
 	{
 		glColor3f(1.0,0.0,0.0);
-		glRotatef(yrot_camera,0.0f,-1.0f,0.0f);
 		glTranslatef(x_objet,0.0f,z_objet);
 		glutSolidSphere(0.5,20,20);
 	}
 	glPopMatrix();
+	for(int i=0; i<nbfood;++i){
+		Food[i].draw();
+	}
+
+	glutPassiveMotionFunc(souris);
+	J.deplacement();
 	glutSwapBuffers();
 }
 
@@ -69,13 +80,12 @@ int main(int argc, char **argv)
 
 	glutInitWindowSize(640, 480);
 	glutInitWindowPosition(0, 0);
-	window = glutCreateWindow("Monstre");
+	window = glutCreateWindow("Agar.io");
 	glutDisplayFunc(&Modelisation);
 	glutReshapeFunc(&Redimensionne);
 
 	glutKeyboardFunc(&touche_pressee);
   glutSpecialFunc(&touche_speciale_pressee);
-	glutPassiveMotionFunc(souris);
 
 	glutIdleFunc(&Modelisation);
 
