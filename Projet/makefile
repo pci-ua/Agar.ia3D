@@ -11,3 +11,6 @@ $(Executable): $(Object)
 
 %.o:%.cpp
 	g++ -c $(CompilerFlag) $< -o $@
+
+clean:
+	rm $(Executable) $(Object) -f
