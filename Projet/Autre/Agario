@@ -1,0 +1,30 @@
+
+But :
+
+- 3D OpenGL
+- création d'IA
+- Jeu en local
+- personnaliser partie (choix des I.A.(nombre, difficultés), taille carte, durée de partie...)
+
+Règles :
+
+- Sphère de couleur sur fond blanc
+- Des joueurs (moi et les IA)
+- objet inanimés ( nourritures en petite sphère, obstacles)
+- chaque sphère a une taille proportionnelle à sa taille
+- mange une autre sphère si elle est plus grosse et ajoute sa taille à la sienne
+- se fait manger et réaparrait aléatoirement sur la map avec la taille initiale
+- classement à la fin du temps imparti
+
+Ajouts possibles :
+
+- le «split»: chaque sphère peut propulser la moitié de sa matière dans une direction. Ainsi, les déplacements sont appliqués à toutes les sphères du même joueur. Celui-ci ne peut pas récupérer sa moitié avant un certain délai.
+
+- Ajout d’obstacles sur le terrain (murs, points de téléportation, ...)
+
+- Ajout de différentes améliorations ramassables réparties sur le terrain: augmentation de la vitesse, durée X d’insensibilité, ...
+
+- conception de différentes I.A. pouvant s’affronter sur ce jeu.
+	→ (certaines I.A. peuvent essayer de « tricher» en faisant équipe pour monter dans le classement)
+	
+- d’autres idées sont possibles, laissez aller votre créativité!
