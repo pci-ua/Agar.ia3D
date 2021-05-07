@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <GL/glut.h>
 #include <GL/gl.h>
@@ -28,7 +29,17 @@ class boule{
     float _b;
 };
 
-class food : public boule{
+class joueurs : public boule{
   public:
-    food():boule(0.1f,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX)){}
+    joueurs(float _tailleJ):boule(_tailleJ,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX)){}
+    ~joueurs(){}
+    float getX(){ return _posX;}
+    float getZ(){ return _posZ;}
+    void const setX(float x){this->_posX=x;}
+    void const setZ(float z){this->_posZ=z;}
+};
+
+class joueur : public joueurs{
+  public:
+    joueur():joueurs(0.5f){}
 };

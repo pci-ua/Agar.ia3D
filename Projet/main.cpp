@@ -7,7 +7,7 @@
 
 #include "actions.h"
 #include "terrain.h"
-#include "boule.h"
+#include "food.h"
 
 GLfloat xrot_camera=0.0;
 GLfloat yrot_camera=0.0;
@@ -22,6 +22,7 @@ int zboules=0.0;
 int window;
 
 Joueur J(0,0);
+joueur Player;
 
 int const nbfood(200);
 food Food[nbfood];
@@ -29,8 +30,8 @@ food Food[nbfood];
 GLfloat z=-10.0f;
 
 GLfloat x_cam=0.0f;
-GLfloat y_cam=10.0f;
-GLfloat z_cam=10.0f;
+GLfloat y_cam=15.0f;
+GLfloat z_cam=15.0f;
 
 GLvoid Modelisation()
 {
@@ -39,7 +40,7 @@ GLvoid Modelisation()
 	glLoadIdentity();
 
 	//glTranslatef(0.0,0.0,z);
-	gluLookAt(x_cam,y_cam,z_cam,x_objet,0.0f,z_objet,0.0,1.0,0.0);
+	gluLookAt(Player.getX(),y_cam,z_cam,Player.getX(),0.0f,Player.getZ(),0.0,1.0,0.0);
 
 	glRotatef(xrot_camera,1.0f,0.0f,0.0f);
 	glRotatef(yrot_camera,0.0f,1.0f,0.0f);
@@ -48,13 +49,8 @@ GLvoid Modelisation()
 	glColor3f(1.0,1.0,0.0);
 	terrain t;
 
-	glPushMatrix();
-	{
-		glColor3f(1.0,0.0,0.0);
-		glTranslatef(x_objet,0.0f,z_objet);
-		glutSolidSphere(0.5,20,20);
-	}
-	glPopMatrix();
+	Player.draw();
+
 	for(int i=0; i<nbfood;++i){
 		Food[i].draw();
 	}

@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "boule.h"
+
 #define ESCAPE 27
 #define ESPACE 32
 
@@ -23,8 +25,8 @@ class Joueur{
 			this->_posSourisX=posX;
 			this->_posSourisY=posY;
 		}
-		void const setX(int x){this->_posSourisX=x;}
-		void const setY(int y){this->_posSourisY=y;}
+		void const setsourisX(int x){this->_posSourisX=x;}
+		void const setsourisY(int y){this->_posSourisY=y;}
     void deplacement();
 
 	private:

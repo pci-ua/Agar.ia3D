@@ -18,6 +18,7 @@ extern GLfloat z_cam;
 
 extern GLfloat z;
 extern Joueur J;
+extern joueur Player;
 
 void touche_pressee(unsigned char key, int x, int y)
 {
@@ -82,8 +83,8 @@ void touche_speciale_pressee(int key, int x, int y)
 }
 
 void souris (int x, int y){
-	J.setX(x);
-	J.setY(y);
+	J.setsourisX(x);
+	J.setsourisY(y);
 }
 
 void Joueur::deplacement (){
@@ -102,49 +103,50 @@ void Joueur::deplacement (){
 	float test2=sin(angle);
 	printf("angle: %f %f \n", test, test2);
 	if(angle>0){
-		if((width/2>_posSourisX) && (x_objet>-10+0.5) && (z_objet>-10+0.5)) {
-			x_objet=x_objet-0.1*(cos(angle));
+		if((width/2>_posSourisX) && (Player.getX()>-10+0.5) && (Player.getZ()>-10+0.5)) {
+			Player.setX(Player.getX()-0.1*(cos(angle)));
 			x_cam=x_cam-0.1*(cos(angle));
-			z_objet=z_objet-0.1*(sin(angle));
+			Player.setZ(Player.getZ()-0.1*(sin(angle)));
 			z_cam=z_cam-0.1*(sin(angle));
 		}
-		else if((width/2<_posSourisX) && (x_objet<10-0.5) && (z_objet<10-0.5)){
-			x_objet=x_objet+0.1*(cos(angle));
+		else if((width/2<_posSourisX) && (Player.getX()<10-0.5) && (Player.getZ()<10-0.5)){
+			Player.setX(Player.getX()+0.1*(cos(angle)));
 			x_cam=x_cam+0.1*(cos(angle));
-			z_objet=z_objet+0.1*(sin(angle));
+			Player.setZ(Player.getZ()+0.1*(sin(angle)));
 			z_cam=z_cam+0.1*(sin(angle));
 		}
 	}
 	if(angle<0){
-		if((width/2>_posSourisX) && (x_objet>-10+0.5) && (z_objet<10-0.5)) {
-			x_objet=x_objet-0.1*(cos(angle));
+		if((width/2>_posSourisX) && (Player.getX()>-10+0.5) && (Player.getZ()<10-0.5)) {
+			Player.setX(Player.getX()-0.1*(cos(angle)));
 			x_cam=x_cam-0.1*(cos(angle));
-			z_objet=z_objet-0.1*(sin(angle));
+			Player.setZ(Player.getZ()-0.1*(sin(angle)));
 			z_cam=z_cam-0.1*(sin(angle));
 		}
-		else if((width/2<_posSourisX) && (x_objet<10-0.5) && (z_objet>-10+0.5)){
-			x_objet=x_objet+0.1*(cos(angle));
+		else if((width/2<_posSourisX) && (Player.getX()<10-0.5) && (Player.getZ()>-10+0.5)){
+			Player.setX(Player.getX()+0.1*(cos(angle)));
 			x_cam=x_cam+0.1*(cos(angle));
-			z_objet=z_objet+0.1*(sin(angle));
+			Player.setZ(Player.getZ()+0.1*(sin(angle)));
 			z_cam=z_cam+0.1*(sin(angle));
 		}
 	}
+	// lorsque la souris est dans l'axe vertical ou horizontal
 	if(angle==0){
-		if((width/2>_posSourisX) && (x_objet>-10+0.5)){
-			x_objet=x_objet-0.1*(cos(angle));
+		if((width/2>_posSourisX) && (Player.getX()>-10+0.5)){
+			Player.setX(Player.getX()-0.1*(cos(angle)));
 			x_cam=x_cam-0.1*(cos(angle));
 		}
-		if((width/2<_posSourisX) && (x_objet<10-0.5)){
-			x_objet=x_objet+0.1*(cos(angle));
+		else if((width/2<_posSourisX) && (Player.getX()<10-0.5)){
+			Player.setX(Player.getX()+0.1*(cos(angle)));
 			x_cam=x_cam+0.1*(cos(angle));
 		}
-		if((height/2>_posSourisX) && (z_objet>-10+0.5)){
-			z_objet=z_objet-0.1*(sin(angle));
-			z_cam=z_cam-0.1*(sin(angle));
+		else if((height/2>_posSourisY) && (Player.getZ()>-10+0.5)){
+			Player.setZ(Player.getZ()-0.1*(cos(angle)));
+			z_cam=z_cam-0.1*(cos(angle));
 		}
-		if((height/2<_posSourisX) && (z_objet<10-0.5)){
-			z_objet=z_objet+0.1*(sin(angle));
-			z_cam=z_cam+0.1*(sin(angle));
+		else if((height/2<_posSourisY) && (Player.getZ()<10-0.5)){
+			Player.setZ(Player.getZ()+0.1*(cos(angle)));
+			z_cam=z_cam+0.1*(cos(angle));
 		}
 	}
 }
