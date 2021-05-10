@@ -14,3 +14,12 @@ void boule::draw() const{
  }
  glPopMatrix();
 }
+
+void boule::SeFaireManger() {
+  this->_posX=(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5;
+  this->_posZ=(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5;
+}
+
+void joueurs::manger() {
+  this->_taille+=0.01f;
+}

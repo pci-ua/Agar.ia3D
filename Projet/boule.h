@@ -20,6 +20,12 @@ class boule{
     }
     ~boule();
     void draw() const;
+    float getX(){ return _posX;}
+    float getZ(){ return _posZ;}
+    float getTaille(){return _taille;}
+    void const setX(float x){this->_posX=x;}
+    void const setZ(float z){this->_posZ=z;}
+    void SeFaireManger();
   protected:
     float _posX;
     float _posZ;
@@ -33,10 +39,7 @@ class joueurs : public boule{
   public:
     joueurs(float _tailleJ):boule(_tailleJ,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX)){}
     ~joueurs(){}
-    float getX(){ return _posX;}
-    float getZ(){ return _posZ;}
-    void const setX(float x){this->_posX=x;}
-    void const setZ(float z){this->_posZ=z;}
+    void manger();
 };
 
 class joueur : public joueurs{

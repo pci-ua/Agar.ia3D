@@ -33,6 +33,22 @@ GLfloat x_cam=0.0f;
 GLfloat y_cam=15.0f;
 GLfloat z_cam=15.0f;
 
+bool collision(boule b1,boule b2){
+	float posX1,posX2,taille1,posZ1,posZ2,taille2;
+	posX1=b1.getX();
+	posZ1=b1.getZ();
+	taille1=b1.getTaille();
+
+	posX2=b2.getX();
+	posZ2=b2.getZ();
+	taille2=b2.getTaille();
+
+	if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille1+taille2,2)){
+		return true;
+	}
+	return false;
+}
+
 GLvoid Modelisation()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -52,8 +68,15 @@ GLvoid Modelisation()
 	Player.draw();
 
 	for(int i=0; i<nbfood;++i){
-		Food[i].draw();
+		if(collision(Player,Food[i])){
+			Food[i].SeFaireManger();
+			Player.manger();
+		}
+		else {
+			Food[i].draw();
+		}
 	}
+
 
 	glutPassiveMotionFunc(souris);
 	J.deplacement();
