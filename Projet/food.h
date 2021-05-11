@@ -10,7 +10,10 @@
 
 #include "boule.h"
 
+extern float longueur;
+extern float largeur;
+
 class food : public boule{
   public:
-    food():boule(0.1f,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX)){}
+    food():boule(0.1f,(float)rand()/(RAND_MAX)*(longueur-0.5+longueur-0.5)-longueur+0.5,(float)rand()/(RAND_MAX)*(largeur-0.5+largeur-0.5)-largeur+0.5,(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX)){}
 };

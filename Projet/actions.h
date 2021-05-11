@@ -14,28 +14,10 @@
 #define ESCAPE 27
 #define ESPACE 32
 
-#define PI 3.14159265
-
 #define OBJET 1
 #define CAMERA 2
 
-class Joueur{
-	public :
-		Joueur(int posX, int posY) {
-			this->_posSourisX=posX;
-			this->_posSourisY=posY;
-		}
-		void const setsourisX(int x){this->_posSourisX=x;}
-		void const setsourisY(int y){this->_posSourisY=y;}
-    void deplacement();
-
-	private:
-		int _posSourisX;
-		int _posSourisY;
-};
-
 void touche_pressee(unsigned char key, int x, int y);
 void touche_speciale_pressee(int key, int x, int y);
-void souris(int x, int y);
 
 #endif

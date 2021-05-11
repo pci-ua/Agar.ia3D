@@ -9,5 +9,5 @@
 
 class terrain {
   public:
-    terrain();
+    terrain( float longueur, float largeur);
 };

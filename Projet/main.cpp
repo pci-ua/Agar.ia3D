@@ -21,10 +21,12 @@ int zboules=0.0;
 
 int window;
 
-Joueur J(0,0);
-joueur Player;
+joueur Player(0,0);
 
-int const nbfood(200);
+int const nbia(5);
+ia iatest[nbia];
+
+int const nbfood(100);
 food Food[nbfood];
 
 GLfloat z=-10.0f;
@@ -32,6 +34,10 @@ GLfloat z=-10.0f;
 GLfloat x_cam=0.0f;
 GLfloat y_cam=15.0f;
 GLfloat z_cam=15.0f;
+
+// en fonction de ce que le joueur choisit modifier la taille du terrain
+float longueur=20.0;
+float largeur=20.0;
 
 bool collision(boule b1,boule b2){
 	float posX1,posX2,taille1,posZ1,posZ2,taille2;
@@ -63,11 +69,21 @@ GLvoid Modelisation()
 	glRotatef(zrot_camera,0.0f,0.0f,1.0f);
 
 	glColor3f(1.0,1.0,0.0);
-	terrain t;
+	terrain t(longueur,largeur);
 
 	Player.draw();
 
+	for(int i=0; i<nbia;++i){
+		iatest[i].draw();
+	}
+
 	for(int i=0; i<nbfood;++i){
+		for(int j=0; j<nbia;++j){
+			if(collision(iatest[j],Food[i])){
+				Food[i].SeFaireManger();
+				iatest[j].manger();
+			}
+		}
 		if(collision(Player,Food[i])){
 			Food[i].SeFaireManger();
 			Player.manger();
@@ -79,7 +95,11 @@ GLvoid Modelisation()
 
 
 	glutPassiveMotionFunc(souris);
-	J.deplacement();
+	Player.deplacement();
+	srand (time(NULL));
+	for(int i=0;i<nbia;++i){
+		iatest[i].deplacement(i);
+	}
 	glutSwapBuffers();
 }
 
