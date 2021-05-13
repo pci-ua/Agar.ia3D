@@ -7,7 +7,11 @@
 
 #include "actions.h"
 #include "terrain.h"
+#include "boule.h"
 #include "food.h"
+#include "joueurs.h"
+#include "joueur.h"
+#include "ia.h"
 
 GLfloat xrot_camera=0.0;
 GLfloat yrot_camera=0.0;
@@ -26,14 +30,12 @@ joueur Player(0,0);
 int const nbia(5);
 ia iatest[nbia];
 
-int const nbfood(100);
+int const nbfood(200);
 food Food[nbfood];
 
-GLfloat z=-10.0f;
-
 GLfloat x_cam=0.0f;
-GLfloat y_cam=15.0f;
-GLfloat z_cam=15.0f;
+GLfloat y_cam=5.0f;
+GLfloat z_cam=12.5f;
 
 // en fonction de ce que le joueur choisit modifier la taille du terrain
 float longueur=20.0;
@@ -61,12 +63,7 @@ GLvoid Modelisation()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	//glTranslatef(0.0,0.0,z);
 	gluLookAt(Player.getX(),y_cam,z_cam,Player.getX(),0.0f,Player.getZ(),0.0,1.0,0.0);
-
-	glRotatef(xrot_camera,1.0f,0.0f,0.0f);
-	glRotatef(yrot_camera,0.0f,1.0f,0.0f);
-	glRotatef(zrot_camera,0.0f,0.0f,1.0f);
 
 	glColor3f(1.0,1.0,0.0);
 	terrain t(longueur,largeur);
@@ -78,21 +75,45 @@ GLvoid Modelisation()
 	}
 
 	for(int i=0; i<nbfood;++i){
-		for(int j=0; j<nbia;++j){
-			if(collision(iatest[j],Food[i])){
-				Food[i].SeFaireManger();
-				iatest[j].manger();
-			}
-		}
-		if(collision(Player,Food[i])){
-			Food[i].SeFaireManger();
-			Player.manger();
-		}
-		else {
-			Food[i].draw();
-		}
-	}
+			 for(int j=0; j<nbia;++j){
+					 if(collision(iatest[j],Food[i])){
+							 Food[i].SeFaireManger();
+							 iatest[j].manger(Food[i]);
+					 }
+			 }
+			 if(collision(Player,Food[i])){
+					 Food[i].SeFaireManger();
+					 Player.manger(Food[i]);
+			 }
+			 else {
+					 Food[i].draw();
+			 }
+	 }
 
+	 for(int u=0;u<nbia;++u){
+			 for(int w=u+1;w<nbia;++w){
+					 if(collision(iatest[u],iatest[w])){
+							 if(iatest[u].getTaille()<iatest[w].getTaille()-iatest[w].getTaille()*0.05){
+									 iatest[u].SeFaireManger();
+									 iatest[w].manger(iatest[u]);
+							 }
+							 else if(iatest[u].getTaille()-iatest[u].getTaille()*0.05>iatest[w].getTaille()){
+									 iatest[w].SeFaireManger();
+									 iatest[u].manger(Player);
+							 }
+					 }
+			 }
+			 if(collision(iatest[u],Player)){
+					 if(iatest[u].getTaille()<Player.getTaille()-Player.getTaille()*0.05){
+							 iatest[u].SeFaireManger();
+							 Player.manger(iatest[u]);
+					 }
+					 else if(iatest[u].getTaille()-iatest[u].getTaille()*0.05>Player.getTaille()){
+							 Player.SeFaireManger();
+							 iatest[u].manger(Player);
+					}
+			}
+	}
 
 	glutPassiveMotionFunc(souris);
 	Player.deplacement();
@@ -119,7 +140,7 @@ int main(int argc, char **argv)
 
 	glutInitWindowSize(640, 480);
 	glutInitWindowPosition(0, 0);
-	window = glutCreateWindow("Agar.io");
+	window = glutCreateWindow("Agar.ia");
 	glutDisplayFunc(&Modelisation);
 	glutReshapeFunc(&Redimensionne);
 
