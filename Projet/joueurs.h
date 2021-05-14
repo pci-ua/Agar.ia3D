@@ -17,13 +17,8 @@ class joueurs : public boule{
   public:
     joueurs():boule(0.5f,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX)*(9.5+9.5)-9.5,(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX),(float)rand()/(RAND_MAX)),_vitesse(0.1){}
     ~joueurs(){}
-    float getX(){ return _posX;}
-    float getZ(){ return _posZ;}
-    float getTaille() { return _taille;}
-    void const setX(float x){this->_posX=x;}
-    void const setZ(float z){this->_posZ=z;}
-    void manger(food objet);
-    void manger(joueurs objet);
+    void mangerf(food objet);
+    void mangerj(joueurs objet);
     void SeFaireManger();
   protected:
     float _vitesse;

@@ -33,13 +33,15 @@ ia iatest[nbia];
 int const nbfood(200);
 food Food[nbfood];
 
-GLfloat x_cam=0.0f;
-GLfloat y_cam=5.0f;
-GLfloat z_cam=12.5f;
+GLfloat x_cam=Player.getX();
+GLfloat y_cam=10.0f;
+GLfloat z_cam=10.0f;
 
 // en fonction de ce que le joueur choisit modifier la taille du terrain
 float longueur=20.0;
 float largeur=20.0;
+
+GLint frame=0,temps,timebase=0;
 
 bool collision(boule b1,boule b2){
 	float posX1,posX2,taille1,posZ1,posZ2,taille2;
@@ -51,10 +53,22 @@ bool collision(boule b1,boule b2){
 	posZ2=b2.getZ();
 	taille2=b2.getTaille();
 
-	if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille1+taille2,2)){
+	if(taille1>=taille2){
+        if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille1,2)){
+            return true;
+        }
+    }
+    else {
+        if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille2,2)){
+            return true;
+        }
+    }
+    return false;
+
+	/*if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille1+taille2,2)){
 		return true;
 	}
-	return false;
+	return false;*/
 }
 
 GLvoid Modelisation()
@@ -63,7 +77,18 @@ GLvoid Modelisation()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	gluLookAt(Player.getX(),y_cam,z_cam,Player.getX(),0.0f,Player.getZ(),0.0,1.0,0.0);
+	frame++;
+	temps=glutGet(GLUT_ELAPSED_TIME);
+	if (temps - timebase > 1000) {
+		printf("frames =%2.0d, ",frame/10);
+		printf("temps = %4.0d, ",(temps-timebase)/10);
+		printf("FPS = %4.0d",frame*1000/(temps-timebase));
+		printf("\n");
+		timebase = temps;
+		frame = 0;
+	}
+
+	gluLookAt(x_cam,y_cam,z_cam,Player.getX(),0.0f,Player.getZ(),0.0,1.0,0.0);
 
 	glColor3f(1.0,1.0,0.0);
 	terrain t(longueur,largeur);
@@ -78,12 +103,12 @@ GLvoid Modelisation()
 			 for(int j=0; j<nbia;++j){
 					 if(collision(iatest[j],Food[i])){
 							 Food[i].SeFaireManger();
-							 iatest[j].manger(Food[i]);
+							 iatest[j].mangerf(Food[i]);
 					 }
 			 }
 			 if(collision(Player,Food[i])){
 					 Food[i].SeFaireManger();
-					 Player.manger(Food[i]);
+					 Player.mangerf(Food[i]);
 			 }
 			 else {
 					 Food[i].draw();
@@ -95,22 +120,22 @@ GLvoid Modelisation()
 					 if(collision(iatest[u],iatest[w])){
 							 if(iatest[u].getTaille()<iatest[w].getTaille()-iatest[w].getTaille()*0.05){
 									 iatest[u].SeFaireManger();
-									 iatest[w].manger(iatest[u]);
+									 iatest[w].mangerj(iatest[u]);
 							 }
 							 else if(iatest[u].getTaille()-iatest[u].getTaille()*0.05>iatest[w].getTaille()){
 									 iatest[w].SeFaireManger();
-									 iatest[u].manger(Player);
+									 iatest[u].mangerj(Player);
 							 }
 					 }
 			 }
 			 if(collision(iatest[u],Player)){
 					 if(iatest[u].getTaille()<Player.getTaille()-Player.getTaille()*0.05){
 							 iatest[u].SeFaireManger();
-							 Player.manger(iatest[u]);
+							 Player.mangerj(iatest[u]);
 					 }
 					 else if(iatest[u].getTaille()-iatest[u].getTaille()*0.05>Player.getTaille()){
 							 Player.SeFaireManger();
-							 iatest[u].manger(Player);
+							 iatest[u].mangerj(Player);
 					}
 			}
 	}

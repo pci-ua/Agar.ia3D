@@ -1,18 +1,18 @@
 #include "joueurs.h"
 
-void joueurs::manger(food objet) {
+void joueurs::mangerf(food objet) {
   this->_taille+=0.005f;
-  if(this->_vitesse>0.0002f)
+  if(this->_vitesse>0.0201f)
     this->_vitesse-=0.0001f;
-  else if (this->_vitesse>0.0001f)
-    this->_vitesse=0.0001f;
+  else if (this->_vitesse>0.02f)
+    this->_vitesse=0.02f;
 }
 
-void joueurs::manger(joueurs objet){
+void joueurs::mangerj(joueurs objet){
   this->_taille+=(objet.getTaille()/4);
   if(this->_vitesse>0.0001f*objet.getTaille()*10)
     this->_vitesse-=0.0001f*objet.getTaille()*10;
-  else this->_vitesse=0.0001f;
+  else this->_vitesse=0.02f;
 }
 
 void joueurs::SeFaireManger(){

@@ -9,20 +9,24 @@ extern GLfloat z_cam;
 extern float longueur;
 extern float largeur;
 
-/*void joueur::mangerj() {
-  this->_taille+=0.005f;
-  //diminutionvitesse();
-  y_cam+=0.01f;
+void joueur::mangerf(food objet) {
+  joueurs::mangerf(objet);
+	y_cam+=0.01f;
   z_cam+=0.01f;
-}*/
+}
 
+void joueur::mangerj(joueurs objet) {
+  joueurs::mangerj(objet);
+	y_cam+=(objet.getTaille()/4);
+  z_cam+=(objet.getTaille()/4);
+}
 
 void joueur::SeFaireManger(){
   joueurs::SeFaireManger();
-  y_cam=10.0f;
-  z_cam=10.0f;
+	x_cam=this->_posX;
+	y_cam=10.0;
+	z_cam=this->_posZ+5;
 }
-
 
 void souris (int x, int y){
 	Player.setsourisX(x);
