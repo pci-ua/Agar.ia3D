@@ -5,7 +5,7 @@ extern ia iatest[];
 extern float longueur;
 extern float largeur;
 
-void ia::deplacement (int i){
+void ia::deplacement (int const i){
 	int width=glutGet(GLUT_WINDOW_WIDTH);
 	int height=glutGet(GLUT_WINDOW_HEIGHT);
 

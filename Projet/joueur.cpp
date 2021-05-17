@@ -9,13 +9,13 @@ extern GLfloat z_cam;
 extern float longueur;
 extern float largeur;
 
-void joueur::mangerf(food objet) {
+void joueur::mangerf(food const & objet) {
   joueurs::mangerf(objet);
-	y_cam+=0.01f;
-  z_cam+=0.01f;
+	y_cam+=0.02f;
+  z_cam+=0.02f;
 }
 
-void joueur::mangerj(joueurs objet) {
+void joueur::mangerj(joueurs const & objet) {
   joueurs::mangerj(objet);
 	y_cam+=(objet.getTaille()/4);
   z_cam+=(objet.getTaille()/4);

@@ -5,23 +5,12 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 
-#include "actions.h"
 #include "terrain.h"
 #include "boule.h"
 #include "food.h"
 #include "joueurs.h"
 #include "joueur.h"
 #include "ia.h"
-
-GLfloat xrot_camera=0.0;
-GLfloat yrot_camera=0.0;
-GLfloat zrot_camera=0.0;
-
-GLfloat x_objet=0.0;
-GLfloat z_objet=0.0;
-
-int xboules=0.0;
-int zboules=0.0;
 
 int window;
 
@@ -34,8 +23,8 @@ int const nbfood(200);
 food Food[nbfood];
 
 GLfloat x_cam=Player.getX();
-GLfloat y_cam=10.0f;
-GLfloat z_cam=10.0f;
+GLfloat y_cam=7.0f;
+GLfloat z_cam=Player.getZ()+5;
 
 // en fonction de ce que le joueur choisit modifier la taille du terrain
 float longueur=20.0;
@@ -43,7 +32,7 @@ float largeur=20.0;
 
 GLint frame=0,temps,timebase=0;
 
-bool collision(boule b1,boule b2){
+bool collision(boule const & b1,boule const & b2){
 	float posX1,posX2,taille1,posZ1,posZ2,taille2;
 	posX1=b1.getX();
 	posZ1=b1.getZ();
@@ -54,21 +43,15 @@ bool collision(boule b1,boule b2){
 	taille2=b2.getTaille();
 
 	if(taille1>=taille2){
-        if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille1,2)){
-            return true;
-        }
+    if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille1,2)){
+    	return true;
     }
-    else {
-        if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille2,2)){
-            return true;
-        }
+  } else {
+  	if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille2,2)){
+    	return true;
     }
-    return false;
-
-	/*if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille1+taille2,2)){
-		return true;
-	}
-	return false;*/
+  }
+  return false;
 }
 
 GLvoid Modelisation()
@@ -94,10 +77,6 @@ GLvoid Modelisation()
 	terrain t(longueur,largeur);
 
 	Player.draw();
-
-	for(int i=0; i<nbia;++i){
-		iatest[i].draw();
-	}
 
 	for(int i=0; i<nbfood;++i){
 			 for(int j=0; j<nbia;++j){
@@ -138,6 +117,9 @@ GLvoid Modelisation()
 							 iatest[u].mangerj(Player);
 					}
 			}
+			else {
+				iatest[u].draw();
+			}
 	}
 
 	glutPassiveMotionFunc(souris);
@@ -168,9 +150,6 @@ int main(int argc, char **argv)
 	window = glutCreateWindow("Agar.ia");
 	glutDisplayFunc(&Modelisation);
 	glutReshapeFunc(&Redimensionne);
-
-	glutKeyboardFunc(&touche_pressee);
-  glutSpecialFunc(&touche_speciale_pressee);
 
 	glutIdleFunc(&Modelisation);
 

@@ -20,11 +20,11 @@ class boule{
     }
     ~boule();
     void draw() const;
-    float getX(){ return _posX;}
-    float getZ(){ return _posZ;}
-    float getTaille(){return _taille;}
-    void const setX(float x){this->_posX=x;}
-    void const setZ(float z){this->_posZ=z;}
+    float getX() const{ return _posX;}
+    float getZ() const{ return _posZ;}
+    float getTaille() const{return _taille;}
+    void setX(float x){this->_posX=x;}
+    void setZ(float z){this->_posZ=z;}
   protected:
     float _posX;
     float _posZ;

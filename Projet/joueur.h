@@ -16,11 +16,11 @@ class joueur : public joueurs{
   			this->_posSourisX=posX;
   			this->_posSourisY=posY;
   	}
-  	void const setsourisX(int x){this->_posSourisX=x;}
-  	void const setsourisY(int y){this->_posSourisY=y;}
+  	void setsourisX(int x){this->_posSourisX=x;}
+  	void setsourisY(int y){this->_posSourisY=y;}
     void deplacement();
-    void mangerf(food objet);
-    void mangerj(joueurs objet);
+    void mangerf(food const & objet);
+    void mangerj(joueurs const & objet);
     void SeFaireManger();
   private:
     int _posSourisX;

@@ -1,6 +1,6 @@
 #include "joueurs.h"
 
-void joueurs::mangerf(food objet) {
+void joueurs::mangerf(food const & objet) {
   this->_taille+=0.005f;
   if(this->_vitesse>0.0201f)
     this->_vitesse-=0.0001f;
@@ -8,7 +8,7 @@ void joueurs::mangerf(food objet) {
     this->_vitesse=0.02f;
 }
 
-void joueurs::mangerj(joueurs objet){
+void joueurs::mangerj(joueurs const & objet){
   this->_taille+=(objet.getTaille()/4);
   if(this->_vitesse>0.0001f*objet.getTaille()*10)
     this->_vitesse-=0.0001f*objet.getTaille()*10;

@@ -13,9 +13,9 @@
 class ia : public joueurs {
 public:
   ia():joueurs(){}
-  void const setiaX(int x){this->_posAleatoireX=x;}
-  void const setiaY(int y){this->_posAleatoireY=y;}
-  void deplacement(int i);
+  void setiaX(int x){this->_posAleatoireX=x;}
+  void setiaY(int y){this->_posAleatoireY=y;}
+  void deplacement(int const i);
 private:
   int _posAleatoireX;
   int _posAleatoireY;
