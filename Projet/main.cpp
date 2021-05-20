@@ -11,19 +11,14 @@
 #include "joueurs.h"
 #include "joueur.h"
 #include "ia.h"
+#include "constante.h"
 
 int window;
 
-// en fonction de ce que le joueur choisit modifier la taille du terrain
-float longueur=40.0/2;
-float largeur=40.0/2;
-
 joueur Player(0,0);
 
-int const nbia(5);
 ia iatest[nbia];
 
-int const nbfood(200);
 food Food[nbfood];
 
 GLfloat x_cam=Player.getX();
@@ -105,22 +100,22 @@ GLvoid Modelisation()
 	 for(int u=0;u<nbia;++u){ // boucle pour toutes les ia
 			 for(int w=u+1;w<nbia;++w){ // boucle pour les ia autre que celle séléctionnée (ou déjà passé)
 					 if(collision(iatest[u],iatest[w])){ // vérifie s'il y a collision entre ia et un autre ia
-							 if(iatest[u].getTaille()<iatest[w].getTaille()-iatest[w].getTaille()*0.05){
+							 if(iatest[u].getTaille()<iatest[w].getTaille()-iatest[w].getTaille()*ecart){
 									 iatest[u].SeFaireManger();
 									 iatest[w].mangerj(iatest[u]);
 							 }
-							 else if(iatest[u].getTaille()-iatest[u].getTaille()*0.05>iatest[w].getTaille()){
+							 else if(iatest[u].getTaille()-iatest[u].getTaille()*ecart>iatest[w].getTaille()){
 									 iatest[w].SeFaireManger();
 									 iatest[u].mangerj(Player);
 							 }
 					 }
 			 }
 			 if(collision(iatest[u],Player)){ // vérifie s'il y a collision entre ia et player
-					 if(iatest[u].getTaille()<Player.getTaille()-Player.getTaille()*0.05){
+					 if(iatest[u].getTaille()<Player.getTaille()-Player.getTaille()*ecart){
 							 iatest[u].SeFaireManger();
 							 Player.mangerj(iatest[u]);
 					 }
-					 else if(iatest[u].getTaille()-iatest[u].getTaille()*0.05>Player.getTaille()){
+					 else if(iatest[u].getTaille()-iatest[u].getTaille()*ecart>Player.getTaille()){
 							 Player.SeFaireManger();
 							 iatest[u].mangerj(Player);
 					}

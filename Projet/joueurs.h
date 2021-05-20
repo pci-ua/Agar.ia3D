@@ -15,7 +15,7 @@
 
 class joueurs : public boule{
   public:
-    joueurs():boule(0.5f),_vitesse(0.1){}
+    joueurs():boule(taille_joueurs),_vitesse(vitesse){}
     ~joueurs(){}
     void mangerf(food const & objet);
     void mangerj(joueurs const & objet);

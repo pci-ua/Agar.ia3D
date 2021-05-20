@@ -9,15 +9,15 @@ extern GLfloat z_cam;
 // appelle la méthode de joueurs et augmente la position de la caméra
 void joueur::mangerf(food const & objet) {
   joueurs::mangerf(objet);
-	y_cam+=0.02f;
-  z_cam+=0.02f;
+	y_cam+=camera_up;
+  z_cam+=camera_up;
 }
 
 // appelle la méthode de joueurs et augmente la position de la caméra en fonction de la taille du joueur mangé
 void joueur::mangerj(joueurs const & objet) {
   joueurs::mangerj(objet);
-	y_cam+=(objet.getTaille()/4);
-  z_cam+=(objet.getTaille()/4);
+	y_cam+=(objet.getTaille()*pourcentage_mange);
+  z_cam+=(objet.getTaille()*pourcentage_mange);
 }
 
 // appelle la méthode de joueurs et réinitialise la position de la caméra sur la position du joueur

@@ -12,6 +12,6 @@
 
 class food : public boule{
   public:
-    food():boule(0.1f){}
+    food():boule(taille_food){}
     void SeFaireManger();
 };
