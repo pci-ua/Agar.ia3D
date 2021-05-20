@@ -8,15 +8,21 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 
+extern float longueur;
+extern float largeur;
+
+// Super-classe de toutes les entitées
 class boule{
   public:
-    boule(float taille,float posX,float posZ,float r,float g,float b){
-      this->_posX = posX;
-      this->_posZ = posZ;
+    boule(float taille){
+      // rand et RAND_MAX viennent de la bibliothèque stdlib.h
+      // le calcul suivant correspond à prendre un nombre aléatoire (flottant) compris dans le terrain
+      this->_posX = (float)rand()/(RAND_MAX)*(longueur-0.5+longueur-0.5)-longueur+0.5;
+      this->_posZ = (float)rand()/(RAND_MAX)*(largeur-0.5+largeur-0.5)-largeur+0.5;
       this->_taille = taille;
-      this->_r = r;
-      this->_g = g;
-      this->_b = b;
+      this->_r = (float)rand()/(RAND_MAX); // nombre flottant aléatoire entre 0 et 1
+      this->_g = (float)rand()/(RAND_MAX);
+      this->_b = (float)rand()/(RAND_MAX);
     }
     ~boule();
     void draw() const;
