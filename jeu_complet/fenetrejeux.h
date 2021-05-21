@@ -38,6 +38,7 @@ public:
 private slots:
 
     void classementA();
+    void chrono_refresh();
 
 private :
 
@@ -48,6 +49,10 @@ private :
     int temps = 60 ;
     std::string pseudo;
     int nombreia;
+    bool fin = false;
+    QLCDNumber *afficher_chrono;
+    QTime chrono ;
+    QTimer *timer_chrono ;
 
 
 

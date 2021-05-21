@@ -89,6 +89,7 @@ void MainWindow::findepartie(){
 
 
     this->tabldeScore=this->fjeux->gettable();
+    this->fjeux->findepartie();
     this->fjeux->close();
 
     //affichage tableau score final

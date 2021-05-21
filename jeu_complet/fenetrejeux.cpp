@@ -1,5 +1,8 @@
 #include "fenetrejeux.h"
 #include "ui_fenetrejeux.h"
+#include <chrono>
+
+
 extern Joueur player;
 extern Ia iatest[];
 
@@ -13,7 +16,6 @@ fenetrejeux::fenetrejeux(QWidget *parent) :
 
 
 void fenetrejeux::initFenetre(){
-
 
     //recuperation de la taille de l'ecran de l'utilisateur pour l'affichage de la fenetre de jeux
     QDesktopWidget *pleinecran = QApplication::desktop();
@@ -39,22 +41,36 @@ void fenetrejeux::initFenetre(){
     this->fenetre->move(10,10);
     this->fenetre->show();
 
+       //Creation et affichage du temps
+       afficher_chrono = new QLCDNumber (this->centralWidget()) ;
+       afficher_chrono->setObjectName(QStringLiteral("afficher_chrono"));
+       afficher_chrono->setDigitCount(7);
+       afficher_chrono -> setSegmentStyle ( QLCDNumber :: Flat ) ;
+       afficher_chrono -> move (pleinecran->width()-250  , pleinecran->height()-250);
+       afficher_chrono->setMinimumSize(250,250);
+       afficher_chrono->show();
+       chrono = QTime ( 0, 0, 0 ) ;
+       afficher_chrono -> display (  this->chrono.toString ( "h:mm:ss" ) ) ;
+       timer_chrono = new QTimer () ;
+       connect ( timer_chrono, SIGNAL ( timeout() ), this, SLOT ( chrono_refresh() ) ) ;
+       timer_chrono -> start (RAFRAICHISSEMENT_TIME) ;    // On lance un affichage toutes les X milisecondes
 
-    //Boucle qui active le rafraichissement du classement
-    for(int i=0;i<((temps*60)/5);i++){
 
-           timer= new QTimer;
-           timer->setInterval(RAFRAICHISSEMENT_TAB);
-           timer->start();
-           connect (timer,SIGNAL (timeout()),this, SLOT (classementA()));
 
-   }
+        //Activation rafraichissement tableau
+       auto timer_tableau = new QTimer();
+       connect (timer_tableau,SIGNAL (timeout()),this, SLOT (classementA()));
+       timer_tableau->start(RAFRAICHISSEMENT_TAB);
 
 
 }
 
 
 
+void fenetrejeux::findepartie(){
+
+    this->fin=true;
+}
 
 
 
@@ -154,6 +170,11 @@ do{
 
 }
 
+void fenetrejeux:: chrono_refresh()
+{
+    this->chrono = this->chrono.addSecs(RAFRAICHISSEMENT_TIME/1000);
+    afficher_chrono -> display (  this->chrono.toString ( "h:mm:ss" ) ) ;
+}
 
 
 
