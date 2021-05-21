@@ -13,12 +13,12 @@
 
 #define PI 3.14159265
 
-class joueurs : public boule{
+class Joueurs : public Boule{
   public:
-    joueurs():boule(taille_joueurs),_vitesse(vitesse){}
-    ~joueurs(){}
-    void mangerf(food const & objet);
-    void mangerj(joueurs const & objet);
+    Joueurs():Boule(TAILLE_JOUEURS),_vitesse(VITESSE){}
+    ~Joueurs(){}
+    void mangerf(Food const & objet);
+    void mangerj(Joueurs const & objet);
     void SeFaireManger();
   protected:
     float _vitesse;

@@ -11,19 +11,19 @@
 #include "constante.h"
 
 // Super-classe de toutes les entitées
-class boule{
+class Boule{
   public:
-    boule(float taille){
+    Boule(float taille){
       // rand et RAND_MAX viennent de la bibliothèque stdlib.h
       // le calcul suivant correspond à prendre un nombre aléatoire (flottant) compris dans le terrain
-      this->_posX = (float)rand()/(RAND_MAX)*(longueur-marge+longueur-marge)-longueur+marge;
-      this->_posZ = (float)rand()/(RAND_MAX)*(largeur-marge+largeur-marge)-largeur+marge;
+      this->_posX = (float)rand()/(RAND_MAX)*(LONGUEUR-MARGE+LONGUEUR-MARGE)-LONGUEUR+MARGE;
+      this->_posZ = (float)rand()/(RAND_MAX)*(LARGEUR-MARGE+LARGEUR-MARGE)-LARGEUR+MARGE;
       this->_taille = taille;
-      this->_r = couleur; // nombre flottant aléatoire entre 0 et 1
-      this->_g = couleur;
-      this->_b = couleur;
+      this->_r = COULEUR; // nombre flottant aléatoire entre 0 et 1
+      this->_g = COULEUR;
+      this->_b = COULEUR;
     }
-    ~boule();
+    ~Boule();
     void draw() const;
     float getX() const{ return _posX;}
     float getZ() const{ return _posZ;}

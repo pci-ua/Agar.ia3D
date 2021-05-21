@@ -10,8 +10,8 @@
 
 #include "boule.h"
 
-class food : public boule{
+class Food : public Boule{
   public:
-    food():boule(taille_food){}
+    Food():Boule(TAILLE_FOOD){}
     void SeFaireManger();
 };

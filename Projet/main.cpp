@@ -15,20 +15,20 @@
 
 int window;
 
-joueur Player(0,0);
+Joueur player(0,0);
 
-ia iatest[nbia];
+Ia iatest[NBIA];
 
-food Food[nbfood];
+Food food[NBFOOD];
 
-GLfloat x_cam=Player.getX();
+GLfloat x_cam=player.getX();
 GLfloat y_cam=7.0f;
-GLfloat z_cam=Player.getZ()+5;
+GLfloat z_cam=player.getZ()+5;
 
 GLint frame=0,temps,timebase=0;
 
 // retourne vrai si collision et faux sinon
-bool collision(boule const & b1,boule const & b2){
+bool collision(Boule const & b1,Boule const & b2){
 	float posX1,posX2,taille1,posZ1,posZ2,taille2;
 	posX1=b1.getX();
 	posZ1=b1.getZ();
@@ -71,53 +71,53 @@ GLvoid Modelisation()
 	}
 
 	// caméra sur le player
-	gluLookAt(x_cam,y_cam,z_cam,Player.getX(),0.0f,Player.getZ(),0.0,1.0,0.0);
+	gluLookAt(x_cam,y_cam,z_cam,player.getX(),0.0f,player.getZ(),0.0,1.0,0.0);
 
 	// couleur jaune du terrain
 	glColor3f(1.0,1.0,0.0);
-	terrain t(longueur,largeur); // création du terrain
+	terrain t(LONGUEUR,LARGEUR); // création du terrain
 
 	// dessine la joueur
-	Player.draw();
+	player.draw();
 
 	// boucle pour toutes les foods
-	for(int i=0; i<nbfood;++i){
-			 for(int j=0; j<nbia;++j){ // boucle pour toutes les ia
-					 if(collision(iatest[j],Food[i])){ // vérifie s'il y a collision entre ia et food
-							 Food[i].SeFaireManger();
-							 iatest[j].mangerf(Food[i]);
+	for(int i=0; i<NBFOOD;++i){
+			 for(int j=0; j<NBIA;++j){ // boucle pour toutes les ia
+					 if(collision(iatest[j],food[i])){ // vérifie s'il y a collision entre ia et food
+							 food[i].SeFaireManger();
+							 iatest[j].mangerf(food[i]);
 					 }
 			 }
-			 if(collision(Player,Food[i])){ // vérifie s'il y a collision entre player et food
-					 Food[i].SeFaireManger();
-					 Player.mangerf(Food[i]);
+			 if(collision(player,food[i])){ // vérifie s'il y a collision entre player et food
+					 food[i].SeFaireManger();
+					 player.mangerf(food[i]);
 			 }
 			 else {
-					Food[i].draw(); // dessine le food
+					food[i].draw(); // dessine le food
 			 }
 	 }
 
-	 for(int u=0;u<nbia;++u){ // boucle pour toutes les ia
-			 for(int w=u+1;w<nbia;++w){ // boucle pour les ia autre que celle séléctionnée (ou déjà passé)
+	 for(int u=0;u<NBIA;++u){ // boucle pour toutes les ia
+			 for(int w=u+1;w<NBIA;++w){ // boucle pour les ia autre que celle séléctionnée (ou déjà passé)
 					 if(collision(iatest[u],iatest[w])){ // vérifie s'il y a collision entre ia et un autre ia
-							 if(iatest[u].getTaille()<iatest[w].getTaille()-iatest[w].getTaille()*ecart){
+							 if(iatest[u].getTaille()<iatest[w].getTaille()-iatest[w].getTaille()*ECART){
 									 iatest[u].SeFaireManger();
 									 iatest[w].mangerj(iatest[u]);
 							 }
-							 else if(iatest[u].getTaille()-iatest[u].getTaille()*ecart>iatest[w].getTaille()){
+							 else if(iatest[u].getTaille()-iatest[u].getTaille()*ECART>iatest[w].getTaille()){
 									 iatest[w].SeFaireManger();
-									 iatest[u].mangerj(Player);
+									 iatest[u].mangerj(player);
 							 }
 					 }
 			 }
-			 if(collision(iatest[u],Player)){ // vérifie s'il y a collision entre ia et player
-					 if(iatest[u].getTaille()<Player.getTaille()-Player.getTaille()*ecart){
+			 if(collision(iatest[u],player)){ // vérifie s'il y a collision entre ia et player
+					 if(iatest[u].getTaille()<player.getTaille()-player.getTaille()*ECART){
 							 iatest[u].SeFaireManger();
-							 Player.mangerj(iatest[u]);
+							 player.mangerj(iatest[u]);
 					 }
-					 else if(iatest[u].getTaille()-iatest[u].getTaille()*ecart>Player.getTaille()){
-							 Player.SeFaireManger();
-							 iatest[u].mangerj(Player);
+					 else if(iatest[u].getTaille()-iatest[u].getTaille()*ECART>player.getTaille()){
+							 player.SeFaireManger();
+							 iatest[u].mangerj(player);
 					}
 			}
 			else {
@@ -128,11 +128,11 @@ GLvoid Modelisation()
 	//
 	glutPassiveMotionFunc(souris);
 	// active la fonction pour que le joueur se déplace dans la direction de la souris
-	Player.deplacement();
+	player.deplacement();
 	//  obtenir des tirages différents à chaque lancement
 	srand (time(NULL));
 	// active la fonction pour que les ia se déplace dans la direction de leur "curseur"
-	for(int i=0;i<nbia;++i){
+	for(int i=0;i<NBIA;++i){
 		iatest[i].deplacement(i);
 	}
 	glutSwapBuffers();
