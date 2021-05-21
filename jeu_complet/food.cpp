@@ -1,6 +1,7 @@
 #include "food.h"
 
-void food::SeFaireManger() {
-  this->_posX=(float)rand()/(RAND_MAX)*(longueur-0.5+longueur-0.5)-longueur+0.5;
-  this->_posZ=(float)rand()/(RAND_MAX)*(largeur-0.5+largeur-0.5)-largeur+0.5;
+// change la position de la food sur le terrain
+void Food::SeFaireManger() {
+  this->_posX=(float)rand()/(RAND_MAX)*(LONGUEUR-MARGE+LONGUEUR-MARGE)-LONGUEUR+MARGE;
+  this->_posZ=(float)rand()/(RAND_MAX)*(LARGEUR-MARGE+LARGEUR-MARGE)-LARGEUR+MARGE;
 }

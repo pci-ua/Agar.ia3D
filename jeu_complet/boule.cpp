@@ -1,18 +1,16 @@
 #include "boule.h"
 
-extern float longueur;
-extern float largeur;
-
-boule::~boule(){
+Boule::~Boule(){
 
 }
 
-void boule::draw() const{
+//dessine la boule à un endroit
+void Boule::draw() const{
  glPushMatrix();
  {
-   glTranslatef(_posX,0,_posZ);
+   glTranslatef(_posX,0,_posZ); //se positionne sur le terrain
    glColor3f(_r,_g,_b);
-   glutSolidSphere(static_cast<double>(_taille),30,30);
+   glutSolidSphere(static_cast<double>(_taille),SUBDIVISIONS_BOULE,SUBDIVISIONS_BOULE); // créer une sphère
  }
  glPopMatrix();
 }

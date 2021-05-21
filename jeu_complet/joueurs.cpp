@@ -1,22 +1,26 @@
 #include "joueurs.h"
 
-void joueurs::mangerf(food objet) {
-  this->_taille+=0.005f;
-  if(this->_vitesse>0.0201f)
-    this->_vitesse-=0.0001f;
-  else if (this->_vitesse>0.02f)
-    this->_vitesse=0.02f;
+// augmente la taille du joueurs et diminue sa vitesse
+void Joueurs::mangerf(Food const & objet) {
+  this->_taille+=MODIF_TAILLE;
+  if(this->_vitesse>PALLIER_VITESSE)
+    this->_vitesse-=MODIF_VITESSE;
+  else if (this->_vitesse>VITESSE_MIN)
+    this->_vitesse=VITESSE_MIN;
 }
 
-void joueurs::mangerj(joueurs objet){
-  this->_taille+=(objet.getTaille()/4);
-  if(this->_vitesse>0.0001f*objet.getTaille()*10)
-    this->_vitesse-=0.0001f*objet.getTaille()*10;
-  else this->_vitesse=0.02f;
+// augmente la taille du joueurs et diminue sa vitesse en fonction de la taille du joueurs mangé
+void Joueurs::mangerj(Joueurs const & objet){
+  this->_taille+=(objet.getTaille()*POURCENTAGE_MANGE);
+  if(this->_vitesse>MODIF_VITESSE*objet.getTaille()*10)
+    this->_vitesse-=MODIF_VITESSE*objet.getTaille()*10;
+  else this->_vitesse=VITESSE_MIN;
 }
 
-void joueurs::SeFaireManger(){
-  this->_posX=(float)rand()/(RAND_MAX)*(longueur-0.5+longueur-0.5)-longueur+0.5;
-  this->_posZ=(float)rand()/(RAND_MAX)*(largeur-0.5+largeur-0.5)-largeur+0.5;
-  this->_taille=0.5;
+// réinitialise la taille, la vitesse du joueurs et change sa position
+void Joueurs::SeFaireManger(){
+  this->_posX=(float)rand()/(RAND_MAX)*(LONGUEUR-MARGE+LONGUEUR-MARGE)-LONGUEUR+MARGE;
+  this->_posZ=(float)rand()/(RAND_MAX)*(LARGEUR-MARGE+LARGEUR-MARGE)-LARGEUR+MARGE;
+  this->_taille=TAILLE_JOUEURS;
+  this->_vitesse=VITESSE;
 }

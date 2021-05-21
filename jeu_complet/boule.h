@@ -8,27 +8,28 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 
+#include "constante.h"
 
-extern float longueur;
-extern float largeur;
-
-class boule{
+// Super-classe de toutes les entitées
+class Boule{
   public:
-    boule(float taille,float posX,float posZ,float r,float g,float b){
-      this->_posX = posX;
-      this->_posZ = posZ;
+    Boule(float taille){
+      // rand et RAND_MAX viennent de la bibliothèque stdlib.h
+      // le calcul suivant correspond à prendre un nombre aléatoire (flottant) compris dans le terrain
+      this->_posX = (float)rand()/(RAND_MAX)*(LONGUEUR-MARGE+LONGUEUR-MARGE)-LONGUEUR+MARGE;
+      this->_posZ = (float)rand()/(RAND_MAX)*(LARGEUR-MARGE+LARGEUR-MARGE)-LARGEUR+MARGE;
       this->_taille = taille;
-      this->_r = r;
-      this->_g = g;
-      this->_b = b;
+      this->_r = COULEUR; // nombre flottant aléatoire entre 0 et 1
+      this->_g = COULEUR;
+      this->_b = COULEUR;
     }
-    ~boule();
+    ~Boule();
     void draw() const;
-    float getX(){ return _posX;}
-    float getZ(){ return _posZ;}
-    float getTaille(){return _taille;}
-    void  setX(float x){this->_posX=x;}
-    void  setZ(float z){this->_posZ=z;}
+    float getX() const{ return _posX;}
+    float getZ() const{ return _posZ;}
+    float getTaille() const{return _taille;}
+    void setX(float x){this->_posX=x;}
+    void setZ(float z){this->_posZ=z;}
   protected:
     float _posX;
     float _posZ;

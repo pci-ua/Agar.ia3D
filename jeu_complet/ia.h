@@ -10,9 +10,9 @@
 
 #include "joueurs.h"
 
-class ia : public joueurs {
+class Ia : public Joueurs {
 public:
-  ia():joueurs(){}
+  Ia():Joueurs(){}
   void  setiaX(int x){this->_posAleatoireX=x;}
   void  setiaY(int y){this->_posAleatoireY=y;}
   void deplacement(int width,int height);

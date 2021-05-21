@@ -10,19 +10,18 @@
 
 #include "joueurs.h"
 
-class joueur : public joueurs{
+class Joueur : public Joueurs{
   public:
-    joueur(int posX, int posY):joueurs(){
-            this->_posSourisX=posX;
-            this->_posSourisY=posY;
-    }
-    void  setsourisX(int x){this->_posSourisX=x;}
-    void  setsourisY(int y){this->_posSourisY=y;}
+    Joueur(int posX, int posY):Joueurs(){
+  			this->_posSourisX=posX;
+  			this->_posSourisY=posY;
+  	}
+  	void setsourisX(int x){this->_posSourisX=x;}
+  	void setsourisY(int y){this->_posSourisY=y;}
     void deplacement(int width,int height);
-    void mangerf(food objet);
-    void mangerj(joueurs objet);
+    void mangerf(Food const & objet);
+    void mangerj(Joueurs const & objet);
     void SeFaireManger();
-
   private:
     int _posSourisX;
     int _posSourisY;

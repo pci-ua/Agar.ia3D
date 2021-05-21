@@ -5,11 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 class terrain {
   public:
-    terrain( float longueur, float largeur);
-
-
+    terrain(float longueur, float largeur);
 };

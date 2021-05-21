@@ -77,7 +77,7 @@ GLvoid Modelisation()
 	glColor3f(1.0,1.0,0.0);
 	terrain t(LONGUEUR,LARGEUR); // création du terrain
 
-	// dessine la joueur
+	// dessine le joueur
 	player.draw();
 
 	// boucle pour toutes les foods
@@ -93,7 +93,7 @@ GLvoid Modelisation()
 					 player.mangerf(food[i]);
 			 }
 			 else {
-					food[i].draw(); // dessine le food
+					food[i].draw(); // dessine le food s'il n'y a aucune collision
 			 }
 	 }
 
@@ -125,11 +125,11 @@ GLvoid Modelisation()
 			}
 	}
 
-	//
+	// récupère la position de la souris
 	glutPassiveMotionFunc(souris);
 	// active la fonction pour que le joueur se déplace dans la direction de la souris
 	player.deplacement();
-	//  obtenir des tirages différents à chaque lancement
+	// obtenir des tirages différents à chaque lancement
 	srand (time(NULL));
 	// active la fonction pour que les ia se déplace dans la direction de leur "curseur"
 	for(int i=0;i<NBIA;++i){

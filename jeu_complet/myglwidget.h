@@ -2,11 +2,27 @@
 #define MYGLWIDGET_H
 
 #include <QOpenGLWidget>
+#include <iostream>
+#include <GL/glut.h>
+#include <GL/gl.h>
+#include <math.h>
+#include <stdlib.h>
+#include <GL/glu.h>
 #include <QOpenGLFunctions>
-#include <joueur.h>
-#include <ia.h>
+ #include <QMouseEvent>
+#include <iostream>
+#include <QSurfaceFormat>
 
+#include "actions.h"
+#include "terrain.h"
+#include "boule.h"
+#include "food.h"
+#include "joueurs.h"
+#include "joueur.h"
+#include "ia.h"
+#include "constante.h"
 
+#include <array>
 
 class MyGLWidget : public QOpenGLWidget, public QOpenGLFunctions
 {
