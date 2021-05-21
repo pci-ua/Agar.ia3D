@@ -2,7 +2,7 @@
 
 Joueur player(0,0);
 
-Ia iatest[NBIA];
+Ia iatest[NBIAMAX];
 
 Food food[NBFOOD];
 
@@ -13,7 +13,7 @@ GLfloat z_cam=player.getZ()+5;
 GLint frame=0,temps,timebase=0;
 
 // retourne vrai si collision et faux sinon
-bool collision(boule b1,boule b2){
+bool collision(Boule b1,Boule b2){
     float posX1,posX2,taille1,posZ1,posZ2,taille2;
     posX1=b1.getX();
     posZ1=b1.getZ();
@@ -89,7 +89,7 @@ void MyGLWidget::paintGL()
     terrain t(LONGUEUR,LARGEUR); // création du terrain
 
     // dessine le joueur
-    Player.draw();
+    player.draw();
 
     for(int i=0; i<this->nbia;++i){
 
@@ -121,7 +121,7 @@ void MyGLWidget::paintGL()
                 }
                 else if(static_cast<double>(static_cast<double>(iatest[u].getTaille()))-static_cast<double>(iatest[u].getTaille())*ECART>static_cast<double>(iatest[w].getTaille())){
                     iatest[w].SeFaireManger();
-                    iatest[u].mangerj(Player);
+                    iatest[u].mangerj(player);
                 }
             }
         }

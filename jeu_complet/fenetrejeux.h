@@ -34,6 +34,7 @@ public:
     void setpsd(std::string psd){this->pseudo=psd;}
     void setnbria(int nbria){this->nombreia=nbria;}
 
+
 private slots:
 
     void classementA();
@@ -47,6 +48,7 @@ private :
     int temps = 60 ;
     std::string pseudo;
     int nombreia;
+
 
 
 };

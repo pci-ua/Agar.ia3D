@@ -30,6 +30,10 @@ class Boule{
     float getTaille() const{return _taille;}
     void setX(float x){this->_posX=x;}
     void setZ(float z){this->_posZ=z;}
+    void setr(float r){this->_r=r;}
+    void setg(float g){this->_g=g;}
+    void setb(float b){this->_b=b;}
+
   protected:
     float _posX;
     float _posZ;

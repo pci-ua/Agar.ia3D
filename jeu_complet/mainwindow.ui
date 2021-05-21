@@ -26,19 +26,7 @@ QTextEdit {
 	background-color:rgb(42, 42, 42);
 	color: rgb(0, 255, 0);
 }
-QPushButton{
-	border-style: outset;
-	border-width: 2px;
-	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
-	border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
-	border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
-	border-bottom-color: rgb(58, 58, 58);
-	border-bottom-width: 1px;
-	border-style: solid;
-	color: rgb(255, 255, 255);
-	padding: 2px;
-	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(77, 77, 77, 255), stop:1 rgba(97, 97, 97, 255));
-}
+
 QPushButton:hover{
 	border-style: outset;
 	border-width: 2px;
@@ -315,13 +303,31 @@ QWidget {
    <widget class="QWidget" name="verticalLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>590</x>
       <y>10</y>
-      <width>231</width>
+      <width>241</width>
       <height>251</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Couleur du Joueur</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
@@ -334,7 +340,7 @@ QWidget {
        <item>
         <widget class="QSpinBox" name="spinBox_4">
          <property name="suffix">
-          <string> </string>
+          <string> min</string>
          </property>
          <property name="prefix">
           <string/>

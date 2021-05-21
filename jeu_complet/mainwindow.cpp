@@ -12,8 +12,8 @@
 
 
 
-extern joueur Player;
-extern ia iatest[];
+extern Joueur player;
+extern Ia iatest[];
 
 
 
@@ -25,10 +25,6 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setMinimumSize(838,318);
     ui->setupUi(this);
     setWindowTitle("Agario 3D");
-    std::cout<<this->width()<<" "<<this->height();
-
-
-
 
 }
 
@@ -37,21 +33,23 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
+//Fonction qui ce declenche quand le pushboutton "play" est presse
 void MainWindow::on_pushButton_clicked()
 {
 
+
     this->tableWidget = new QTableWidget(ui->centralWidget);
     this->tableWidget->setObjectName(QStringLiteral("tableView"));
-
 
 
     this->pseudo = ui->textEdit->toPlainText().toStdString();
     if(pseudo.empty()){
         pseudo = "Joueur";
     }
-   this->fjeux = new fenetrejeux();
 
+
+    //Initialisation et ouverture de la nouvelle fenetre
+        this->fjeux = new fenetrejeux();
         fjeux->setpsd(pseudo);
         fjeux->settemps(ui->spinBox_4->value());
         fjeux->setnbria(ui->spinBox->value());
@@ -59,13 +57,16 @@ void MainWindow::on_pushButton_clicked()
         fjeux->show();
 
 
+
+    //Desactivation des element du menu , qui reste ouvert
     ui->pushButton->setEnabled(0);
     ui->spinBox->setEnabled(0);
     ui->spinBox_4->setEnabled(0);
     ui->textEdit->setEnabled(0);
     ui->menuQuitter->setEnabled(0);
+    ui->pushButton_2->setEnabled(0);
 
-
+    //Lancement du Qtimer qui declenche la fonction "fin de partie" au bout du temps choisi par le joueur
     QTimer *tmps = new QTimer;
     tmps->setInterval(ui->spinBox_4->value()*60000);
     tmps->start();
@@ -75,7 +76,7 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
-//Fonction qui se declenche a la fin de la partie et affiche l'ecran de fin de partie
+//Fonction qui se declenche a la fin de la partie : fermeture de la fenetre de jeux et modification du menu pour affichage des score
 
 void MainWindow::findepartie(){
 
@@ -84,18 +85,19 @@ void MainWindow::findepartie(){
     ui->textEdit->close();
     ui->pushButton->close();
     ui->menuQuitter->setEnabled(1);
+    ui->pushButton_2->close();
 
 
     this->tabldeScore=this->fjeux->gettable();
     this->fjeux->close();
 
+    //affichage tableau score final
+
     tableWidget->setRowCount(0);
     tableWidget->setColumnCount(0);
-    tableWidget->insertColumn(tableWidget->columnCount()); //insertion d'une colonne dans le tableau sur laquelle on va afficher le classement
+    tableWidget->insertColumn(tableWidget->columnCount());
     tableWidget->insertColumn(tableWidget->columnCount());
     tableWidget->insertRow(tableWidget->rowCount());
-
-
     tableWidget->horizontalHeader()->setStretchLastSection(true);
 
     this->setFixedSize(1100,400);
@@ -120,10 +122,9 @@ void MainWindow::findepartie(){
     ui->label_3->close();
     ui->spinBox->close();
 
-    // On s'ocuppe du tableau : sa derniere version est égale au classement final
     tableWidget->move(this->width()-420,10);
-    // CHangement du titre de la colonne du tableau
 
+    // CHangement du titre de la colonne du tableau
     QStringList nom;
     nom.append(QString::fromStdString("Classement Final"));
     nom.append(QString::fromStdString("Score"));
@@ -187,8 +188,7 @@ void MainWindow::findepartie(){
 }
 
 
-//Fonction qui renvoi si oui ou non le joueur à gagner la partie en comparant son pseudo avec le pseudo du premier place.
-
+//Fonction qui renvoi si oui ou non le joueur à gagner la partie en comparant son pseudo avec le pseudo de la  premiere place.
 
 void MainWindow::on_actionQuitter_triggered()
 {
@@ -200,6 +200,8 @@ void MainWindow::on_actionfindepartie_triggered()
     this->findepartie();
 }
 
+
+//verif condition victoire
 bool MainWindow::victoire(){
 
     if(this->pseudo == this->tableWidget->item(0,0)->text().toStdString()){
@@ -209,3 +211,28 @@ bool MainWindow::victoire(){
     return false;
 }
 
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QColor c = QColorDialog::getColor(this->_couleur);
+    if(c.isValid()){
+            this->_couleur = c;
+
+            this->replaceColor(ui->pushButton_2,this->_couleur);
+
+     }
+
+    player.setr(this->_couleur.redF());
+    player.setg(this->_couleur.greenF());
+    player.setb(this->_couleur.blueF());
+}
+
+void MainWindow::replaceColor(QPushButton *b,QColor c){
+
+    QPalette pal = b->palette();
+    pal.setColor(QPalette::Button,c);
+    b->setAutoFillBackground(true);
+    b->setFlat(true);
+    b->setPalette(pal);
+    b->update();
+}

@@ -1,7 +1,7 @@
 #include "fenetrejeux.h"
 #include "ui_fenetrejeux.h"
-extern joueur Player;
-extern ia iatest[];
+extern Joueur player;
+extern Ia iatest[];
 
 
 fenetrejeux::fenetrejeux(QWidget *parent) :
@@ -14,11 +14,13 @@ fenetrejeux::fenetrejeux(QWidget *parent) :
 
 void fenetrejeux::initFenetre(){
 
-    QDesktopWidget *pleinecran = QApplication::desktop(); //recuperation du plein ecran de l'ordinateur pour flexibilite de la fenetre
+
+    //recuperation de la taille de l'ecran de l'utilisateur pour l'affichage de la fenetre de jeux
+    QDesktopWidget *pleinecran = QApplication::desktop();
     this->setMinimumSize(QSize(pleinecran->width(),pleinecran->height()));
     this->showFullScreen();
 
-
+    //Initialisation de la fenetre opengl
     this->fenetre = new MyGLWidget(ui->centralwidget);
     this->fenetre->setObjectName(QStringLiteral("fenetre"));
     this->fenetre->setGeometry(QRect(20, 10, 121, 101));
@@ -27,21 +29,22 @@ void fenetrejeux::initFenetre(){
 
     this->setCentralWidget(ui->centralwidget);
 
+    //Initialisation tableau de score
     this->tableWidget = new  QTableWidget(ui->centralwidget);
     this->tableWidget->move(pleinecran->width()-250,10);
     this->tableWidget->setMinimumSize(pleinecran->width()-(pleinecran->width()-200),pleinecran->height());
     this->tableWidget->show();
     this->initclassement();
 
-
-
     this->fenetre->move(10,10);
     this->fenetre->show();
 
+
+    //Boucle qui active le rafraichissement du classement
     for(int i=0;i<((temps*60)/5);i++){
 
            timer= new QTimer;
-           timer->setInterval(5000);
+           timer->setInterval(RAFRAICHISSEMENT_TAB);
            timer->start();
            connect (timer,SIGNAL (timeout()),this, SLOT (classementA()));
 
@@ -60,7 +63,7 @@ void fenetrejeux::initclassement(){
     //Initialisation d'un tableau vide
     tableWidget->setRowCount(0);
     tableWidget->setColumnCount(0);
-    tableWidget->insertColumn(tableWidget->columnCount()); //insertion d'une colonne dans le tableau sur laquelle on va afficher le classement
+    tableWidget->insertColumn(tableWidget->columnCount());
     tableWidget->insertColumn(tableWidget->columnCount());
 
         //remplissage de du titre de la colonne
@@ -71,9 +74,8 @@ void fenetrejeux::initclassement(){
 
 
         tableWidget->insertRow(tableWidget->rowCount());
-        //0 valeur ligne a remplacer par i boucle
            std::string mot = this->pseudo;
-           std::string score = std::to_string(Player.getTaille()*1000-500);
+           std::string score = std::to_string(player.getTaille()*1000-500);
            tableWidget-> setItem(0,0,new QTableWidgetItem(QString::fromStdString(mot)));
            tableWidget->setItem(0,1,new QTableWidgetItem(QString::fromStdString(score)));
 
@@ -87,21 +89,19 @@ void fenetrejeux::initclassement(){
         }
 
 
-
-     // tableWidget->resizeColumnsToContents();
     tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 }
 
 
-
+//Fonction de rafraichissement du tableau
 void fenetrejeux::classementA(){
 
 std::array<std::string,10>  name;
 std::array<float,10> point;
 
 name[0] = this->pseudo;
-point[0] = Player.getTaille();
+point[0] = player.getTaille();
 
 for(unsigned long i=0;i<static_cast<unsigned long>(fenetre->getnbia());i++){
 

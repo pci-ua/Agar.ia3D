@@ -47,11 +47,11 @@ HEADERS += \
     ia.h \
     joueurs.h \
     joueur.h \
-    fenetrejeux.h
+    fenetrejeux.h\
+    constant.h
 
 FORMS += \
         mainwindow.ui \
-    fenetrejeux.ui \
     fenetrejeux.ui
 
 

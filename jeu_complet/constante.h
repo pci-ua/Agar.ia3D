@@ -3,8 +3,8 @@
 #define MARGE 0.5 // pour ne pas que la boule apparaissent au bord du terrain
 #define LONGUEUR (40.0/2) // 40 doit être modifiable
 #define LARGEUR (40.0/2)
-//#define NBIA 5 // nombre ia
-#define NBFOOD 400 // nombre food
+#define NBIAMAX 20 // nombre ia max
+#define NBFOOD 350 // nombre food
 #define ECART 0.05 // pourcentage de taille d'une sphère
 #define SUBDIVISIONS_BOULE 30 // nombbre de subdivision lors de la création de la sphère
 #define COULEUR (float)rand()/(RAND_MAX) // couleur aléatoire entre 0 et 1 (float)
@@ -17,3 +17,4 @@
 #define PALLIER_VITESSE 0.0201 // pallier de vitesse
 #define POURCENTAGE_MANGE 0.25 // pourcentage de taille de l'adversaire qui est donné au joueur
 #define CAMERA_UP 0.02 //augmente la camera
+#define RAFRAICHISSEMENT_TAB 5000 //Intervalle de rafraichissement du tableau des scores en secondes 

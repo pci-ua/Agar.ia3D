@@ -22,6 +22,7 @@ public:
     ~MainWindow();
     void findepartie();
     bool victoire();
+    void replaceColor(QPushButton *b,QColor c);
 
 
 
@@ -33,6 +34,8 @@ private slots:
 
     void on_actionfindepartie_triggered();
 
+    void on_pushButton_2_clicked();
+
 private:
 
     Ui::MainWindow *ui;
@@ -40,7 +43,10 @@ private:
     QTableWidget *tabldeScore;
     fenetrejeux *fjeux;
     std::string pseudo;
-
+    QColor _couleur = Qt::red;
+    float _r;
+    float _g;
+    float _b;
 
 
 

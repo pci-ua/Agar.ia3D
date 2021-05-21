@@ -13,7 +13,6 @@
 #include <iostream>
 #include <QSurfaceFormat>
 
-#include "actions.h"
 #include "terrain.h"
 #include "boule.h"
 #include "food.h"
@@ -33,6 +32,8 @@ public:
     int getnbia(){return nbia;}
     void setnbia(int nb){ this->nbia = nb;}
 
+
+
 private:
 
 
@@ -42,7 +43,6 @@ private:
     void mouseMoveEvent(QMouseEvent *event) override ;
     void deplacementia(int i);
     void deplacementJ();
-
     int nbia = 1;
 
 
