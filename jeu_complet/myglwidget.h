@@ -21,9 +21,6 @@
 #include "ia.h"
 #include "constante.h"
 
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
-
 #include <array>
 
 class MyGLWidget : public QOpenGLWidget, public QOpenGLFunctions
