@@ -121,7 +121,7 @@ void MyGLWidget::paintGL()
                 }
                 else if(static_cast<double>(static_cast<double>(iatest[u].getTaille()))-static_cast<double>(iatest[u].getTaille())*ECART>static_cast<double>(iatest[w].getTaille())){
                     iatest[w].SeFaireManger();
-                    iatest[u].mangerj(player);
+                    iatest[u].mangerj(iatest[w]);
                 }
             }
         }

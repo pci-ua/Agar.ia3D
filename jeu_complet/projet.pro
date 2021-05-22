@@ -48,7 +48,7 @@ HEADERS += \
     joueurs.h \
     joueur.h \
     fenetrejeux.h\
-    constant.h
+    constante.h
 
 FORMS += \
         mainwindow.ui \
