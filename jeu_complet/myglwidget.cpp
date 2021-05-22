@@ -54,11 +54,33 @@ MyGLWidget::MyGLWidget(QWidget* parent):
 void MyGLWidget::initializeGL()
 {
     this->initializeOpenGLFunctions();
-    glClearColor(0.2f,0.2f,0.2f,1);
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHT0);
-    glEnable(GL_LIGHTING);
-    glEnable(GL_COLOR_MATERIAL);
+	glEnable(GL_TEXTURE_2D);
+
+	unsigned int texture;
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	// définit les options de la texture actuellement liée
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	// charge et génère la texture
+	int width, height, nrChannels;
+	unsigned char *data = stbi_load("wall.jpg", &width, &height, &nrChannels, 0);
+	if (data)
+	{
+	    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	}
+	else
+	{
+	    std::cout << "Failed to load texture" << std::endl;
+	}
+	stbi_image_free(data);
+
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
+	glEnable(GL_COLOR_MATERIAL);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     this->setMouseTracking(true);
 }
 
