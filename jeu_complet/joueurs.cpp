@@ -2,7 +2,7 @@
 
 // augmente la taille du joueurs et diminue sa vitesse
 void Joueurs::mangerf(Food const & objet) {
-  this->_taille+=MODIF_TAILLE;
+  this->_taille+=(MODIF_TAILLE/(this->_taille));
   if(this->_vitesse>PALLIER_VITESSE)
     this->_vitesse-=MODIF_VITESSE;
   else if (this->_vitesse>VITESSE_MIN)
@@ -11,7 +11,7 @@ void Joueurs::mangerf(Food const & objet) {
 
 // augmente la taille du joueurs et diminue sa vitesse en fonction de la taille du joueurs mangé
 void Joueurs::mangerj(Joueurs const & objet){
-  this->_taille+=(objet.getTaille()*POURCENTAGE_MANGE);
+  this->_taille+=((objet.getTaille()*POURCENTAGE_MANGE)/(this->_taille));
   if(this->_vitesse>MODIF_VITESSE*objet.getTaille()*10)
     this->_vitesse-=MODIF_VITESSE*objet.getTaille()*10;
   else this->_vitesse=VITESSE_MIN;
