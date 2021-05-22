@@ -1,10 +1,10 @@
 #pragma once
 
 #define MARGE 0.5 // pour ne pas que la boule apparaissent au bord du terrain
-#define LONGUEUR (60.0/2) // taille du terrain
-#define LARGEUR (60.0/2)
+#define LONGUEUR (50.0/2) // taille du terrain
+#define LARGEUR (50.0/2)
 #define NBIAMAX 20 // nombre ia max
-#define NBFOOD 400 // nombre food
+#define NBFOOD 325 // nombre food
 #define ECART 0.05 // pourcentage de taille d'une sphère
 #define SUBDIVISIONS_BOULE 30 // nombbre de subdivision lors de la création de la sphère
 #define COULEUR (float)rand()/(RAND_MAX) // couleur aléatoire entre 0 et 1 (float)
