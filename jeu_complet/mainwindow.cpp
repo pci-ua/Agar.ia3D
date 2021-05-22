@@ -66,6 +66,7 @@ void MainWindow::on_pushButton_clicked()
     ui->menuQuitter->setEnabled(0);
     ui->pushButton_2->setEnabled(0);
 
+
     //Lancement du Qtimer qui declenche la fonction "fin de partie" au bout du temps choisi par le joueur
     QTimer *tmps = new QTimer;
     tmps->setInterval(ui->spinBox_4->value()*60000);
@@ -86,7 +87,8 @@ void MainWindow::findepartie(){
     ui->pushButton->close();
     ui->menuQuitter->setEnabled(1);
     ui->pushButton_2->close();
-
+    ui->label_3->close();
+    ui->label_4->close();
 
     this->tabldeScore=this->fjeux->gettable();
     this->fjeux->findepartie();
@@ -114,7 +116,7 @@ void MainWindow::findepartie(){
      }
 
     }
-    tableWidget->setFixedSize(420,250);
+    tableWidget->setFixedSize(450,350);
     tableWidget->setColumnWidth(0,200);
     tableWidget->setColumnWidth(1,170);
     ui->spinBox->close();
@@ -123,7 +125,7 @@ void MainWindow::findepartie(){
     ui->label_3->close();
     ui->spinBox->close();
 
-    tableWidget->move(this->width()-420,10);
+    tableWidget->move(this->width()-470,10);
 
     // CHangement du titre de la colonne du tableau
     QStringList nom;

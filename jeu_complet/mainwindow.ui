@@ -271,6 +271,9 @@ QWidget {
            <height>30</height>
           </size>
          </property>
+         <property name="tabStopWidth">
+          <number>10</number>
+         </property>
         </widget>
        </item>
       </layout>
