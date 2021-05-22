@@ -4,13 +4,9 @@ terrain::terrain(float longueur, float largeur)
 {
   //sol
   glBegin(GL_QUADS);
-  glTexCoord2i(6.0,6.0);
   glVertex3f(longueur,0.0,largeur);
-  glTexCoord2i(6.0,0.0);
   glVertex3f(-longueur,0.0,largeur);
-  glTexCoord2i(0.0,0.0);
   glVertex3f(-longueur,0.0,-largeur);
-  glTexCoord2i(0.0,6.0);
   glVertex3f(longueur,0.0,-largeur);
   glEnd();
 
