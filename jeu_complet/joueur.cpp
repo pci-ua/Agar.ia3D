@@ -8,24 +8,26 @@ extern GLfloat z_cam;
 
 // appelle la méthode de joueurs et augmente la position de la caméra
 void Joueur::mangerf(Food const & objet) {
-  Joueurs::mangerf(objet);
+  	Joueurs::mangerf(objet);
 	y_cam+=CAMERA_UP;
-  z_cam+=CAMERA_UP;
+  	z_cam+=CAMERA_UP;
 }
 
 // appelle la méthode de joueurs et augmente la position de la caméra en fonction de la taille du joueur mangé
 void Joueur::mangerj(Joueurs const & objet) {
-  Joueurs::mangerj(objet);
+	Joueurs::mangerj(objet);
 	y_cam+=(objet.getTaille()*POURCENTAGE_MANGE);
-  z_cam+=(objet.getTaille()*POURCENTAGE_MANGE);
+	z_cam+=(objet.getTaille()*POURCENTAGE_MANGE);
+	QSound::play("../jeu_complet/manger.wav");
 }
 
 // appelle la méthode de joueurs et réinitialise la position de la caméra sur la position du joueur
 void Joueur::SeFaireManger(){
-  Joueurs::SeFaireManger();
+  	Joueurs::SeFaireManger();
 	x_cam=this->_posX;
 	y_cam=7.0;
 	z_cam=this->_posZ+5;
+	QSound::play("../jeu_complet/sefairemanger.wav");
 }
 
 // récupère la position de la souris et la stock dans _posSourisX,_posSourisY
