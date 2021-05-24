@@ -13,7 +13,7 @@ void Ia::deplacement (int width,int height){
   float coeffdirecteur=0.0;
   // vérification pour ne pas avoir de division par 0 et calcul du coefficient directeur
   if(_posAleatoireX!=width/2){
-      coeffdirecteur= (_posAleatoireY-height/2)/(_posAleatoireX-width/2);
+      coeffdirecteur= (static_cast<float>(_posAleatoireY)-static_cast<float>(height/2))/(static_cast<float>(_posAleatoireX)-static_cast<float>(width/2));
   }
   // récupère l'angle en radian par rapport à l'axe des x et la position du "curseur"(non visible mais imaginé par _posAleatoireX,_posAleatoireY) de l'ia
   float angle=atan(coeffdirecteur);
