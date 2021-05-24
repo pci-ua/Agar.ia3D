@@ -39,7 +39,7 @@ void Joueur::deplacement (int width,int height){
   float coeffdirecteur=0.0;
   // vérification pour ne pas avoir de division par 0 et calcul du coefficient directeur
   if(_posSourisX!=width/2){
-    coeffdirecteur= (_posSourisY-height/2)/(_posSourisX-width/2);
+    coeffdirecteur= (static_cast<float>(_posSourisY)-static_cast<float>(height/2))/(static_cast<float>(_posSourisX)-static_cast<float>(width/2));
   }
   // récupère l'angle en radian par rapport à l'axe des x et la position du curseur de la souris (stocké dans _posSourisX,_posSourisY grâ à la methode souris)
   float angle=atan(coeffdirecteur);
