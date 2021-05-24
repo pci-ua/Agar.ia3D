@@ -31,6 +31,7 @@ public:
     void settable(QTableWidget *tableau){this->tableWidget=tableau;}
     void setfenetre(MyGLWidget *fntr){this->fenetre=fntr;}
     void settemps(int tmps){this->temps=tmps;}
+    void setcompteur(int compt){this->compteur=compt;}
     void setpsd(std::string psd){this->pseudo=psd;}
     void setnbria(int nbria){this->nombreia=nbria;}
 
@@ -46,16 +47,14 @@ private :
     QTableWidget *tableWidget;
     MyGLWidget *fenetre;
     QTimer *timer;
-    int temps = 60 ;
+    int temps = 1 ;
     std::string pseudo;
     int nombreia;
     bool fin = false;
     QLCDNumber *afficher_chrono;
     QTime chrono ;
     QTimer *timer_chrono ;
-
-
-
+    int compteur;
 };
 
 #endif // FENETREJEUX_H
