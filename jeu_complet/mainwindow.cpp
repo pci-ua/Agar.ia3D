@@ -52,6 +52,7 @@ void MainWindow::on_pushButton_clicked()
         this->fjeux = new fenetrejeux();
         fjeux->setpsd(pseudo);
         fjeux->settemps(ui->spinBox_4->value());
+        fjeux->setcompteur(ui->spinBox_4->value());
         fjeux->setnbria(ui->spinBox->value());
         fjeux->initFenetre();
         fjeux->show();
