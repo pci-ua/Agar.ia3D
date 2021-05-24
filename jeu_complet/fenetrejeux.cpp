@@ -174,9 +174,18 @@ void fenetrejeux:: chrono_refresh()
 {
     this->chrono = this->chrono.addSecs(RAFRAICHISSEMENT_TIME/1000);
     afficher_chrono -> display (  this->chrono.toString ( "h:mm:ss" ) ) ;
+    QString chron=this->chrono.toString("ss");
+    // Losqu'il reste moins de 1 min
+    if(compteur==1){
+        if(chron.toStdString().c_str()==std::to_string(60-TEMPSSONFIN)){
+            QSound::play("../jeu_complet/chrono.wav");
+        }
+        // permet de ne pas relancer le chrono lorsqu'on arrive au temps indiquer
+        if(chron.toStdString().c_str()==std::to_string(60-1)){
+            timer_chrono->setSingleShot(true);
+        }
+    }
+    else if(chron=="00"){
+        compteur--;
+    }
 }
-
-
-
-
-
