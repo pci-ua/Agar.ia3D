@@ -35,6 +35,7 @@ private:
     void initializeGL() override;
     void paintGL() override;
     void resizeGL(GLsizei Largeur, GLsizei Hauteur) override;
+    void LoadGLTextures();
     void mouseMoveEvent(QMouseEvent *event) override ;
     void deplacementia(int i);
     void deplacementJ();
