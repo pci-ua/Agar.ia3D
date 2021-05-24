@@ -31,12 +31,7 @@ public:
     MyGLWidget(QWidget* parent=nullptr);
     int getnbia(){return nbia;}
     void setnbia(int nb){ this->nbia = nb;}
-
-
-
 private:
-
-
     void initializeGL() override;
     void paintGL() override;
     void resizeGL(GLsizei Largeur, GLsizei Hauteur) override;
@@ -44,8 +39,7 @@ private:
     void deplacementia(int i);
     void deplacementJ();
     int nbia = 1;
-
-
+    GLuint tex[1];
 };
 
 #endif // MYGLWIDGET_H
