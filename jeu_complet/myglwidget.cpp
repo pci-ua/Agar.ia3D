@@ -12,6 +12,9 @@ GLfloat z_cam=player.getZ()+5;
 
 GLint frame=0,temps,timebase=0;
 
+int LightPos[4] = {0,10,0,1};
+int MatSpec [4] = {1,1,1,1};
+
 // retourne vrai si collision et faux sinon
 bool collision(Boule b1,Boule b2){
     float posX1,posX2,taille1,posZ1,posZ2,taille2;
@@ -51,22 +54,47 @@ MyGLWidget::MyGLWidget(QWidget* parent):
     this->setFocusPolicy(Qt::StrongFocus); //demande a qt de prende en compte l'action de la souris et du clavier pour cette fenetre en particulier
 }
 
+void MyGLWidget::LoadGLTextures(){
+    QImage img;
+
+    if(!img.load("../jeu_complet/wall.jpg")){
+
+      qDebug()<<"Image loading failed";
+    }
+
+    QImage t =  QGLWidget::convertToGLFormat(img);
+
+    glGenTextures(1, &tex[0]);
+
+    glBindTexture(GL_TEXTURE_2D, tex[0]);
+
+    glTexImage2D( GL_TEXTURE_2D, 0, 3, t.width(), t.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, t.bits() );
+
+    // définit les options de la texture actuellement liée
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+}
+
 void MyGLWidget::initializeGL()
 {
-    this->initializeOpenGLFunctions();
-    glEnable(GL_DEPTH_TEST);
+  this->initializeOpenGLFunctions();
+  glEnable(GL_DEPTH_TEST);
+  glEnable(GL_TEXTURE_2D);
+  LoadGLTextures();
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHT1);
 	glEnable(GL_COLOR_MATERIAL);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    this->setMouseTracking(true);
+  this->setMouseTracking(true);
 }
 
 
 void MyGLWidget::paintGL()
 {
+    glMaterialiv(GL_FRONT_AND_BACK,GL_SPECULAR,MatSpec);
+    glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,100);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -86,8 +114,9 @@ void MyGLWidget::paintGL()
     // caméra sur le player
     gluLookAt(static_cast<double>(x_cam),static_cast<double>(y_cam),static_cast<double>(z_cam),static_cast<double>(player.getX()),0.0,static_cast<double>(player.getZ()),0.0,1.0,0.0);
 
-    // couleur jaune du terrain
-    glColor3f(1.0,1.0,0.0);
+    glLightiv(GL_LIGHT0,GL_POSITION,LightPos);
+
+    glBindTexture(GL_TEXTURE_2D, tex[0]);
     terrain t(LONGUEUR,LARGEUR); // création du terrain
 
     // dessine le joueur
