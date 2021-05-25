@@ -7,6 +7,8 @@
 #include <myglwidget.h>
 #include "fenetrejeux.h"
 
+    #include <QMediaPlayer>
+
 
 
 namespace Ui {

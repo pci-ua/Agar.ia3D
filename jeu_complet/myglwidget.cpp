@@ -13,6 +13,9 @@ GLfloat z_cam=player.getZ()+5;
 GLint frame=0,temps,timebase=0;
 
 int LightPos[4] = {0,10,0,1};
+float Light1Dif[4] = {1.0f,0.2f,0.0f,1.0f};
+
+float Spotlight1direc[3] = {0.0f, 0.0f, -1.0f};
 int MatSpec [4] = {1,1,1,1};
 
 // retourne vrai si collision et faux sinon
@@ -57,37 +60,37 @@ MyGLWidget::MyGLWidget(QWidget* parent):
 void MyGLWidget::LoadGLTextures(){
     QImage img;
 
-    if(!img.load("../jeu_complet/wall.jpg")){
+       if(!img.load("../jeu_complet/wall.jpg")){
 
-      qDebug()<<"Image loading failed";
-    }
+           qDebug()<<"Image loading failed";
+       }
 
-    QImage t =  QGLWidget::convertToGLFormat(img);
+       QImage t =  QGLWidget::convertToGLFormat(img);
 
-    glGenTextures(1, &tex[0]);
+       glGenTextures(1, &tex[0]);
 
-    glBindTexture(GL_TEXTURE_2D, tex[0]);
+       glBindTexture(GL_TEXTURE_2D, tex[0]);
 
-    glTexImage2D( GL_TEXTURE_2D, 0, 3, t.width(), t.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, t.bits() );
+       glTexImage2D( GL_TEXTURE_2D, 0, 3, t.width(), t.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, t.bits() );
 
-    // définit les options de la texture actuellement liée
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+       // définit les options de la texture actuellement liée
+       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+       glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 }
 
 void MyGLWidget::initializeGL()
 {
-  this->initializeOpenGLFunctions();
-  glEnable(GL_DEPTH_TEST);
-  glEnable(GL_TEXTURE_2D);
-  LoadGLTextures();
+    this->initializeOpenGLFunctions();
+    glEnable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
+    LoadGLTextures();
 
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHT1);
-	glEnable(GL_COLOR_MATERIAL);
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-  this->setMouseTracking(true);
+    glEnable(GL_COLOR_MATERIAL);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    this->setMouseTracking(true);
 }
 
 
@@ -114,7 +117,14 @@ void MyGLWidget::paintGL()
     // caméra sur le player
     gluLookAt(static_cast<double>(x_cam),static_cast<double>(y_cam),static_cast<double>(z_cam),static_cast<double>(player.getX()),0.0,static_cast<double>(player.getZ()),0.0,1.0,0.0);
 
+    float Light1Pos[4] = {player.getX(),3,player.getZ(),1};
     glLightiv(GL_LIGHT0,GL_POSITION,LightPos);
+    glLightfv(GL_LIGHT1,GL_DIFFUSE,Light1Dif);
+    glLighti(GL_LIGHT1,GL_SPOT_CUTOFF,60);
+    float Light1Dir[3] = {0,-1,0};
+    glLightfv(GL_LIGHT1,GL_POSITION,Light1Pos);
+    glLightfv(GL_LIGHT1,GL_SPOT_DIRECTION,Light1Dir);
+
 
     glBindTexture(GL_TEXTURE_2D, tex[0]);
     terrain t(LONGUEUR,LARGEUR); // création du terrain

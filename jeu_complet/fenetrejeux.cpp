@@ -56,7 +56,6 @@ void fenetrejeux::initFenetre(){
        timer_chrono -> start (RAFRAICHISSEMENT_TIME) ;    // On lance un affichage toutes les X milisecondes
 
 
-
         //Activation rafraichissement tableau
        auto timer_tableau = new QTimer();
        connect (timer_tableau,SIGNAL (timeout()),this, SLOT (classementA()));
@@ -189,3 +188,8 @@ void fenetrejeux:: chrono_refresh()
         compteur--;
     }
 }
+
+
+
+
+

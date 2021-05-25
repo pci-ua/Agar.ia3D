@@ -154,7 +154,7 @@ void MainWindow::findepartie(){
         QLabel *affichagescore = new  QLabel(ui->centralWidget);
         affichagescore->setObjectName(QStringLiteral("affichagescore"));
         affichagescore->move(this->width()/8,170);
-        affichagescore->setText("Avec un score de "+ (this->tableWidget->item(0,1)->text()) + " points ! Impressionant ");
+        affichagescore->setText("Avec un score de "+ (this->tableWidget->item(0,1)->text()) + " points ! Impressionnant ");
 
         affichagefin->show();
         affichagescore->show();

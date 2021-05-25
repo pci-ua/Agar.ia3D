@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 #include <QOpenGLFunctions>
- #include <QMouseEvent>
+#include <QMouseEvent>
 #include <iostream>
 #include <QSurfaceFormat>
 
@@ -23,6 +23,7 @@
 #include "constante.h"
 
 #include <array>
+#include <QDebug>
 
 class MyGLWidget : public QOpenGLWidget, public QOpenGLFunctions
 {
@@ -32,7 +33,12 @@ public:
     MyGLWidget(QWidget* parent=nullptr);
     int getnbia(){return nbia;}
     void setnbia(int nb){ this->nbia = nb;}
+
+
+
 private:
+
+
     void initializeGL() override;
     void paintGL() override;
     void resizeGL(GLsizei Largeur, GLsizei Hauteur) override;
@@ -42,6 +48,8 @@ private:
     void deplacementJ();
     int nbia = 1;
     GLuint tex[1];
+
+
 };
 
 #endif // MYGLWIDGET_H

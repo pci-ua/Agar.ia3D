@@ -19,3 +19,4 @@
 #define CAMERA_UP 0.02 //augmente la camera
 #define RAFRAICHISSEMENT_TAB 5000 //Intervalle de rafraichissement du tableau des scores, en secondes
 #define RAFRAICHISSEMENT_TIME 1000 //Intervalle de rafraichissement de l'horloge , en secondes
+#define TEMPSSONFIN 7 // Temps du son chronometre

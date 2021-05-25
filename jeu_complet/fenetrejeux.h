@@ -55,6 +55,9 @@ private :
     QTime chrono ;
     QTimer *timer_chrono ;
     int compteur;
+
+
+
 };
 
 #endif // FENETREJEUX_H
