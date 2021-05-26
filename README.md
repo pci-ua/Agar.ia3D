@@ -4,10 +4,16 @@ Agar.ia est un jeu vidéo développé en C++ par l'association PC[i], une versio
 
 ## Installation
 
-Télécharger ce repository github puis une fois à l'interreiur avec l'utilitaire make faite :
+Télécharger ce repository github puis une fois à l'intérieur avec l'utilitaire make faite :
 
 ```bash
 make Projet/
+```
+
+Installer le package suivant pour pouvoir lancer le jeu avec le son :
+
+```bash
+sudo apt install  qtmultimedia5-dev
 ```
 
 ## Création de votre IA
