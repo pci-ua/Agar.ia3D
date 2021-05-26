@@ -24,7 +24,6 @@ public:
     std::string getpseudo();
     void setpseudo(std::string);
     void findepartie();
-    bool victoire();
     void initFenetre();
     QTableWidget* gettable(){return this->tableWidget;}
 
