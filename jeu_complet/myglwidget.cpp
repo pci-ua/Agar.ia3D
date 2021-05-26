@@ -12,7 +12,8 @@ GLfloat z_cam=player.getZ()+5;
 
 GLint frame=0,temps,timebase=0;
 
-int LightPos[4] = {0,10,0,1};
+int LightPos[4] = {0,20,0,1};
+
 float Light1Dif[4] = {1.0f,0.2f,0.0f,1.0f};
 
 float Spotlight1direc[3] = {0.0f, 0.0f, -1.0f};
@@ -60,7 +61,7 @@ MyGLWidget::MyGLWidget(QWidget* parent):
 void MyGLWidget::LoadGLTextures(){
     QImage img;
 
-       if(!img.load("../jeu_complet/wall.jpg")){
+       if(!img.load("../jeu_complet/Ressources/sol.png")){
 
            qDebug()<<"Image loading failed";
        }
@@ -86,8 +87,11 @@ void MyGLWidget::initializeGL()
     LoadGLTextures();
 
     glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
-	glEnable(GL_LIGHT1);
+    if(this->_mode_nuit=="Nuit"){
+        glEnable(GL_LIGHT1); //Lumiere Mode Nuit
+    }else {
+        glEnable(GL_LIGHT0);
+    }
     glEnable(GL_COLOR_MATERIAL);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     this->setMouseTracking(true);
@@ -170,10 +174,16 @@ void MyGLWidget::paintGL()
             if(static_cast<double>(iatest[u].getTaille())<static_cast<double>(player.getTaille())-static_cast<double>(player.getTaille())*ECART){
                 iatest[u].SeFaireManger();
                 player.mangerj(iatest[u]);
+                if(this->son==0){
+                   QSound::play("../jeu_complet/Ressources/sefairemanger.wav");
+                }
             }
             else if(static_cast<double>(iatest[u].getTaille())-static_cast<double>(iatest[u].getTaille())*ECART>static_cast<double>(player.getTaille())){
                 player.SeFaireManger();
                 iatest[u].mangerj(player);
+                if(this->son==0){
+                    QSound::play("../jeu_complet/Ressources/manger.wav");
+                }
             }
         }
     }

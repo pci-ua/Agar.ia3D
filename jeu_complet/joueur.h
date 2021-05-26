@@ -7,7 +7,6 @@
 #include <time.h>
 #include <stdlib.h>
 #include <GL/glu.h>
-#include <QSound>
 
 #include "joueurs.h"
 

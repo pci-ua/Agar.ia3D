@@ -21,8 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
-    this->setMinimumSize(838,318);
+    this->setFixedSize(838,318);
     ui->setupUi(this);
     setWindowTitle("Agario 3D");
 
@@ -50,12 +49,20 @@ void MainWindow::on_pushButton_clicked()
 
     //Initialisation et ouverture de la nouvelle fenetre
         this->fjeux = new fenetrejeux();
+        if(ui->checkBox->isChecked()==true){
+            fjeux->setson(0);
+        }
         fjeux->setpsd(pseudo);
         fjeux->settemps(ui->spinBox_4->value());
         fjeux->setcompteur(ui->spinBox_4->value());
         fjeux->setnbria(ui->spinBox->value());
         fjeux->initFenetre();
         fjeux->show();
+        if(ui->comboBox->currentText().toStdString()=="Nuit"){
+
+            fjeux->setmode("Nuit");
+
+        }
 
 
 
@@ -66,14 +73,22 @@ void MainWindow::on_pushButton_clicked()
     ui->textEdit->setEnabled(0);
     ui->menuQuitter->setEnabled(0);
     ui->pushButton_2->setEnabled(0);
-
+    ui->comboBox->setEnabled(0);
+    ui->label_5->setEnabled(0);
+    ui->label_6->setEnabled(0);
+    ui->checkBox->setEnabled(0);
 
     //Lancement du Qtimer qui declenche la fonction "fin de partie" au bout du temps choisi par le joueur
-    QTimer *tmps = new QTimer;
+    tmps = new QTimer;
     tmps->setInterval(ui->spinBox_4->value()*60000);
     tmps->start();
     connect(tmps,SIGNAL(timeout()),this,SLOT(on_actionfindepartie_triggered()));
 
+    if(ui->checkBox->isChecked()==true){
+        sonnor=new QSound("../jeu_complet/Ressources/sonjeu.wav");
+        sonnor->setLoops(-1);
+        sonnor->play();
+    }
 
 
 }
@@ -81,6 +96,9 @@ void MainWindow::on_pushButton_clicked()
 //Fonction qui se declenche a la fin de la partie : fermeture de la fenetre de jeux et modification du menu pour affichage des score
 
 void MainWindow::findepartie(){
+
+    this->tmps->stop();
+    this->sonnor->stop();
 
     ui->label->close();
     ui->label_2->close();
@@ -90,6 +108,10 @@ void MainWindow::findepartie(){
     ui->pushButton_2->close();
     ui->label_3->close();
     ui->label_4->close();
+    ui->label_5->close();
+    ui->label_6->close();
+    ui->comboBox->close();
+    ui->checkBox->close();
 
     this->tabldeScore=this->fjeux->gettable();
     this->fjeux->findepartie();
@@ -161,6 +183,10 @@ void MainWindow::findepartie(){
         affichagepseudo->show();
         centralWidget()->show();
 
+        if(ui->checkBox->isChecked()==true){
+           QSound::play("../jeu_complet/Ressources/gagner.wav");
+        }
+
 
     }else { // Le joueur a perdu la partie
 
@@ -186,6 +212,10 @@ void MainWindow::findepartie(){
         affichagescore->show();
         affichagepseudo->show();
         centralWidget()->show();
+
+        if(ui->checkBox->isChecked()==true){
+           QSound::play("../jeu_complet/Ressources/perdu.wav");
+        }
 
     }
 

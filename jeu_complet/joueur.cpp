@@ -18,7 +18,6 @@ void Joueur::mangerj(Joueurs const & objet) {
   Joueurs::mangerj(objet);
     y_cam+=(objet.getTaille()*POURCENTAGE_MANGE);
   z_cam+=(objet.getTaille()*POURCENTAGE_MANGE);
-  QSound::play("../jeu_complet/manger.wav");
 }
 
 // appelle la méthode de joueurs et réinitialise la position de la caméra sur la position du joueur
@@ -27,7 +26,6 @@ void Joueur::SeFaireManger(){
 	x_cam=this->_posX;
 	y_cam=7.0;
     z_cam=this->_posZ+5;
-    QSound::play("../jeu_complet/sefairemanger.wav");
 }
 
 // récupère la position de la souris et la stock dans _posSourisX,_posSourisY

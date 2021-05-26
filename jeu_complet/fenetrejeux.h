@@ -34,6 +34,8 @@ public:
     void setcompteur(int compt){this->compteur=compt;}
     void setpsd(std::string psd){this->pseudo=psd;}
     void setnbria(int nbria){this->nombreia=nbria;}
+    void setmode(std::string mode){this->_mode_nuit=mode;}
+    void setson(int son){this->son=son;}
 
 
 private slots:
@@ -55,6 +57,9 @@ private :
     QTime chrono ;
     QTimer *timer_chrono ;
     int compteur;
+    std::string _mode_nuit="Jour";
+    int son=1;
+
 
 
 

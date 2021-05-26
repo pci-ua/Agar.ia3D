@@ -24,6 +24,7 @@
 
 #include <array>
 #include <QDebug>
+#include <QSound>
 
 class MyGLWidget : public QOpenGLWidget, public QOpenGLFunctions
 {
@@ -33,6 +34,8 @@ public:
     MyGLWidget(QWidget* parent=nullptr);
     int getnbia(){return nbia;}
     void setnbia(int nb){ this->nbia = nb;}
+    void setmode(std::string mode){this->_mode_nuit=mode;}
+    void setson(int son){this->son=son;}
 
 
 
@@ -46,8 +49,10 @@ private:
     void mouseMoveEvent(QMouseEvent *event) override ;
     void deplacementia(int i);
     void deplacementJ();
+    std::string _mode_nuit="Jour";
     int nbia = 1;
     GLuint tex[1];
+    int son=1;
 
 
 };

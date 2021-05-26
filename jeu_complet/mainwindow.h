@@ -46,10 +46,11 @@ private:
     fenetrejeux *fjeux;
     std::string pseudo;
     QColor _couleur = Qt::red;
+    QTimer *tmps;
     float _r;
     float _g;
     float _b;
-
+    QSound *sonnor;
 
 
 };

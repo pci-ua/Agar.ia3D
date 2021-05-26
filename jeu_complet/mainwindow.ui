@@ -242,7 +242,7 @@ QWidget {
           </font>
          </property>
          <property name="text">
-          <string>                    AGARIO 3D</string>
+          <string>             AGARIO 3D</string>
          </property>
         </widget>
        </item>
@@ -251,7 +251,7 @@ QWidget {
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>                                                    Entre ton pseudo : </string>
+        <string>                                 Entre ton pseudo : </string>
        </property>
       </widget>
      </item>
@@ -313,6 +313,49 @@ QWidget {
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Son</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Mode :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>Jour</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Nuit</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
@@ -391,7 +434,7 @@ QWidget {
      <x>0</x>
      <y>0</y>
      <width>838</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuQuitter">

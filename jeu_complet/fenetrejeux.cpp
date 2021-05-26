@@ -25,9 +25,18 @@ void fenetrejeux::initFenetre(){
     //Initialisation de la fenetre opengl
     this->fenetre = new MyGLWidget(ui->centralwidget);
     this->fenetre->setObjectName(QStringLiteral("fenetre"));
+    if(this->son==0){
+        fenetre->setson(0);
+    }
     this->fenetre->setGeometry(QRect(20, 10, 121, 101));
     this->fenetre->setnbia(this->nombreia);
     this->fenetre->setMinimumSize(QSize(pleinecran->width()-270,pleinecran->height()));
+    if(this->_mode_nuit=="Nuit"){
+
+        fenetre->setmode("Nuit");
+        std::cout<<this->_mode_nuit<<std::endl;
+
+    }
 
     this->setCentralWidget(ui->centralwidget);
 
@@ -90,7 +99,7 @@ void fenetrejeux::initclassement(){
 
         tableWidget->insertRow(tableWidget->rowCount());
            std::string mot = this->pseudo;
-           std::string score = std::to_string(player.getTaille()*1000-500);
+           std::string score = std::to_string(static_cast<int>(player.getTaille()*1000-500));
            tableWidget-> setItem(0,0,new QTableWidgetItem(QString::fromStdString(mot)));
            tableWidget->setItem(0,1,new QTableWidgetItem(QString::fromStdString(score)));
 
@@ -98,7 +107,7 @@ void fenetrejeux::initclassement(){
         for(int i=0;i<fenetre->getnbia();i++){
             tableWidget->insertRow(tableWidget->rowCount());
             std::string nom = "ia " + std::to_string(i);
-            std::string score = std::to_string(iatest[i].getTaille()*1000-500);
+            std::string score = std::to_string(static_cast<int>(iatest[i].getTaille()*1000-500));
             tableWidget-> setItem(i+1,0,new QTableWidgetItem(QString::fromStdString(nom)));
             tableWidget->setItem(i+1,1,new QTableWidgetItem(QString::fromStdString(score)));
         }
@@ -160,7 +169,7 @@ do{
 
        tableWidget-> setItem(vartab,0,new QTableWidgetItem(QString::fromStdString(name[static_cast<unsigned long>(i)])));
 
-        tableWidget->setItem(vartab,1,new QTableWidgetItem(QString::fromStdString(std::to_string(point[static_cast<unsigned long>(i)]*1000-500))));
+        tableWidget->setItem(vartab,1,new QTableWidgetItem(QString::fromStdString(std::to_string(static_cast<int>(point[static_cast<unsigned long>(i)]*1000-500)))));
 
         vartab++;
     }
@@ -177,7 +186,9 @@ void fenetrejeux:: chrono_refresh()
     // Losqu'il reste moins de 1 min
     if(compteur==1){
         if(chron.toStdString().c_str()==std::to_string(60-TEMPSSONFIN)){
-            QSound::play("../jeu_complet/chrono.wav");
+            if(this->son==0){
+                QSound::play("../jeu_complet/Ressources/chrono.wav");
+            }
         }
         // permet de ne pas relancer le chrono lorsqu'on arrive au temps indiquer
         if(chron.toStdString().c_str()==std::to_string(60-1)){
