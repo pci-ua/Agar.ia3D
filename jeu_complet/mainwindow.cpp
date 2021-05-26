@@ -97,7 +97,9 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::findepartie(){
 
     this->tmps->stop();
-    this->sonnor->stop();
+    if(ui->checkBox->isChecked()==true){
+        this->sonnor->stop();
+    }
 
     ui->label->close();
     ui->label_2->close();
