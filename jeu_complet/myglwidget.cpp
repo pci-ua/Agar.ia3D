@@ -88,8 +88,10 @@ void MyGLWidget::initializeGL()
 
     glEnable(GL_LIGHTING);
     if(this->_mode_nuit=="Nuit"){
+        std::cout<<"pute2";
         glEnable(GL_LIGHT1); //Lumiere Mode Nuit
     }else {
+        std::cout<<"salope";
         glEnable(GL_LIGHT0);
     }
     glEnable(GL_COLOR_MATERIAL);

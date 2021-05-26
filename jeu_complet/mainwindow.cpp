@@ -52,17 +52,16 @@ void MainWindow::on_pushButton_clicked()
         if(ui->checkBox->isChecked()==true){
             fjeux->setson(0);
         }
+        if(ui->comboBox->currentText().toStdString()=="Nuit"){
+            fjeux->setmode("Nuit");
+
+        }
         fjeux->setpsd(pseudo);
         fjeux->settemps(ui->spinBox_4->value());
         fjeux->setcompteur(ui->spinBox_4->value());
         fjeux->setnbria(ui->spinBox->value());
         fjeux->initFenetre();
         fjeux->show();
-        if(ui->comboBox->currentText().toStdString()=="Nuit"){
-
-            fjeux->setmode("Nuit");
-
-        }
 
 
 
@@ -184,7 +183,9 @@ void MainWindow::findepartie(){
         centralWidget()->show();
 
         if(ui->checkBox->isChecked()==true){
-           QSound::play("../jeu_complet/Ressources/gagner.wav");
+            sonnor=new QSound("../jeu_complet/Ressources/gagner.wav");
+            sonnor->setLoops(-1);
+            sonnor->play();
         }
 
 
@@ -214,7 +215,9 @@ void MainWindow::findepartie(){
         centralWidget()->show();
 
         if(ui->checkBox->isChecked()==true){
-           QSound::play("../jeu_complet/Ressources/perdu.wav");
+            sonnor=new QSound("../jeu_complet/Ressources/perdu.wav");
+            sonnor->setLoops(-1);
+            sonnor->play();
         }
 
     }
