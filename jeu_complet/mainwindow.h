@@ -7,8 +7,6 @@
 #include <myglwidget.h>
 #include "fenetrejeux.h"
 
-    #include <QMediaPlayer>
-
 
 
 namespace Ui {
@@ -47,9 +45,6 @@ private:
     std::string pseudo;
     QColor _couleur = Qt::red;
     QTimer *tmps;
-    float _r;
-    float _g;
-    float _b;
     QSound *sonnor;
 
 
