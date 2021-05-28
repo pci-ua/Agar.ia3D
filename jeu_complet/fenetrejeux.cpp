@@ -34,7 +34,6 @@ void fenetrejeux::initFenetre(){
     if(this->_mode_nuit=="Nuit"){
 
         fenetre->setmode("Nuit");
-        std::cout<<this->_mode_nuit<<std::endl;
 
     }
 
