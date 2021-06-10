@@ -2,6 +2,7 @@
 
 #include "constante.hh"
 #include "Modele/couleur.hh"
+#include "Modele/vect2d.hh"
 
 class Boule{
 
@@ -12,19 +13,15 @@ public:
 
 	void draw() const;
 
-	float getX() const{ return _posX;}
-	float getZ() const{ return _posZ;}
+	Vect2D getPosition() const { return _position; }
+	Vect2D& getPosition() { return _position; }
 	float getTaille() const{return _taille;}
 
-	void setX(float x){this->_posX=x;}
-	void setZ(float z){this->_posZ=z;}
-
+	void setPosition(Vect2D pos) { _position = pos; }
 	void setCouleur(Couleur couleur) { _couleur = couleur; }
 
 protected:
-	float _posX;
-	float _posZ;
 	float _taille;
-
+	Vect2D _position;
 	Couleur _couleur;
 };

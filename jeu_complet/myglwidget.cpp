@@ -6,9 +6,9 @@ Ia iatest[NBIAMAX];
 
 Food food[NBFOOD];
 
-GLfloat x_cam=player.getX();
+GLfloat x_cam=player.getPosition().getX();
 GLfloat y_cam=7.0f;
-GLfloat z_cam=player.getZ()+5;
+GLfloat z_cam=player.getPosition().getZ()+5;
 
 GLint frame=0,temps,timebase=0;
 
@@ -22,12 +22,12 @@ int MatSpec [4] = {1,1,1,1};
 // retourne vrai si collision et faux sinon
 bool collision(Boule b1,Boule b2){
     float posX1,posX2,taille1,posZ1,posZ2,taille2;
-    posX1=b1.getX();
-    posZ1=b1.getZ();
+    posX1=b1.getPosition().getX();
+    posZ1=b1.getPosition().getZ();
     taille1=b1.getTaille();
 
-    posX2=b2.getX();
-    posZ2=b2.getZ();
+    posX2=b2.getPosition().getX();
+    posZ2=b2.getPosition().getZ();
     taille2=b2.getTaille();
 
     // comparaison des tailles des 2 boules pour savoir laquelle est la plus grande (dans ce cas la première)
@@ -119,9 +119,9 @@ void MyGLWidget::paintGL()
     }
 
     // caméra sur le player
-    gluLookAt(static_cast<double>(x_cam),static_cast<double>(y_cam),static_cast<double>(z_cam),static_cast<double>(player.getX()),0.0,static_cast<double>(player.getZ()),0.0,1.0,0.0);
+    gluLookAt(static_cast<double>(x_cam),static_cast<double>(y_cam),static_cast<double>(z_cam),static_cast<double>(player.getPosition().getX()),0.0,static_cast<double>(player.getPosition().getZ()),0.0,1.0,0.0);
 
-    float Light1Pos[4] = {player.getX(),3,player.getZ(),1};
+    float Light1Pos[4] = {player.getPosition().getX(),3,player.getPosition().getZ(),1};
     glLightiv(GL_LIGHT0,GL_POSITION,LightPos);
     glLightfv(GL_LIGHT1,GL_DIFFUSE,Light1Dif);
     glLighti(GL_LIGHT1,GL_SPOT_CUTOFF,60);

@@ -22,8 +22,7 @@ void Joueurs::mangerj(Joueurs const & objet){
 
 // réinitialise la taille, la vitesse du joueurs et change sa position
 void Joueurs::SeFaireManger(){
-       this->_posX=(float)rand()/(RAND_MAX)*(LONGUEUR-MARGE+LONGUEUR-MARGE)-LONGUEUR+MARGE;
-       this->_posZ=(float)rand()/(RAND_MAX)*(LARGEUR-MARGE+LARGEUR-MARGE)-LARGEUR+MARGE;
+       this->_position=Vect2D({(-LONGUEUR+MARGE,LONGUEUR-MARGE)},{(-LONGUEUR+MARGE,LONGUEUR-MARGE)});
        this->_taille=TAILLE_JOUEURS;
        this->_vitesse=VITESSE;
 }

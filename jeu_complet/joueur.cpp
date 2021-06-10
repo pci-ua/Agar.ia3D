@@ -23,9 +23,9 @@ void Joueur::mangerj(Joueurs const & objet) {
 // appelle la méthode de joueurs et réinitialise la position de la caméra sur la position du joueur
 void Joueur::SeFaireManger(){
   Joueurs::SeFaireManger();
-	x_cam=this->_posX;
-	y_cam=7.0;
-    z_cam=this->_posZ+5;
+	x_cam=_position.getX();
+     y_cam=7.0;
+     z_cam=_position.getZ()+5;
 }
 
 // récupère la position de la souris et la stock dans _posSourisX,_posSourisY
@@ -33,7 +33,6 @@ void souris (int x, int y){
 	player.setsourisX(x);
 	player.setsourisY(y);
 }
-
 
 void Joueur::deplacement (int width,int height){
   float sourisCenterX = _posSourisX - width/2 ;
@@ -45,8 +44,8 @@ void Joueur::deplacement (int width,int height){
     float vZ = _vitesse * sourisCenterY / Magnitude;
 
     //position à la prochaine frame
-    float pX = this->getX() + vX;
-    float pZ = this->getZ() + vZ;
+    float pX = _position.getX() + vX;
+    float pZ = _position.getZ() + vZ;
 
     //si reste dans la bordure on bouge
     if(
@@ -54,11 +53,10 @@ void Joueur::deplacement (int width,int height){
       &&
       -LONGUEUR + _taille <= pZ && pZ <= LONGUEUR - _taille
     ) {
-      this->setX( pX );
-      this->setZ( pZ );
+      _position.setX( pX );
+      _position.setZ( pZ );
       x_cam += vX;
       z_cam += vZ;
     }
   }
 }
-

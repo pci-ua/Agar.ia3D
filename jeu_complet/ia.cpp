@@ -18,8 +18,8 @@ void Ia::deplacement (int width,int height){
     float vZ = _vitesse * _posAleatoireY / Magnitude;
 
     //position à la prochaine frame
-    float pX = this->getX() + vX;
-    float pZ = this->getZ() + vZ;
+    float pX = _position.getX() + vX;
+    float pZ = _position.getX() + vZ;
 
     //si reste dans la bordure on bouge
     if(
@@ -27,8 +27,8 @@ void Ia::deplacement (int width,int height){
       &&
       -LONGUEUR + _taille <= pZ && pZ <= LONGUEUR - _taille
     ) {
-      this->setX( pX );
-      this->setZ( pZ );
+      _position.setX( pX );
+      _position.setZ( pZ );
     }
   }
 }
