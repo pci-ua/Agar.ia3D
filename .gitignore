@@ -1,9 +1,9 @@
 *.o
 *.exe
 
-Agaria
-projet.pro.user
-projet.pro.user.*
+/jeu_complet/Agaria
+/jeu_complet/projet.pro.user
+/jeu_complet/projet.pro.user.*
 
-moc_*.cpp
-ui_*.h
+/jeu_complet/build
+/jeu_complet/.qmake.stash
