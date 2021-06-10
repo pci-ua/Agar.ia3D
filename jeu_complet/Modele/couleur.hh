@@ -14,6 +14,8 @@ public:
      Couleur(); // Créé une couleur aléatoire
      Couleur(int r,int g,int b);
      Couleur(ComposanteCouleur r,ComposanteCouleur g,ComposanteCouleur b);
+     ~Couleur() = default;
+     Couleur(const Couleur & c) = default;
 
      void setR(ComposanteCouleur r) { _r = r; }
      void setG(ComposanteCouleur g) { _g = g; }
