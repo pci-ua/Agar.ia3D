@@ -53,8 +53,14 @@ FORMS += \
         mainwindow.ui \
     fenetrejeux.ui
 
+DESTDIR = ./
+OBJECTS_DIR = build/obj
+MOC_DIR = build/moc
+UI_DIR = build/ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+
