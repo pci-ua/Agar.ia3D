@@ -1,5 +1,6 @@
 *.o
 *.exe
+*.swp
 
 /jeu_complet/Agaria
 /jeu_complet/projet.pro.user
