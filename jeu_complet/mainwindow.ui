@@ -242,7 +242,7 @@ QWidget {
           </font>
          </property>
          <property name="text">
-          <string>             AGARIO 3D</string>
+          <string>             AGAR.IA 3D</string>
          </property>
         </widget>
        </item>

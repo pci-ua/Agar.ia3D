@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     this->setFixedSize(838,318);
     ui->setupUi(this);
-    setWindowTitle("Agario 3D");
+    setWindowTitle("Agar.ia 3D");
 
 }
 
