@@ -4,3 +4,6 @@
 Agaria
 projet.pro.user
 projet.pro.user.*
+
+moc_*.cpp
+ui_*.h
