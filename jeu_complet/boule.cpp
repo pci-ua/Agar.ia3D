@@ -1,9 +1,5 @@
 #include "boule.hh"
 
-// Pour le random
-#include <time.h>
-#include <stdlib.h>
-
 // Pour le dessin
 #include <GL/glut.h>
 #include <GL/gl.h>
@@ -14,7 +10,7 @@ void Boule::draw() const{
 	glPushMatrix();
 	{
 		glTranslatef(_posX,0,_posZ); //se positionne sur le terrain
-		glColor3f(_r,_g,_b);
+		_couleur.setGlutColor();
 		glutSolidSphere(static_cast<double>(_taille),SUBDIVISIONS_BOULE,SUBDIVISIONS_BOULE); // créer une sphère
 	}
 	glPopMatrix();
@@ -26,7 +22,4 @@ Boule::Boule(float taille) {
 	this->_posX = (float)rand()/(RAND_MAX)*(LONGUEUR-MARGE+LONGUEUR-MARGE)-LONGUEUR+MARGE;
 	this->_posZ = (float)rand()/(RAND_MAX)*(LARGEUR-MARGE+LARGEUR-MARGE)-LARGEUR+MARGE;
 	this->_taille = taille;
-	this->_r = COULEUR; // nombre flottant aléatoire entre 0 et 1
-	this->_g = COULEUR;
-	this->_b = COULEUR;
 }

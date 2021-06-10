@@ -261,9 +261,11 @@ void MainWindow::on_pushButton_2_clicked()
 
      }
 
-    player.setr(this->_couleur.redF());
-    player.setg(this->_couleur.greenF());
-    player.setb(this->_couleur.blueF());
+     player.setCouleur( {
+          _couleur.red(),
+          _couleur.green(),
+          _couleur.blue()
+     } );
 }
 
 void MainWindow::replaceColor(QPushButton *b,QColor c){

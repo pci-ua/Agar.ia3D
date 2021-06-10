@@ -35,7 +35,8 @@ SOURCES += \
     ia.cpp \
     joueurs.cpp \
     joueur.cpp \
-    fenetrejeux.cpp
+    fenetrejeux.cpp \
+    Modele/couleur.cc
 
 HEADERS += \
         mainwindow.hh \
@@ -47,7 +48,8 @@ HEADERS += \
     joueurs.hh \
     joueur.hh \
     fenetrejeux.hh \
-    constante.hh
+    constante.hh \
+    Modele/couleur.hh
 
 FORMS += \
         mainwindow.ui \
@@ -62,5 +64,3 @@ UI_DIR = build/ui
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-

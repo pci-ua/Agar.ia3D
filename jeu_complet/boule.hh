@@ -1,6 +1,7 @@
 #pragma once
 
 #include "constante.hh"
+#include "Modele/couleur.hh"
 
 class Boule{
 
@@ -17,16 +18,13 @@ public:
 
 	void setX(float x){this->_posX=x;}
 	void setZ(float z){this->_posZ=z;}
-	void setr(float r){this->_r=r;}
-	void setg(float g){this->_g=g;}
-	void setb(float b){this->_b=b;}
+
+	void setCouleur(Couleur couleur) { _couleur = couleur; }
 
 protected:
 	float _posX;
 	float _posZ;
 	float _taille;
 
-	float _r;
-	float _g;
-	float _b;
+	Couleur _couleur;
 };
