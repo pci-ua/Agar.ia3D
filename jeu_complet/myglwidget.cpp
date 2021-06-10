@@ -61,7 +61,7 @@ MyGLWidget::MyGLWidget(QWidget* parent):
 void MyGLWidget::LoadGLTextures(){
     QImage img;
 
-       if(!img.load("../jeu_complet/Ressources/sol.png")){
+       if(!img.load("./Ressources/sol.png")){
 
            qDebug()<<"Image loading failed";
        }
@@ -175,14 +175,14 @@ void MyGLWidget::paintGL()
                 iatest[u].SeFaireManger();
                 player.mangerj(iatest[u]);
                 if(this->son==0){
-                   QSound::play("../jeu_complet/Ressources/sefairemanger.wav");
+                   QSound::play("./Ressources/sefairemanger.wav");
                 }
             }
             else if(static_cast<double>(iatest[u].getTaille())-static_cast<double>(iatest[u].getTaille())*ECART>static_cast<double>(player.getTaille())){
                 player.SeFaireManger();
                 iatest[u].mangerj(player);
                 if(this->son==0){
-                    QSound::play("../jeu_complet/Ressources/manger.wav");
+                    QSound::play("./Ressources/manger.wav");
                 }
             }
         }

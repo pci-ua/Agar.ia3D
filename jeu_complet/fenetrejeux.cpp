@@ -186,7 +186,7 @@ void fenetrejeux:: chrono_refresh()
     if(compteur==1){
         if(chron.toStdString().c_str()==std::to_string(60-TEMPSSONFIN)){
             if(this->son==0){
-                QSound::play("../jeu_complet/Ressources/chrono.wav");
+                QSound::play("./Ressources/chrono.wav");
             }
         }
         // permet de ne pas relancer le chrono lorsqu'on arrive au temps indiquer

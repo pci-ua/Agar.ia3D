@@ -84,7 +84,7 @@ void MainWindow::on_pushButton_clicked()
     connect(tmps,SIGNAL(timeout()),this,SLOT(on_actionfindepartie_triggered()));
 
     if(ui->checkBox->isChecked()==true){
-        sonnor=new QSound("../jeu_complet/Ressources/sonjeu.wav");
+        sonnor=new QSound("./Ressources/sonjeu.wav");
         sonnor->setLoops(-1);
         sonnor->play();
     }
@@ -185,7 +185,7 @@ void MainWindow::findepartie(){
         centralWidget()->show();
 
         if(ui->checkBox->isChecked()==true){
-            sonnor=new QSound("../jeu_complet/Ressources/gagner.wav");
+            sonnor=new QSound("./Ressources/gagner.wav");
             sonnor->setLoops(-1);
             sonnor->play();
         }
@@ -217,7 +217,7 @@ void MainWindow::findepartie(){
         centralWidget()->show();
 
         if(ui->checkBox->isChecked()==true){
-            sonnor=new QSound("../jeu_complet/Ressources/perdu.wav");
+            sonnor=new QSound("./Ressources/perdu.wav");
             sonnor->setLoops(-1);
             sonnor->play();
         }
