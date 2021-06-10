@@ -36,7 +36,9 @@ SOURCES += \
     joueurs.cpp \
     joueur.cpp \
     fenetrejeux.cpp \
-    Modele/couleur.cc
+    Modele/couleur.cc \
+    Modele/vect2d.cc \
+    Modele/vect3d.cc
 
 HEADERS += \
         mainwindow.hh \
@@ -49,7 +51,9 @@ HEADERS += \
     joueur.hh \
     fenetrejeux.hh \
     constante.hh \
-    Modele/couleur.hh
+    Modele/couleur.hh \
+    Modele/vect2d.hh \
+    Modele/vect3d.hh
 
 FORMS += \
         mainwindow.ui \
