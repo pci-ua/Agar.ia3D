@@ -1,4 +1,4 @@
-#include "fenetrejeux.h"
+#include "fenetrejeux.hh"
 #include "ui_fenetrejeux.h"
 #include <chrono>
 

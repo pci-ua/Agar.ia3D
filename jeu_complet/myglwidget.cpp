@@ -1,4 +1,4 @@
-#include "myglwidget.h"
+#include "myglwidget.hh"
 
 Joueur player(0,0);
 

@@ -1,4 +1,4 @@
-#include "joueurs.h"
+#include "joueurs.hh"
 
 // augmente la taille du joueurs et diminue sa vitesse
 void Joueurs::mangerf(Food const & objet) {

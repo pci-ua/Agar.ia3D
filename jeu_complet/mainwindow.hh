@@ -4,8 +4,8 @@
 #include <QMainWindow>
 #include <QtOpenGL>
 #include <string>
-#include <myglwidget.h>
-#include "fenetrejeux.h"
+#include <myglwidget.hh>
+#include "fenetrejeux.hh"
 
 
 

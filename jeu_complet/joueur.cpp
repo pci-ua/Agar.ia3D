@@ -1,4 +1,4 @@
-#include "joueur.h"
+#include "joueur.hh"
 
 extern Joueur player;
 

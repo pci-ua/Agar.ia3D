@@ -1,4 +1,4 @@
-#include "boule.h"
+#include "boule.hh"
 
 Boule::~Boule(){
 

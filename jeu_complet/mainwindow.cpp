@@ -1,6 +1,6 @@
-#include "mainwindow.h"
+#include "mainwindow.hh"
 #include "ui_mainwindow.h"
-#include "myglwidget.h"
+#include "myglwidget.hh"
 #include <QtOpenGL>
 #include <iostream>
 #include <fstream>

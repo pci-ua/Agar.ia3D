@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 
-#include "joueurs.h"
+#include "joueurs.hh"
 
 class Joueur : public Joueurs{
   public:

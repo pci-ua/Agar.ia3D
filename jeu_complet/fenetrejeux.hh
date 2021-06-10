@@ -6,7 +6,7 @@
 #include <QWidget>
 #include <QtOpenGL>
 #include <string>
-#include <myglwidget.h>
+#include <myglwidget.hh>
 
 namespace Ui {
 class fenetrejeux;

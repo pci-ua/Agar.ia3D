@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 
-#include "boule.h"
+#include "boule.hh"
 
 class Food : public Boule{
   public:

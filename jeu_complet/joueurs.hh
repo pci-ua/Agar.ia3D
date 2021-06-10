@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 
-#include "boule.h"
-#include "food.h"
+#include "boule.hh"
+#include "food.hh"
 
 #define PI 3.14159265
 

@@ -38,16 +38,16 @@ SOURCES += \
     fenetrejeux.cpp
 
 HEADERS += \
-        mainwindow.h \
-    myglwidget.h \
-    terrain.h \
-    boule.h \
-    food.h \
-    ia.h \
-    joueurs.h \
-    joueur.h \
-    fenetrejeux.h\
-    constante.h
+        mainwindow.hh \
+    myglwidget.hh \
+    terrain.hh \
+    boule.hh \
+    food.hh \
+    ia.hh \
+    joueurs.hh \
+    joueur.hh \
+    fenetrejeux.hh \
+    constante.hh
 
 FORMS += \
         mainwindow.ui \

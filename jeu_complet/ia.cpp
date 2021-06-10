@@ -1,4 +1,4 @@
-#include "ia.h"
+#include "ia.hh"
 
 extern Ia iatest[];
 

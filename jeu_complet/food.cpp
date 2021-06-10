@@ -1,4 +1,4 @@
-#include "food.h"
+#include "food.hh"
 
 // change la position de la food sur le terrain
 void Food::SeFaireManger() {

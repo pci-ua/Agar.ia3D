@@ -14,13 +14,13 @@
 #include <iostream>
 #include <QSurfaceFormat>
 
-#include "terrain.h"
-#include "boule.h"
-#include "food.h"
-#include "joueurs.h"
-#include "joueur.h"
-#include "ia.h"
-#include "constante.h"
+#include "terrain.hh"
+#include "boule.hh"
+#include "food.hh"
+#include "joueurs.hh"
+#include "joueur.hh"
+#include "ia.hh"
+#include "constante.hh"
 
 #include <array>
 #include <QDebug>

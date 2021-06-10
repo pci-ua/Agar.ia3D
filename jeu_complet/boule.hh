@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 
-#include "constante.h"
+#include "constante.hh"
 
 // Super-classe de toutes les entitées
 class Boule{

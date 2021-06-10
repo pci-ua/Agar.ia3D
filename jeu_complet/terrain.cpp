@@ -1,4 +1,4 @@
-#include "terrain.h"
+#include "terrain.hh"
 
 terrain::terrain(float longueur, float largeur)
 {
