@@ -9,8 +9,8 @@ using ComposanteVect3D = float;
 class Vect3D {
 
      struct Intervalle {
-          int min;
-          int max;
+          ComposanteVect3D min;
+          ComposanteVect3D max;
      };
 
 private:

@@ -1,15 +1,16 @@
 #include "vect2d.hh"
 
 #include <stdlib.h>
+#include <math.h>
 
 std::string Vect2D::toString() const {
      return "("+std::to_string(_x)+","+std::to_string(_z)+")";
 }
 Vect2D::Vect2D(Intervalle x,Intervalle z) {
-     int xd = x.max - x.min;
-     int zd = z.max - z.min;
-     _x = (rand() % xd) + x.min;
-     _z = (rand() % zd) + z.min;
+     auto xd = x.max - x.min;
+     auto zd = z.max - z.min;
+     _x = (rand() % (int)floor(xd)) + x.min;
+     _z = (rand() % (int)floor(zd)) + z.min;
 }
 
 Vect2D::Vect2D(ComposanteVect2D x,ComposanteVect2D z)

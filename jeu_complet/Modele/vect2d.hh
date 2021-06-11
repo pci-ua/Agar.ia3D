@@ -9,10 +9,10 @@ using ComposanteVect2D = float;
 class Vect2D {
 
      struct Intervalle {
-          int min;
-          int max;
+          ComposanteVect2D min;
+          ComposanteVect2D max;
      };
-     
+
 private:
      ComposanteVect2D _x,_z;
 
