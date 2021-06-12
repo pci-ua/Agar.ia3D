@@ -1,5 +1,8 @@
 #include "boule.hh"
 
+#include "joueurs.hh"
+#include "food.hh"
+
 // Pour le dessin
 #include <GL/glut.h>
 #include <GL/gl.h>
@@ -11,7 +14,17 @@ void Boule::draw() const{
 	{
 		_position.setGlutPosition();
 		_couleur.setGlutColor();
-		glutSolidSphere(static_cast<double>(_taille),SUBDIVISIONS_BOULE,SUBDIVISIONS_BOULE); // créer une sphère
+		Joueurs* j = dynamic_cast<Joueurs*>(this);
+		if( j != nullptr) {
+			glutSolidSphere(static_cast<double>(_taille),RENDU::SUBDIVISIONS_JOUEUR,RENDU::SUBDIVISIONS_JOUEUR);
+		} else {
+			Food* f = dynamic_cast<Food*>(this);
+			if( f != nullptr) {
+				glutSolidSphere(static_cast<double>(_taille),RENDU::SUBDIVISIONS_FOOD,RENDU::SUBDIVISIONS_FOOD);
+			} else {
+				glutSolidSphere(static_cast<double>(_taille),RENDU::SUBDIVISIONS_BOULE,RENDU::SUBDIVISIONS_BOULE);
+			}
+		}
 	}
 	glPopMatrix();
 }

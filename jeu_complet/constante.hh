@@ -1,6 +1,5 @@
 #pragma once
 
-#define MARGE 0.5 // pour ne pas que la boule apparaissent au bord du terrain
 #define NBIAMAX 20 // nombre ia max
 #define NBFOOD 325 // nombre food
 #define ECART 0.05 // pourcentage de taille d'une sphère
@@ -33,4 +32,11 @@ namespace TERRAIN {
      // Taille spawnable du terrain
      const float LONGUEUR_S = LONGUEUR - JOUEUR::TAILLE;
      const float LARGEUR_S = LARGEUR - JOUEUR::TAILLE;
+};
+
+namespace RENDU {
+     // Qualité de rendu des entités spherique
+     const unsigned int SUBDIVISIONS_BOULE = 25;
+     const unsigned int SUBDIVISIONS_FOOD = 12;
+     const unsigned int SUBDIVISIONS_JOUEUR = 20;
 };
