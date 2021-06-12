@@ -2,5 +2,5 @@
 
 // change la position de la food sur le terrain
 void Food::SeFaireManger() {
-  this->_position = Vect2D({(-LONGUEUR+MARGE,LONGUEUR-MARGE)},{(-LONGUEUR+MARGE,LONGUEUR-MARGE)});
+  this->_position = Vect2D({-TERRAIN::LONGUEUR_S,TERRAIN::LONGUEUR_S},{-TERRAIN::LARGEUR_S,TERRAIN::LARGEUR_S});
 }

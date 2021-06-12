@@ -1,8 +1,6 @@
 #pragma once
 
 #define MARGE 0.5 // pour ne pas que la boule apparaissent au bord du terrain
-#define LONGUEUR (50.0/2) // taille du terrain
-#define LARGEUR (50.0/2)
 #define NBIAMAX 20 // nombre ia max
 #define NBFOOD 325 // nombre food
 #define ECART 0.05 // pourcentage de taille d'une sphère
@@ -20,3 +18,19 @@
 #define RAFRAICHISSEMENT_TAB 5000 //Intervalle de rafraichissement du tableau des scores, en secondes
 #define RAFRAICHISSEMENT_TIME 1000 //Intervalle de rafraichissement de l'horloge , en secondes
 #define TEMPSSONFIN 7 // Temps du son chronometre
+
+// Valeur par défaut des joueurs
+namespace JOUEUR {
+     const float TAILLE = 0.5;
+};
+
+// Information sur le terrain
+namespace TERRAIN {
+     // Taille du terrain
+     const float LONGUEUR = 25;
+     const float LARGEUR = 25;
+
+     // Taille spawnable du terrain
+     const float LONGUEUR_S = LONGUEUR - JOUEUR::TAILLE;
+     const float LARGEUR_S = LARGEUR - JOUEUR::TAILLE;
+};

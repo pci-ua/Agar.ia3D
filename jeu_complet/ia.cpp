@@ -23,9 +23,9 @@ void Ia::deplacement (int width,int height){
 
     //si reste dans la bordure on bouge
     if(
-      -LARGEUR + _taille <= pX && pX <= LARGEUR - _taille
+      -TERRAIN::LARGEUR + _taille <= pX && pX <= TERRAIN::LARGEUR - _taille
       &&
-      -LONGUEUR + _taille <= pZ && pZ <= LONGUEUR - _taille
+      -TERRAIN::LONGUEUR + _taille <= pZ && pZ <= TERRAIN::LONGUEUR - _taille
     ) {
       _position.setX( pX );
       _position.setZ( pZ );

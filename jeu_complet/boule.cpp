@@ -18,4 +18,4 @@ void Boule::draw() const{
 
 
 Boule::Boule(float taille)
-:_taille(taille),_position(Vect2D({-24,24},{-24,24})),_couleur(Couleur()) {}
+:_taille(taille),_position(Vect2D({-TERRAIN::LONGUEUR_S,TERRAIN::LONGUEUR_S},{-TERRAIN::LARGEUR_S,TERRAIN::LARGEUR_S})),_couleur(Couleur()) {}

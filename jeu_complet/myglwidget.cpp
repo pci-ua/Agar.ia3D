@@ -131,7 +131,7 @@ void MyGLWidget::paintGL()
 
 
     glBindTexture(GL_TEXTURE_2D, tex[0]);
-    terrain t(LONGUEUR,LARGEUR); // création du terrain
+    terrain t(TERRAIN::LONGUEUR,TERRAIN::LARGEUR); // création du terrain
 
     // dessine le joueur
     player.draw();
