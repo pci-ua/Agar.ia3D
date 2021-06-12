@@ -3,7 +3,6 @@
 #define NBIAMAX 20 // nombre ia max
 #define NBFOOD 325 // nombre food
 #define ECART 0.05 // pourcentage de taille d'une sphère
-#define SUBDIVISIONS_BOULE 25 // nombre de subdivision lors de la création de la sphère
 #define COULEUR (float)rand()/(RAND_MAX) // couleur aléatoire entre 0 et 1 (float)
 #define TAILLE_FOOD 0.1
 #define TAILLE_JOUEURS 0.5

@@ -14,4 +14,5 @@ class Food : public Boule{
   public:
     Food():Boule(TAILLE_FOOD){}
     void SeFaireManger();
+    void draw() const override;
 };

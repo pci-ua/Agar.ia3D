@@ -1,7 +1,9 @@
 #include "joueurs.hh"
 
-#include <time.h>
-#include <stdlib.h>
+#include <GL/glut.h>
+#include <GL/gl.h>
+#include <GL/freeglut.h>
+#include <GL/glu.h>
 
 // augmente la taille du joueurs et diminue sa vitesse
 void Joueurs::mangerf(Food const & objet) {
@@ -25,4 +27,14 @@ void Joueurs::SeFaireManger(){
        this->_position=Vect2D({-TERRAIN::LONGUEUR_S,TERRAIN::LONGUEUR_S},{-TERRAIN::LARGEUR_S,TERRAIN::LARGEUR_S});
        this->_taille=TAILLE_JOUEURS;
        this->_vitesse=VITESSE;
+}
+
+void Joueurs::draw() const {
+	glPushMatrix();
+
+	_position.setGlutPosition();
+	_couleur.setGlutColor();
+
+     glutSolidSphere(static_cast<double>(_taille),RENDU::SUBDIVISIONS_JOUEUR,RENDU::SUBDIVISIONS_JOUEUR);
+     glPopMatrix();
 }

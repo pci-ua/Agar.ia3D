@@ -11,7 +11,7 @@ public:
 	~Boule() = default;
 	Boule(const Boule & c) = default;
 
-	void draw() const;
+	virtual void draw() const;
 
 	Vect2D getPosition() const { return _position; }
 	Vect2D& getPosition() { return _position; }

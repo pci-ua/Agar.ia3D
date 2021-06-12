@@ -14,7 +14,7 @@ public:
      void mangerf(Food const & objet);
      void mangerj(Joueurs const & objet);
      void SeFaireManger();
-     
+     void draw() const override;
   protected:
     float _vitesse;
 };
