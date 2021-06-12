@@ -1,7 +1,6 @@
 #pragma once
 
 #define NBIAMAX 20 // nombre ia max
-#define NBFOOD 325 // nombre food
 #define ECART 0.05 // pourcentage de taille d'une sphère
 #define VITESSE_MIN 0.02
 #define MODIF_TAILLE 0.005 // modifie la taille en mangeant une food
@@ -15,11 +14,15 @@
 
 // Valeur par défaut des joueurs
 namespace FOOD {
+     // Statistiques globales :
+     const unsigned int COUNT = 325;
+
+     // Statistiques par défaut :
      const float TAILLE = 0.1;
 };
 
 namespace JOUEUR {
-     // Statistique par défaut :
+     // Statistiques par défaut :
      const float TAILLE = 0.5;
      const float VITESSE = 0.1;
 };
