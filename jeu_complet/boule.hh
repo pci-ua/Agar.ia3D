@@ -1,6 +1,5 @@
 #pragma once
 
-#include "constante.hh"
 #include "Modele/couleur.hh"
 #include "Modele/vect2d.hh"
 

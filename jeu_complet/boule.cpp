@@ -1,5 +1,7 @@
 #include "boule.hh"
 
+#include "constante.hh"
+
 // Pour le dessin
 #include <GL/glut.h>
 #include <GL/gl.h>

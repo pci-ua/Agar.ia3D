@@ -3,10 +3,6 @@
 #define NBIAMAX 20 // nombre ia max
 #define NBFOOD 325 // nombre food
 #define ECART 0.05 // pourcentage de taille d'une sphère
-#define COULEUR (float)rand()/(RAND_MAX) // couleur aléatoire entre 0 et 1 (float)
-#define TAILLE_FOOD 0.1
-#define TAILLE_JOUEURS 0.5
-#define VITESSE 0.1 // vitesse de base
 #define VITESSE_MIN 0.02
 #define MODIF_TAILLE 0.005 // modifie la taille en mangeant une food
 #define MODIF_VITESSE 0.0001 // modifie la vitesse en mangeant
@@ -18,8 +14,14 @@
 #define TEMPSSONFIN 7 // Temps du son chronometre
 
 // Valeur par défaut des joueurs
+namespace FOOD {
+     const float TAILLE = 0.1;
+};
+
 namespace JOUEUR {
+     // Statistique par défaut :
      const float TAILLE = 0.5;
+     const float VITESSE = 0.1;
 };
 
 // Information sur le terrain

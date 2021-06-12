@@ -1,5 +1,7 @@
 #pragma once
 
+#include "constante.hh"
+
 #include "boule.hh"
 #include "food.hh"
 
@@ -7,7 +9,7 @@
 
 class Joueurs : public Boule{
 public:
-     Joueurs():Boule(TAILLE_JOUEURS),_vitesse(VITESSE){}
+     Joueurs():Boule(JOUEUR::TAILLE),_vitesse(JOUEUR::VITESSE){}
      ~Joueurs() = default;
      Joueurs(const Joueurs & c) = default;
 
