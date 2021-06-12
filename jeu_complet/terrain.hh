@@ -1,4 +1,4 @@
-#pragame once
+#pragma once
 
 class terrain {
   public:
