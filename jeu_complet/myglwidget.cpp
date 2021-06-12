@@ -4,7 +4,7 @@ Joueur player(0,0);
 
 Ia iatest[NBIAMAX];
 
-Food food[NBFOOD];
+Food food[FOOD::COUNT];
 
 GLfloat x_cam=player.getPosition().getX();
 GLfloat y_cam=7.0f;
@@ -18,32 +18,6 @@ float Light1Dif[4] = {1.0f,0.2f,0.0f,1.0f};
 
 float Spotlight1direc[3] = {0.0f, 0.0f, -1.0f};
 int MatSpec [4] = {1,1,1,1};
-
-// retourne vrai si collision et faux sinon
-bool collision(Boule b1,Boule b2){
-    float posX1,posX2,taille1,posZ1,posZ2,taille2;
-    posX1=b1.getPosition().getX();
-    posZ1=b1.getPosition().getZ();
-    taille1=b1.getTaille();
-
-    posX2=b2.getPosition().getX();
-    posZ2=b2.getPosition().getZ();
-    taille2=b2.getTaille();
-
-    // comparaison des tailles des 2 boules pour savoir laquelle est la plus grande (dans ce cas la première)
-    if(taille1>=taille2){
-        // Compare la distance des 2 centres des sphères avec la taille la plus grande
-        if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille1,2)){
-            return true;
-        }
-    }
-    else { // (dans ce cas la deuxième)
-        if((pow(posX2-posX1,2)+pow(posZ2-posZ1,2))<=pow(taille2,2)){
-            return true;
-        }
-    }
-    return false;
-}
 
 MyGLWidget::MyGLWidget(QWidget* parent):
     QOpenGLWidget(parent)
@@ -142,14 +116,14 @@ void MyGLWidget::paintGL()
     }
 
     // boucle pour toutes les foods
-    for(int i=0; i<NBFOOD;++i){
+    for(unsigned int i=0; i<FOOD::COUNT;++i){
         for(int j=0; j<this->nbia;++j){ // boucle pour toutes les ia
-            if(collision(iatest[j],food[i])){ // vérifie s'il y a collision entre ia et food
+            if(iatest[j].collision(food[i])){ // vérifie s'il y a collision entre ia et food
                 food[i].SeFaireManger();
                 iatest[j].mangerf(food[i]);
             }
         }
-        if(collision(player,food[i])){ // vérifie s'il y a collision entre player et food
+        if(player.collision(food[i])){ // vérifie s'il y a collision entre player et food
             food[i].SeFaireManger();
             player.mangerf(food[i]);
         }
@@ -159,7 +133,7 @@ void MyGLWidget::paintGL()
     }
     for(int u=0;u<this->nbia;++u){ // boucle pour toutes les ia
         for(int w=u+1;w<this->nbia;++w){ // boucle pour les ia autre que celle séléctionnée (ou déjà passé)
-            if(collision(iatest[u],iatest[w])){ // vérifie s'il y a collision entre ia et un autre ia
+            if(iatest[u].collision(iatest[w])){ // vérifie s'il y a collision entre ia et un autre ia
                 if(static_cast<double>(iatest[u].getTaille())<static_cast<double>(iatest[w].getTaille())-static_cast<double>(iatest[w].getTaille())*ECART){
                     iatest[u].SeFaireManger();
                     iatest[w].mangerj(iatest[u]);
@@ -170,7 +144,7 @@ void MyGLWidget::paintGL()
                 }
             }
         }
-        if(collision(iatest[u],player)){ // vérifie s'il y a collision entre ia et player
+        if(iatest[u].collision(player)){ // vérifie s'il y a collision entre ia et player
             if(static_cast<double>(iatest[u].getTaille())<static_cast<double>(player.getTaille())-static_cast<double>(player.getTaille())*ECART){
                 iatest[u].SeFaireManger();
                 player.mangerj(iatest[u]);

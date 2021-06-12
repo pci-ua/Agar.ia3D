@@ -19,6 +19,8 @@ public:
 	void setPosition(Vect2D pos) { _position = pos; }
 	void setCouleur(Couleur couleur) { _couleur = couleur; }
 
+	bool collision(const Boule & b) const;
+
 protected:
 	float _taille;
 	Vect2D _position;

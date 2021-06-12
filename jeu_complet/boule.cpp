@@ -21,3 +21,8 @@ void Boule::draw() const {
 
 Boule::Boule(float taille)
 :_taille(taille),_position(Vect2D({-TERRAIN::LONGUEUR_S,TERRAIN::LONGUEUR_S},{-TERRAIN::LARGEUR_S,TERRAIN::LARGEUR_S})),_couleur(Couleur()) {}
+
+bool Boule::collision(const Boule & b) const {
+	auto distance = b.getPosition() - getPosition();
+	return (b.getTaille() + getTaille()) >= distance.length();
+}
