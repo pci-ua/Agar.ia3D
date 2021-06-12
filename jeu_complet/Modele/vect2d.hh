@@ -30,4 +30,11 @@ public:
      std::string toString() const;
 
      void setGlutPosition() const;
+     ComposanteVect2D length() const;
+
+     Vect2D operator+(const Vect2D & v) const;
+     Vect2D& operator+=(const Vect2D & v);
+
+     Vect2D operator-(const Vect2D & v) const;
+     Vect2D& operator-=(const Vect2D & v);
 };

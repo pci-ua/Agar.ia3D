@@ -21,3 +21,37 @@ Vect3D::Vect3D(ComposanteVect3D x,ComposanteVect3D y,ComposanteVect3D z)
 void Vect3D::setGlutPosition() const {
      glTranslatef(_x,_y,_z);
 }
+
+Vect3D Vect3D::operator+(const Vect3D & v) const {
+     return {
+          (getX()+v.getX()),
+          (getY()+v.getY()),
+          (getZ()+v.getZ())
+     };
+}
+
+Vect3D& Vect3D::operator+=(const Vect3D & v) {
+     _x += v.getX();
+     _y += v.getY();
+     _z += v.getZ();
+     return *this;
+}
+
+Vect3D Vect3D::operator-(const Vect3D & v) const {
+     return {
+          (getX()-v.getX()),
+          (getY()-v.getY()),
+          (getZ()-v.getZ())
+     };
+}
+
+Vect3D& Vect3D::operator-=(const Vect3D & v) {
+     _x -= v.getX();
+     _y -= v.getY();
+     _z -= v.getZ();
+     return *this;
+}
+
+ComposanteVect3D Vect3D::length() const {
+     return sqrt(pow(_x,2)+pow(_y,2)+pow(_z,2));
+}

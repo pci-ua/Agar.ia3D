@@ -19,3 +19,33 @@ Vect2D::Vect2D(ComposanteVect2D x,ComposanteVect2D z)
 void Vect2D::setGlutPosition() const {
      glTranslatef(_x,0,_z);
 }
+
+Vect2D Vect2D::operator+(const Vect2D & v) const {
+     return {
+          (getX()+v.getX()),
+          (getZ()+v.getZ())
+     };
+}
+
+Vect2D& Vect2D::operator+=(const Vect2D & v) {
+     _x += v.getX();
+     _z += v.getZ();
+     return *this;
+}
+
+Vect2D Vect2D::operator-(const Vect2D & v) const {
+     return {
+          (getX()-v.getX()),
+          (getZ()-v.getZ())
+     };
+}
+
+Vect2D& Vect2D::operator-=(const Vect2D & v) {
+     _x -= v.getX();
+     _z -= v.getZ();
+     return *this;
+}
+
+ComposanteVect2D Vect2D::length() const {
+     return sqrt(pow(_x,2)+pow(_z,2));
+}
