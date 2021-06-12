@@ -5,8 +5,6 @@
 #include "boule.hh"
 #include "food.hh"
 
-#define PI 3.14159265
-
 class Joueurs : public Boule{
 public:
      Joueurs():Boule(JOUEUR::TAILLE),_vitesse(JOUEUR::VITESSE){}
