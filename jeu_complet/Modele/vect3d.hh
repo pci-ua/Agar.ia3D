@@ -32,11 +32,22 @@ public:
      std::string toString() const;
 
      void setGlutPosition() const;
+
      ComposanteVect3D length() const;
+
+     void setMagnitude(ComposanteVect3D mag);
+     void setToUnitVector();
 
      Vect3D operator+(const Vect3D & v) const;
      Vect3D& operator+=(const Vect3D & v);
 
      Vect3D operator-(const Vect3D & v) const;
      Vect3D& operator-=(const Vect3D & v);
+
+     bool operator<(const Vect3D & v) const;
+     bool operator>(const Vect3D & v) const;
+     bool operator>=(const Vect3D & v) const;
+     bool operator<=(const Vect3D & v) const;
+     bool operator==(const Vect3D & v) const;
+     bool operator!=(const Vect3D & v) const;
 };

@@ -55,3 +55,36 @@ Vect3D& Vect3D::operator-=(const Vect3D & v) {
 ComposanteVect3D Vect3D::length() const {
      return sqrt(pow(_x,2)+pow(_y,2)+pow(_z,2));
 }
+
+void Vect3D::setMagnitude(ComposanteVect3D mag) {
+     auto scaleRatio = length() / mag;
+     _x /= scaleRatio;
+     _y /= scaleRatio;
+     _z /= scaleRatio;
+}
+
+void Vect3D::setToUnitVector() {
+     auto currentMag = length();
+     _x /= currentMag;
+     _y /= currentMag;
+     _z /= currentMag;
+}
+
+bool Vect3D::operator<(const Vect3D & v) const {
+     return (_x < v.getX() && _z < v.getZ() && _y < v.getY());
+}
+bool Vect3D::operator>(const Vect3D & v) const {
+     return (_x > v.getX() && _z > v.getZ() && _y > v.getY());
+}
+bool Vect3D::operator<=(const Vect3D & v) const {
+     return (_x <= v.getX() && _z <= v.getZ() && _y <= v.getY());
+}
+bool Vect3D::operator>=(const Vect3D & v) const {
+     return (_x >= v.getX() && _z >= v.getZ() && _y >= v.getY());
+}
+bool Vect3D::operator==(const Vect3D & v) const {
+     return (_x == v.getX() && _z == v.getZ() && _y == v.getY());
+}
+bool Vect3D::operator!=(const Vect3D & v) const {
+     return !(*this == v);
+}

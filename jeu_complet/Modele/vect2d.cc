@@ -49,3 +49,34 @@ Vect2D& Vect2D::operator-=(const Vect2D & v) {
 ComposanteVect2D Vect2D::length() const {
      return sqrt(pow(_x,2)+pow(_z,2));
 }
+
+void Vect2D::setMagnitude(ComposanteVect2D mag) {
+     auto scaleRatio = length() / mag;
+     _x /= scaleRatio;
+     _z /= scaleRatio;
+}
+
+void Vect2D::setToUnitVector() {
+     auto currentMag = length();
+     _x /= currentMag;
+     _z /= currentMag;
+}
+
+bool Vect2D::operator<(const Vect2D & v) const {
+     return (_x < v.getX() && _z < v.getZ());
+}
+bool Vect2D::operator>(const Vect2D & v) const {
+     return (_x > v.getX() && _z > v.getZ());
+}
+bool Vect2D::operator<=(const Vect2D & v) const {
+     return (_x <= v.getX() && _z <= v.getZ());
+}
+bool Vect2D::operator>=(const Vect2D & v) const {
+     return (_x >= v.getX() && _z >= v.getZ());
+}
+bool Vect2D::operator==(const Vect2D & v) const {
+     return (_x == v.getX() && _z == v.getZ());
+}
+bool Vect2D::operator!=(const Vect2D & v) const {
+     return !(*this == v);
+}
