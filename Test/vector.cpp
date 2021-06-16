@@ -2,6 +2,6 @@
 #include "../Modele/vecteur/vect2d.cc"
 
 int main() {
-  throw "test";
+  //throw "test";
   return 0;
 }
