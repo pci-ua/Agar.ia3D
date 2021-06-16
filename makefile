@@ -18,8 +18,12 @@ compile: \
 	compile_intelligence \
 	compile_main \
 
-check:
-	echo TO DO
+check:$(patsubst %.cpp,%.o,$(wildcard Test/*.cpp))
+
+Test/%.o:Test/%.cpp
+	g++ $(CompilerFlag) $< -o $@
+	./$@
+	rm -f $@
 
 compile_modele: $(patsubst %.cc,$(Build)%.o,$(wildcard Modele/*/*.cc))
 compile_vue: $(patsubst %.cc,$(Build)%.o,$(wildcard Vue/*.cc))
