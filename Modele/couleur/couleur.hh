@@ -18,8 +18,8 @@ public:
 
   // Accesseurs ...
   Composant getR() { return _r; }
-  Composant getG() { return _r; }
-  Composant getB() { return _r; }
+  Composant getG() { return _g; }
+  Composant getB() { return _b; }
   void setR(Composant r) { _r = r; }
   void setG(Composant g) { _g = g; }
   void setB(Composant b) { _b = b; }
