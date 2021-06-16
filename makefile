@@ -18,6 +18,9 @@ compile: \
 	compile_intelligence \
 	compile_main \
 
+check:
+	echo TO DO
+
 compile_modele: $(patsubst %.cc,$(Build)%.o,$(wildcard Modele/*/*.cc))
 compile_vue: $(patsubst %.cc,$(Build)%.o,$(wildcard Vue/*.cc))
 compile_controlleur: $(patsubst %.cc,$(Build)%.o,$(wildcard Controlleur/*.cc))
