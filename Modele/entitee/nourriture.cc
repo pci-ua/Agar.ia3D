@@ -2,5 +2,5 @@
 
 #include "../generateur/position.hh"
 
-Nourriture::Nourriture()
-  :Boule(EmplacementRandom(),NOURRITURE::TAILLE) {}
+Nourriture::Nourriture(Couleur c)
+  :Boule(EmplacementRandom(),NOURRITURE::TAILLE),couleur(c) {}

@@ -10,6 +10,7 @@ private:
 double i = 0;
 
 public:
+  Indila():Joueur(Couleur(120,250,30)) {}
   double deplacement() override {
     i+=0.1;
     return i;
