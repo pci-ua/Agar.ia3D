@@ -3,9 +3,9 @@
 class TestError: public std::exception
 {
 public:
-    explicit Exception(const char* message)
+    explicit TestError(const char* message)
         : msg_(message) {}
-    explicit Exception(const std::string& message)
+    explicit TestError(const std::string& message)
         : msg_(message) {}
 
     virtual ~Exception() noexcept {}
