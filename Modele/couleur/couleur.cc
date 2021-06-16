@@ -27,9 +27,9 @@ std::string Couleur::toString_rgb()
 std::string Couleur::toString_hex() {
   std::stringstream stream;
   stream << "#"
-    << std::setfill ('0') << std::setw(2) << std::hex << _r
-    << std::setfill ('0') << std::setw(2) << std::hex << _g
-    << std::setfill ('0') << std::setw(2) << std::hex << _b;
+    << std::setfill ('0') << std::setw(2) << std::hex << static_cast<int>(_r)
+    << std::setfill ('0') << std::setw(2) << std::hex << static_cast<int>(_g)
+    << std::setfill ('0') << std::setw(2) << std::hex << static_cast<int>(_b);
   return stream.str();
 }
 
