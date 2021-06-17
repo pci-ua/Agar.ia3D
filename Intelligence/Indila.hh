@@ -1,3 +1,5 @@
+#pragma once
+
 // Nécessaire pour s'incruster dans le jeu !
 #include "../Modele/entitee/joueur.hh"
 

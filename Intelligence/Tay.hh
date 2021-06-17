@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../Modele/entitee/joueur.hh"
 
 /* 📜📜📜
