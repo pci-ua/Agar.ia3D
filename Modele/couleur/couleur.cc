@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cmath>
 
+// Constructeurs ...
 Couleur::Couleur(Composant r,Composant g,Composant b)
   :_r(r),_g(g),_b(b) {}
 
@@ -17,7 +18,7 @@ Couleur::Couleur(int r,int g,int b) {
 }
 
 
-
+// Méthode de conversion
 std::string Couleur::toString()
   { return toString_rgb(); }
 
