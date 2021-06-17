@@ -6,7 +6,7 @@
 // Mettez ici, la couleur que vous souhaitez pour votre joueur (au format RGB) ! :
 //pour pouvoir la choisir vous pouvez par exemple utiliser https://www.google.com/search?q=color+picker
 const int R = 255;
-const ing G = 127;
+const int G = 127;
 const int B =   0;
 
 // Vous pouvez rajoutez ci-dessous des sous-programmes(fonction ou méthode),
