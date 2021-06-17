@@ -34,17 +34,17 @@ Agar.ia est un jeu vidéo développé en C++ par l'association PC[i], une versio
 
 ## Création de votre IA
 
-Pour créé votre programme d'IA, vous pouvez créé dans le dossier `/Intelligence` une IA
+Pour créer le programme de votre IA, vous pouvez créer dans le dossier `/Intelligence` un joueur
 soit en partant de zéro, soit en partant d'un modèle déjà éxistant :
 
-  - Tay : Une IA parfaite pour débuter tranquillement !
+  - Tay : Une IA parfaite pour débuter tranquillement ! <br/>
      Vous avez juste besoin d'écrire votre code dans le fichier `Tay.cc`
-     toutes les informations sont directement mise dans ce fichier.
+     toutes les informations sont directements misent dans ce fichier.
 
-  - Indila : Un pattern d'IA plus pousser.
+  - Indila : Un pattern d'IA plus pousser et permissif. <br/>
     Si vous avez de bonne base en C++ et que la programmation orienté objet ne vous fait pas peur,
-    ce template est fait pour vous, en effet vous trouverez dans `Indila.cc` et dans `Indila.hh`
-    un code qui n'attend que votre implémentation, toutes les indications sur les prérequis sont à l'interrieur!
+    ce template est fait pour vous! En effet vous trouverez dans `Indila.cc` et dans `Indila.hh`
+    un code qui n'attend que votre implémentation, toutes les indications sur les prérequis sont à l'interrieur de ces dernier!
 
 
 ## Contribué
