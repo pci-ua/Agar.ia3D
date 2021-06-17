@@ -35,7 +35,24 @@ Agar.ia est un jeu vidéo développé en C++ par l'association PC[i], une versio
 ## Création de votre IA
 
 ```c++
-//Ici viendra un pattern d'éxemple d'une IA de base pour donner le format d'utilisation
+#include "../Modele/entitee/joueur.hh"
+
+class Indila
+/*
+Tourner dans le vide, vide
+Tourner dans le vide, il me fait tourner
+*/
+  :public Joueur {
+private:
+double i = 0;
+
+public:
+  Indila():Joueur(Couleur(120,250,30)) {}
+  double deplacement() override {
+    i+=0.1;
+    return i;
+  }
+};
 ```
 
 ## Contribué
