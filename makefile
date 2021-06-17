@@ -44,11 +44,11 @@ $(Build)Modele/%.o:Modele/%.cc
 	mkdir -p $(dir $@)
 	g++ -c $(CompilerFlag) $< -o $@
 
-$(Build)Controlleur/%.o:$(wildcard Controlleur/*.cc)
+$(Build)Controlleur/%.o:Controlleur/*.cc
 	g++ -c $(CompilerFlag) $< -o $@
-$(Build)Vue/%.o:$(wildcard Vue/*.cc)
+$(Build)Vue/%.o:Vue/*.cc
 	g++ -c $(CompilerFlag) $< -o $@
-$(Build)Intelligence/%.o:$(wildcard Intelligence/*.cc)
+$(Build)Intelligence/%.o:Intelligence/%.cc
 	g++ -c $(CompilerFlag) $< -o $@
 
 $(Executable):
