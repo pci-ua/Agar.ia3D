@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "Controlleur/Partie.hh"
 
@@ -17,6 +18,7 @@ int main() {
   for(int i=0;i<20;i++) {
     p.nextFrame();
     p.renduTerminal();
+    sleep(1);
   }
   return EXIT_SUCCESS;
 }
