@@ -34,8 +34,13 @@ compile_main: $(patsubst %.cpp,$(Build)%.o,main.cpp)
 link: $(Executable)
 
 clean:
+ifeq ($(OS),Windows_NT)
+	del /F /Q $(Executable)
+	del /F /Q $(Build)
+else
 	rm -f $(Executable)
 	rm -fr $(Build)
+endif
 
 $(Build)%.o:%.cpp
 	g++ -c $(CompilerFlag) $< -o $@
