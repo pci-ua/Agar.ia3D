@@ -12,14 +12,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - run: echo %SHELL%
-      shell: cmd
     - uses: actions/checkout@v2
     - name: Set up MinGW & GCC
       uses: egor-tensin/setup-mingw@v2
       with:
         platform: x64
-    - run: echo $SHELL
+    - run: echo %SHELL%
       shell: cmd
     - name: make
       shell: cmd
