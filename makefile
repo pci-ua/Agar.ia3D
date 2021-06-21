@@ -5,7 +5,13 @@ all: folder compile link
 fresh: clean all
 
 folder:
+<<<<<<< HEAD
 	echo $$SHELL
+=======
+	echo %PATH%
+	echo $$SHELL
+	$(shell echo $$SHELL)
+>>>>>>> 4fc03fa1e8c205b049810ba932c87723d01ce34e
 ifeq ($(OS),Windows_NT)
 	if not exist build ( mkdir "build" ) ;
 	if not exist "build/Modele" mkdir "build/Modele" ;

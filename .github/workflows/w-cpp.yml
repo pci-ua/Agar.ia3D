@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: Build Windows
 
 on:
@@ -23,3 +24,32 @@ jobs:
     - name: make check
       shell: cmd
       run: make check
+=======
+name: Build Windows
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up MinGW & GCC
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: x64
+    - run: echo %SHELL%
+      shell: cmd
+    - name: make
+      shell: cmd
+      run: make
+    - name: make check
+      shell: cmd
+      run: make check
+>>>>>>> 4fc03fa1e8c205b049810ba932c87723d01ce34e
