@@ -19,5 +19,7 @@ jobs:
         platform: x64
     - name: make
       run: make
+      shell: cmd
     - name: make check
       run: make check
+      shell: cmd
