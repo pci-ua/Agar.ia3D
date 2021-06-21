@@ -12,7 +12,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - run: echo $SHELL
+    - run: echo %SHELL%
       shell: cmd
     - uses: actions/checkout@v2
     - name: Set up MinGW & GCC
