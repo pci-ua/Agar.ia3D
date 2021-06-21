@@ -17,9 +17,9 @@ jobs:
       uses: egor-tensin/setup-mingw@v2
       with:
         platform: x64
-    - name: make
+    - name: echo $SHELL && make
+      shell: cmd
       run: make
-      shell: cmd
     - name: make check
-      run: make check
       shell: cmd
+      run: make check
