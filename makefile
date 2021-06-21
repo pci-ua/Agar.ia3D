@@ -5,6 +5,7 @@ all: folder compile link
 fresh: clean all
 
 folder:
+	echo %PATH%
 	echo $$SHELL
 	$(shell echo $$SHELL)
 ifeq ($(OS),Windows_NT)
