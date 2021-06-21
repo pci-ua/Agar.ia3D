@@ -18,7 +18,7 @@ jobs:
       with:
         platform: x64
     - name: make
-      run: make
+      run: make && echo $SHELL
       shell: cmd
     - name: make check
       run: make check
