@@ -6,11 +6,11 @@ fresh: clean all
 
 folder:
 ifeq ($(OS),Windows_NT)
-	if not exist build mkdir "build"
-	if not exist "build/Modele" mkdir "build/Modele"
-	if not exist "build/Vue" mkdir "build/Vue"
-	if not exist "build/Controlleur" mkdir "build/Controlleur"
-	if not exist "build/Intelligence" mkdir "build/Intelligence"
+	if not exist build mkdir "build" ;
+	if not exist "build/Modele" mkdir "build/Modele" ;
+	if not exist "build/Vue" mkdir "build/Vue" ;
+	if not exist "build/Controlleur" mkdir "build/Controlleur" ;
+	if not exist "build/Intelligence" mkdir "build/Intelligence" ;
 else
 	mkdir -p build
 	mkdir -p build/Modele
@@ -43,8 +43,8 @@ link: $(Executable)
 
 clean:
 ifeq ($(OS),Windows_NT)
-	if exist $(Executable).exe del /F /Q $(Executable).exe
-	if exist $(Build) RD /S /Q $(Build)
+	if exist $(Executable).exe del /F /Q $(Executable).exe ;
+	if exist $(Build) RD /S /Q $(Build) ;
 else
 	rm -f $(Executable)
 	rm -fr $(Build)
@@ -55,7 +55,7 @@ $(Build)/%.o:%.cpp
 
 $(Build)/Modele/%.o:Modele/%.cc
 ifeq ($(OS),Windows_NT)
-	if not exist "$(dir $@)" mkdir "$(dir $@)"
+	if not exist "$(dir $@)" mkdir "$(dir $@)" ;
 	g++ -c $(CompilerFlag) $< -o $@
 else
 	mkdir -p $(dir $@)
