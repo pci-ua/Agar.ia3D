@@ -7,7 +7,7 @@ fresh: clean all
 folder:
 ifeq ($(OS),Windows_NT)
 	echo  ;
-	if not exist build mkdir "build" ;
+	if not exist build ( mkdir "build" ) ;
 	if not exist "build/Modele" mkdir "build/Modele" ;
 	if not exist "build/Vue" mkdir "build/Vue" ;
 	if not exist "build/Controlleur" mkdir "build/Controlleur" ;
