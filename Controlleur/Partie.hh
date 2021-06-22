@@ -1,12 +1,14 @@
 #include "../Modele/entitee/joueur.hh"
+#include "../Modele/entitee/nourriture.hh"
 #include <vector>
 class Partie {
 private:
   std::vector<Joueur*> participants;
-  int tempRestant; /*seconde*/
+  std::vector<Nourriture*> nourritures;
+  unsigned int tempRestant; /*seconde*/
 public:
 
-  Partie(const std::vector<Joueur*> & v,int duree);
+  Partie(const std::vector<Joueur*> & v,unsigned int duree,int nmbFood);
   Partie(const Partie & p) = delete;
   ~Partie();
 
