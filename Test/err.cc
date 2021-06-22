@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 
 class TestError: public std::exception
 {
@@ -16,3 +17,7 @@ public:
 protected:
     std::string msg_;
 };
+
+void log_noError(std::string groupe,std::string categorie,int step,int max) {
+  std::cout << " ✓ " << groupe << " : " << categorie << " (" << step << "/" << max << ") " << std::endl;
+}
