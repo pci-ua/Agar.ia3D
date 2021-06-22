@@ -15,4 +15,5 @@ public:
   Nourriture(const Nourriture & c) = default;
   ~Nourriture() = default;
 
+  void etre_manger();
 };
