@@ -1,18 +1,29 @@
+#pragma once
+
+// Nécessaire pour s'incruster dans le jeu !
 #include "../Modele/entitee/joueur.hh"
 
-class Indila
-/*
+/* ♫♫♫
 Tourner dans le vide, vide
 Tourner dans le vide, il me fait tourner
-*/
-  :public Joueur {
-private:
-double i = 0;
+ ♫♫♫ */
 
+class Indila // N'hésitez pas à renommer votre IA !
+  :public Joueur { // Doit étendre Joueur pour pouvoir participer au jeu !
+
+// Quelques éléments obligatoires ! :
 public:
-  Indila():Joueur(Couleur(120,250,30)) {}
-  double deplacement() override {
-    i+=0.1;
-    return i;
-  }
+  // Constructeur, nécessaire ! (Pour transmettre des paramètres aux classes hérités ! )
+  Indila();
+
+  // Fonction à implémenter ! (Une implémentation par défaut est proposée ! )
+  // Doit retourner l'angle vers lequel l'ia doit se diriger
+  //  Angle en radian, 0 correspondant à la droite et tournant dans le sens anti-horaire
+  double deplacement() override;
+
+
+// À partir d'ici vous êtes libres !
+private:
+  double i = 0; // Sert seulement pour l'exemple d'implémentation de la fonction déplacement
+
 };
