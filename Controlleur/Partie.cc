@@ -1,4 +1,5 @@
 #include "Partie.hh"
+#include "../Modele/generateur/couleur.hh"
 
 Partie::Partie(const std::vector<Joueur*> & v,unsigned int duree,int nbFood)
 :tempRestant(duree) {
@@ -6,7 +7,7 @@ Partie::Partie(const std::vector<Joueur*> & v,unsigned int duree,int nbFood)
     participants.push_back(p);
   }
   for(int i=0 ; i<nbFood ; i++) {
-    nourritures.push_back(new Nourriture);
+    nourritures.push_back(new Nourriture(CouleurRandom()));
   }
 }
 
@@ -37,14 +38,14 @@ void Partie::nextFrame() {
   for(auto participant:participants) {
     // Nourriture
     for(auto nourriture:nourritures) {
-      if(participant->collision(nourriture)) {
+      if(participant->collision(*dynamic_cast<Boule*>(nourriture))) {
         participant->manger(nourriture);
       }
     }
     // Joueurs
     for(auto adversaire:participants) {
       if(participant != adversaire) {
-        if(participant->collision(adversaire)) {
+        if(participant->collision(*dynamic_cast<Boule*>(adversaire))) {
           if(participant->getTaille() > adversaire->getTaille()) {
             participant->manger(adversaire);
           } else {
