@@ -14,7 +14,7 @@ int main() {
     v.push_back(new Indila());
   }
 
-  Partie p(v,20);
+  Partie p(v,20,80);
   for(int i=0;i<20;i++) {
     p.nextFrame();
     p.renduTerminal();
