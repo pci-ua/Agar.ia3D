@@ -71,7 +71,7 @@ $(Build)/Intelligence/%.o:Intelligence/%.cc
 	g++ -c $(FlagCompiler) $< -o $@
 
 $(Executable):
-	g++ $(FlagLinker) $(FlagCompiler) $(FlagCompilerModele) $(FlagCompilerVue) $(FlagCompilerControlleur)\
+	g++ $(FlagLinker) \
 		$(wildcard build/*.o) \
 		$(wildcard build/*/*.o) \
 		$(wildcard build/*/*/*.o) -o $(Executable)
