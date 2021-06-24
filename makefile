@@ -56,11 +56,10 @@ $(Build)/%.o:%.cpp
 $(Build)/Modele/%.o:Modele/%.cc
 ifeq ($(OS),Windows_NT)
 	if not exist "$(dir $@)" mkdir "$(dir $@)" ;
-	g++ -c $(FlagCompiler) $< -o $@ $(FlagCompilerModele)
 else
 	mkdir -p $(dir $@)
-	g++ -c $(FlagCompiler) $< -o $@ $(FlagCompilerModele)
 endif
+	g++ -c $(FlagCompiler) $< -o $@ $(FlagCompilerModele)
 
 $(Build)/Controlleur/%.o:Controlleur/%.cc
 	g++ -c $(FlagCompiler) $< -o $@ $(FlagCompilerControlleur)
