@@ -30,7 +30,7 @@ compile: \
 check:$(patsubst %.cpp,%.o,$(wildcard Test/*.cpp))
 
 Test/%.o:Test/%.cpp
-	g++ $(CompilerFlag) $< -o $@
+	g++ $(FlagCompiler) $< -o $@
 	./$@
 	rm -f $@
 
@@ -57,21 +57,21 @@ $(Build)/%.o:%.cpp
 $(Build)/Modele/%.o:Modele/%.cc
 ifeq ($(OS),Windows_NT)
 	if not exist "$(dir $@)" mkdir "$(dir $@)" ;
-	g++ -c $(CompilerFlag) $< -o $@
+	g++ -c $(FlagCompiler) $< -o $@ $(FlagCompilerModele)
 else
 	mkdir -p $(dir $@)
-	g++ -c $(CompilerFlag) $< -o $@
+	g++ -c $(FlagCompiler) $< -o $@ $(FlagCompilerModele)
 endif
 
 $(Build)/Controlleur/%.o:Controlleur/%.cc
-	g++ -c $(CompilerFlag) $< -o $@
+	g++ -c $(FlagCompiler) $< -o $@ $(FlagCompilerControlleur)
 $(Build)/Vue/%.o:Vue/%.cc
-	g++ -c $(CompilerFlag) $< -o $@
+	g++ -c $(FlagCompiler) $< -o $@ $(FlagCompilerVue)
 $(Build)/Intelligence/%.o:Intelligence/%.cc
-	g++ -c $(CompilerFlag) $< -o $@
+	g++ -c $(FlagCompiler) $< -o $@
 
 $(Executable):
-	g++ $(LinkerFlag) \
+	g++ $(FlagLinker) $(FlagCompiler) $(FlagCompilerModele) $(FlagCompilerVue) $(FlagCompilerControlleur)\
 		$(wildcard build/*.o) \
 		$(wildcard build/*/*.o) \
 		$(wildcard build/*/*/*.o) -o $(Executable)
