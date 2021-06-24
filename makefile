@@ -63,9 +63,9 @@ else
 	g++ -c $(CompilerFlag) $< -o $@
 endif
 
-$(Build)/Controlleur/%.o:Controlleur/*.cc
+$(Build)/Controlleur/%.o:Controlleur/%.cc
 	g++ -c $(CompilerFlag) $< -o $@
-$(Build)/Vue/%.o:Vue/*.cc
+$(Build)/Vue/%.o:Vue/%.cc
 	g++ -c $(CompilerFlag) $< -o $@
 $(Build)/Intelligence/%.o:Intelligence/%.cc
 	g++ -c $(CompilerFlag) $< -o $@
