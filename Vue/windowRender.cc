@@ -12,7 +12,7 @@ void Modelisation() {
 	if( ! fini ) {
 		try {
 			p->nextFrame();
-		} catch(char* e) {
+		} catch(char const* e) {
 			fini = true;
 		}
 	}
@@ -34,12 +34,17 @@ void Modelisation() {
 
 	// Terrain
     	glLineWidth(3);
-	glColor3f(0.7,1.0,0.7);
+	if(fini) {
+		glColor3f(0.83,1.0,1.0);
+	} else {
+		glColor3f(0.2,1.0,0.0);
+	}
+
 	glBegin(GL_LINE_LOOP);
-	glVertex3f(CARTE::LONGUEUR/2-5,0.0,CARTE::LARGEUR/2-5);
-	glVertex3f(-CARTE::LONGUEUR/2+5,0.0,CARTE::LARGEUR/2-5);
-	glVertex3f(-CARTE::LONGUEUR/2+5,0.0,-CARTE::LARGEUR/2+5);
-	glVertex3f(CARTE::LONGUEUR/2-5,0.0,-CARTE::LARGEUR/2+5);
+	glVertex3f(CARTE::LONGUEUR+1,1.0,CARTE::LARGEUR+1);
+	glVertex3f(-CARTE::LONGUEUR-1,1.0,CARTE::LARGEUR+1);
+	glVertex3f(-CARTE::LONGUEUR-1,1.0,-CARTE::LARGEUR-1);
+	glVertex3f(CARTE::LONGUEUR+1,1.0,-CARTE::LARGEUR-1);
 	glEnd();
 
 	// Sphere
@@ -51,7 +56,7 @@ void Modelisation() {
 		glPushMatrix();
 		glTranslatef((pos.getX()-CARTE::LONGUEUR/2)*2,0,(pos.getZ()-CARTE::LARGEUR/2)*2); //se positionne sur le terrain
 		glColor3f(static_cast<float>(color.getR())/255,static_cast<float>(color.getG())/255,static_cast<float>(color.getB())/255);
-		glutSolidSphere(taille,30,30); // créer une sphère
+		glutSolidSphere(taille*2,30,30); // créer une sphère
 		glPopMatrix();
 	}
 	for(auto nourriture=p->n_begin();nourriture != p->n_end();nourriture++) {
@@ -61,7 +66,7 @@ void Modelisation() {
 		glPushMatrix();
 		glTranslatef((pos.getX()-CARTE::LONGUEUR/2)*2,0,(pos.getZ()-CARTE::LARGEUR/2)*2); //se positionne sur le terrain
   		glColor3f(static_cast<float>(color.getR())/255,static_cast<float>(color.getG())/255,static_cast<float>(color.getB())/255);
-  		glutSolidSphere(taille,30,30); // créer une sphère
+  		glutSolidSphere(taille*2,30,30); // créer une sphère
   		glPopMatrix();
 	}
 
