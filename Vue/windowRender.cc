@@ -3,32 +3,68 @@
 #include <GL/glu.h>
 #include <GL/freeglut.h>
 #include "../constante.hh"
+#include "../Controlleur/Partie.hh"
+extern Partie* p;
 
+bool fini = false;
 void Modelisation() {
-	// Initialisation
+	// Update entitée
+	if( ! fini ) {
+		try {
+			p->nextFrame();
+		} catch(char* e) {
+			fini = true;
+		}
+	}
+
+	// Initialisation du rendu
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-
-	// Caméra
-	gluLookAt(0,0.6,30,0,0,0,0,1,0);
+	// Positionnement de la Caméra
+	gluLookAt(
+		// Caméra:
+		0,100,0,
+		// Cible
+		0,0,0,
+		// Orientation
+		0.1,1,0
+	);
 
 	// Terrain
-	glBegin(GL_QUADS);
-	glColor3f(0.0,0.7,0.0);
-	glVertex3f(CARTE::LONGUEUR,0.0,CARTE::LARGEUR);
-	glVertex3f(-CARTE::LONGUEUR,0.0,CARTE::LARGEUR);
-	glVertex3f(-CARTE::LONGUEUR,0.0,-CARTE::LARGEUR);
-	glVertex3f(CARTE::LONGUEUR,0.0,-CARTE::LARGEUR);
+    	glLineWidth(3);
+	glColor3f(0.7,1.0,0.7);
+	glBegin(GL_LINE_LOOP);
+	glVertex3f(CARTE::LONGUEUR/2-5,0.0,CARTE::LARGEUR/2-5);
+	glVertex3f(-CARTE::LONGUEUR/2+5,0.0,CARTE::LARGEUR/2-5);
+	glVertex3f(-CARTE::LONGUEUR/2+5,0.0,-CARTE::LARGEUR/2+5);
+	glVertex3f(CARTE::LONGUEUR/2-5,0.0,-CARTE::LARGEUR/2+5);
 	glEnd();
 
 	// Sphere
-	glPushMatrix();
-	glTranslatef(4,0,-4); //se positionne sur le terrain
-	glColor3f(1,0,0);
-	glutSolidSphere(5,30,30); // créer une sphère
-	glPopMatrix();
+
+	for(auto participant=p->p_begin();participant != p->p_end();participant++) {
+		auto pos = (*participant)->getPosition();
+		auto color = (*participant)->getCouleur();
+		auto taille = (*participant)->getTaille();
+		glPushMatrix();
+		glTranslatef((pos.getX()-CARTE::LONGUEUR/2)*2,0,(pos.getZ()-CARTE::LARGEUR/2)*2); //se positionne sur le terrain
+		glColor3f(static_cast<float>(color.getR())/255,static_cast<float>(color.getG())/255,static_cast<float>(color.getB())/255);
+		glutSolidSphere(taille,30,30); // créer une sphère
+		glPopMatrix();
+	}
+	for(auto nourriture=p->n_begin();nourriture != p->n_end();nourriture++) {
+		auto pos = (*nourriture)->getPosition();
+		auto color = (*nourriture)->getCouleur();
+		auto taille = (*nourriture)->getTaille();
+		glPushMatrix();
+		glTranslatef((pos.getX()-CARTE::LONGUEUR/2)*2,0,(pos.getZ()-CARTE::LARGEUR/2)*2); //se positionne sur le terrain
+  		glColor3f(static_cast<float>(color.getR())/255,static_cast<float>(color.getG())/255,static_cast<float>(color.getB())/255);
+  		glutSolidSphere(taille,30,30); // créer une sphère
+  		glPopMatrix();
+	}
+
 
 	// Finition
 	glutSwapBuffers();
