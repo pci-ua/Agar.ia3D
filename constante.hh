@@ -1,6 +1,6 @@
 namespace CARTE {
-  const int LARGEUR = 50;
-  const int LONGUEUR = 50;
+  const int LARGEUR = 40;
+  const int LONGUEUR = 40;
 }
 
 namespace NOURRITURE {
@@ -9,5 +9,5 @@ namespace NOURRITURE {
 
 namespace JOUEUR {
   const double TAILLE = 1;
-  const double VITESSE = 1;
+  const double VITESSE = 0.1;
 }
