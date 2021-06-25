@@ -24,7 +24,7 @@ int main(int argc,char* argv[]) {
 	v.push_back(new Tay());
 	}
 
-	p = new Partie(v,20,80);
+	p = new Partie(v,480,80);
 
 	InitialisationRendu(argc,argv);
 
