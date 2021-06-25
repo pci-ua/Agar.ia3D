@@ -26,4 +26,7 @@ public:
   void manger(Nourriture* n);
   void etre_manger(Joueur* j);
 
+  // Accesseurs ...
+  Couleur getCouleur() { return couleur; }
+
 };
