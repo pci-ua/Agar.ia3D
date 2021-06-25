@@ -5,7 +5,7 @@
 #include <math.h> // PI (M_PI), cos , sin
 
 Joueur::Joueur(Couleur c)
-  :Boule(EmplacementRandom(),NOURRITURE::TAILLE),vitesse(JOUEUR::VITESSE),couleur(c) {}
+  :Boule(EmplacementRandom(),JOUEUR::TAILLE),vitesse(JOUEUR::VITESSE),couleur(c) {}
 
 void Joueur::request_deplacement() {
    double angle = deplacement();
