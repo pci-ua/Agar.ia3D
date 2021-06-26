@@ -16,4 +16,8 @@ public:
   ~Nourriture() = default;
 
   void etre_manger();
+
+
+    // Accesseurs ...
+    Couleur getCouleur() { return couleur; }
 };

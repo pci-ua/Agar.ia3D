@@ -18,8 +18,8 @@ Agar.ia est un jeu vidéo développé en C++ par l'association PC[i], une versio
 
     ```bash
     sudo apt install make g++
-    sudo apt install qtchooser #Inutilisée pour l'instant
-    sudo apt install qt5-default qtmultimedia5-dev build-essential freeglut3-dev #Inutilisée pour l'instant
+    sudo apt install qtchooser
+    sudo apt install qt5-default qtmultimedia5-dev build-essential freeglut3-dev
     ```
 
 3. Compilez le programme :

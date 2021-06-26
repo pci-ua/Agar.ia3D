@@ -3,7 +3,7 @@
 #include "../generateur/position.hh"
 
 Joueur::Joueur(Couleur c)
-  :Boule(EmplacementRandom(),NOURRITURE::TAILLE),vitesse(JOUEUR::VITESSE),couleur(c) {}
+  :Boule(EmplacementRandom(),JOUEUR::TAILLE),vitesse(JOUEUR::VITESSE),couleur(c) {}
 
 void Joueur::manger(Joueur* j) {
   setTaille(getTaille() + j->getTaille());

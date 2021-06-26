@@ -16,6 +16,10 @@ public:
 
   // Temporaire
   void renduTerminal();
+  auto p_begin() { return participants.begin(); }
+  auto p_end() { return participants.end(); }
+  auto n_begin() { return nourritures.begin(); }
+  auto n_end() { return nourritures.end(); }
 
   void nextFrame();
 
