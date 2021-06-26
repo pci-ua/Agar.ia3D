@@ -60,7 +60,7 @@ void Partie::nextFrame() {
 
 void Joueur::request_deplacement(const Partie & partie) {
    double angle = deplacement(
-        partie.playerNearFrom(getPosition(),getTaille()*JOUEUR::ROV),
+        partie.playerNearFrom(getPosition(),getTaille()*JOUEUR::ROV,this),
         partie.foodNearFrom(getPosition(),getTaille()*JOUEUR::ROV)
    );
    Vect2D<double> k(cos(angle),sin(angle));
@@ -75,10 +75,10 @@ void Joueur::request_deplacement(const Partie & partie) {
    }
 }
 
-std::vector<InfoEntitee> Partie::playerNearFrom(Vect2D<double> pos,double distMax) const {
+std::vector<InfoEntitee> Partie::playerNearFrom(Vect2D<double> pos,double distMax,Joueur* self) const {
      std::vector<InfoEntitee> result;
      for(auto participant:participants) {
-          if( (participant->getPosition()-pos).getMagnitude() <= distMax ) {
+          if( (self != participant) && ((participant->getPosition()-pos).getMagnitude() <= distMax )) {
                result.push_back({ participant->getPosition(), participant->getTaille() });
           }
      }

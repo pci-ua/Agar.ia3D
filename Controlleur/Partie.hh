@@ -23,6 +23,6 @@ public:
 
   void nextFrame();
 
-  std::vector<InfoEntitee> playerNearFrom(Vect2D<double> pos,double size) const;
+  std::vector<InfoEntitee> playerNearFrom(Vect2D<double> pos,double size,Joueur* self) const;
   std::vector<InfoEntitee> foodNearFrom(Vect2D<double> pos,double size) const;
 };
