@@ -18,4 +18,7 @@ public:
   void renduTerminal();
 
   void nextFrame();
+
+  std::vector<InfoEntitee> playerNearFrom(Vect2D<double> pos,double size) const;
+  std::vector<InfoEntitee> foodNearFrom(Vect2D<double> pos,double size) const;
 };
