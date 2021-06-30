@@ -6,6 +6,7 @@
 
 #include "Intelligence/Indila.hh"
 #include "Intelligence/Tay.hh"
+#include "Intelligence/IPA.hh"
 
 extern void InitialisationRendu(int argc,char* argv[]);
 
@@ -17,14 +18,13 @@ int main(int argc,char* argv[]) {
 
 	// Création de la partie
 	std::vector<Joueur*> v;
-	for(int i=0;i<10;i++) {
-	v.push_back(new Indila());
-	}
-	for(int i=0;i<10;i++) {
-	v.push_back(new Tay());
+	for(int i=0;i<7;i++) {
+		v.push_back(new Indila());
+		v.push_back(new Tay());
+		v.push_back(new IPA());
 	}
 
-	p = new Partie(v,480,80);
+	p = new Partie(v,4800,120);
 
 	InitialisationRendu(argc,argv);
 
