@@ -22,5 +22,8 @@ public:
 
 
 // À partir d'ici vous êtes libres !
+private:
      double angleVers(Vect2D<double> position);
+     int ite;
+     double dir;
 };
