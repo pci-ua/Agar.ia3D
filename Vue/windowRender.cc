@@ -72,5 +72,23 @@ void Modelisation() {
 
 
 	// Finition
+
+    glLineWidth(3);
+        glColor3f(0.7,0.0,0.0);
+        glBegin(GL_LINES);
+        glVertex3f(00.0,01.0,00.0);
+        glVertex3f(15.0,01.0,00.0);
+        glEnd();
+            glColor3f(0.0,0.7,0.0);
+            glBegin(GL_LINES);
+            glVertex3f(00.0,01.0,00.0);
+            glVertex3f(00.0,15.0,00.0);
+            glEnd();
+                glColor3f(0.0,0.0,0.7);
+                glBegin(GL_LINES);
+                glVertex3f(00.0,01.0,00.0);
+                glVertex3f(00.0,01.0,15.0);
+                glEnd();
+
 	glutSwapBuffers();
 }
