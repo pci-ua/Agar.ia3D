@@ -57,7 +57,7 @@ std::string Couleur::toString_hsv() {
 
   float V = cmax;
 
-  return "hsv(" +std::to_string(H)+ "°," +std::to_string(H)+ "%," +std::to_string(V)+ "%)";
+  return "hsv(" +std::to_string(H)+ "°," +std::to_string(S)+ "%," +std::to_string(V)+ "%)";
  }
 std::string Couleur::toString_hsl() {
   float rp = static_cast<float>(_r)/255;
