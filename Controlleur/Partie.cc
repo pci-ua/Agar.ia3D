@@ -1,5 +1,5 @@
 #include "Partie.hh"
-#include "../Modele/generateur/couleur.hh"
+#include "../Modele/generateur/g_couleur.hh"
 #include "../constante.hh"
 #include <math.h> // PI (M_PI), cos , sin
 Partie::Partie(const std::vector<Joueur*> & v,unsigned int duree,int nbFood)
