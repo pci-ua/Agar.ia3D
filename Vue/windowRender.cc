@@ -41,10 +41,10 @@ void Modelisation() {
 		glColor3f(0.2,1.0,0.0);
 	}
 	glBegin(GL_LINE_LOOP);
-	glVertex3f(CARTE::LONGUEUR,1.0,CARTE::LARGEUR);
-	glVertex3f(-CARTE::LONGUEUR,1.0,CARTE::LARGEUR);
-	glVertex3f(-CARTE::LONGUEUR,1.0,-CARTE::LARGEUR);
-	glVertex3f(CARTE::LONGUEUR,1.0,-CARTE::LARGEUR);
+	glVertex3f(CARTE::LONGUEUR,0.0,CARTE::LARGEUR);
+	glVertex3f(-CARTE::LONGUEUR,0.0,CARTE::LARGEUR);
+	glVertex3f(-CARTE::LONGUEUR,0.0,-CARTE::LARGEUR);
+	glVertex3f(CARTE::LONGUEUR,0.0,-CARTE::LARGEUR);
 	glEnd();
 
 	// Sphere
