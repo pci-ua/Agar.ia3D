@@ -47,8 +47,8 @@ std::string Couleur::toString_hsv() {
   else {
     if(cmax == rp) { H = ((gp-bp)/delta); while(H>6) { H-=6;} while(H<0) { H+=6; } } else
     if(cmax == gp) H = ((bp-rp)/delta)+2; else
-    if(cmax == bp) H = ((rp-gp)/delta)+4;
-    H*= 60;
+    /*trivial : if(cmax == bp) */ H = ((rp-gp)/delta)+4;
+    H *= 60;
   }
 
   float S;
@@ -72,7 +72,7 @@ std::string Couleur::toString_hsl() {
   else {
     if(cmax == rp) { H = ((gp-bp)/delta); while(H>6) { H-=6;} while(H<0) { H+=6; } } else
     if(cmax == gp) H = ((bp-rp)/delta)+2; else
-    if(cmax == bp) H = ((rp-gp)/delta)+4;
+    /*trivial : if(cmax == bp)*/ H = ((rp-gp)/delta)+4;
     H*= 60;
   }
 
