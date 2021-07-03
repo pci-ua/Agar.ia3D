@@ -11,3 +11,4 @@ Makefile
 
 # Other file to exclude from git :
 *.log
+*.swp
