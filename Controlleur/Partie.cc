@@ -2,6 +2,7 @@
 #include "../Modele/generateur/g_couleur.hh"
 #include "../constante.hh"
 #include <math.h> // PI (M_PI), cos , sin
+#include <iostream>
 Partie::Partie(const std::vector<Joueur*> & v,unsigned int duree,int nbFood)
 :tempRestant(duree) {
   for(const auto & p:v) {
@@ -67,8 +68,8 @@ void Joueur::request_deplacement(const Partie & partie) {
    k.setMagnitude(vitesse);
    auto pos = getPosition() + k;
 
-   const Vect2D<double> TopLeft(0,0);
-   const Vect2D<double> BotRight(CARTE::LARGEUR,CARTE::LONGUEUR);
+   const Vect2D<double> TopLeft(-CARTE::LONGUEUR,-CARTE::LARGEUR);
+   const Vect2D<double> BotRight(CARTE::LONGUEUR,CARTE::LARGEUR);
 
    if( TopLeft <= pos && pos <= BotRight) {
      getPosition() = pos;

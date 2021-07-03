@@ -6,7 +6,7 @@
 
 // Constructeurs ...
 Couleur::Couleur(Composant r,Composant g,Composant b)
-  :_r(r),_g(g),_b(b) {}
+  :_r(r),_g(g),_b(b),glutOpti(false) {}
 
 Couleur::Couleur(int r,int g,int b) {
   if(r < 0 || r > 255) throw std::out_of_range("Red color componnant must stay between 0 and 255 included ! ");

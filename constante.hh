@@ -1,12 +1,15 @@
 namespace CARTE {
      // Taille :
-     const int LARGEUR = 40; // axe Z
-     const int LONGUEUR = 40; // axe X
+     const int LARGEUR = 10; // axe Z
+     const int LONGUEUR = 10; // axe X
 };
 
 namespace NOURRITURE {
      // Default statistics :
      const double TAILLE = 0.02;
+
+     // Quality :
+     const unsigned int QUALITE = 10;
 };
 
 namespace JOUEUR {
@@ -16,4 +19,8 @@ namespace JOUEUR {
 
      // Range of view :
      const double ROV = 4; // describe how far (in player selfsize scale) a player can grab info
+
+
+     // Quality :
+     const unsigned int QUALITE = 20;
 };

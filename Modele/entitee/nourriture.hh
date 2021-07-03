@@ -20,4 +20,7 @@ public:
 
     // Accesseurs ...
     Couleur getCouleur() { return couleur; }
+
+    // Rendu
+    void draw();
 };

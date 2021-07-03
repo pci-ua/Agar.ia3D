@@ -21,7 +21,7 @@ double IPA::deplacement(std::vector<InfoEntitee> joueurs,std::vector<InfoEntitee
 
      // étape 1 :
      //  Si on s'approche trop d'une bordure de la carte : on souhaite se rediriger vers le centre de la carte
-     if(
+     /*if(
           getPosition().getX() > CARTE::LONGUEUR ||
           getPosition().getX() < 0 ||
           getPosition().getZ() > CARTE::LARGEUR ||
@@ -34,7 +34,7 @@ double IPA::deplacement(std::vector<InfoEntitee> joueurs,std::vector<InfoEntitee
           auto debuff = angleVers({CARTE::LONGUEUR/2,CARTE::LARGEUR/2});
           std::cout << debuff << std::endl;
           return debuff + PI;
-     }
+     }*/
 
      // étape 2 :
      //  On cherche un joueur plus petit que nous et le plus proche possible
