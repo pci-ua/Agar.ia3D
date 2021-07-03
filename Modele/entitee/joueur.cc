@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "joueur.hh"
 
 #include "../generateur/position.hh"
@@ -16,6 +18,7 @@ void Joueur::manger(Nourriture* n) {
 }
 
 void Joueur::etre_manger(Joueur* j) {
+     std::cout << "Le joueur d'id" << this << " a été manger par le joueur d'id : " << j << std::endl;
   setTaille(JOUEUR::TAILLE);
   getPosition() = EmplacementRandom();
 }
