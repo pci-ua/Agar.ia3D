@@ -8,3 +8,6 @@
 # Auto generated files :
 Makefile
 .qmake.stash
+
+# Other file to exclude from git :
+*.log
