@@ -68,8 +68,8 @@ void Joueur::request_deplacement(const Partie & partie) {
    k.setMagnitude(vitesse);
    auto pos = getPosition() + k;
 
-   const Vect2D<double> TopLeft(-CARTE::LONGUEUR,-CARTE::LARGEUR);
-   const Vect2D<double> BotRight(CARTE::LONGUEUR,CARTE::LARGEUR);
+   const Vect2D<double> TopLeft(-CARTE::LONGUEUR+getTaille(),-CARTE::LARGEUR+getTaille());
+   const Vect2D<double> BotRight(CARTE::LONGUEUR-getTaille(),CARTE::LARGEUR-getTaille());
 
    if( TopLeft <= pos && pos <= BotRight) {
      getPosition() = pos;
