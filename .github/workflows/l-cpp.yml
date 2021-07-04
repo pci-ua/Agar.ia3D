@@ -16,7 +16,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
     - name: Install OpenGL GLUT
-      uses: bash .github/linux-cpp-build.sh
+      run: bash .github/linux-cpp-build.sh
     - name: qmake
       run: qmake
     - name: make
