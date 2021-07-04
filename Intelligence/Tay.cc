@@ -19,7 +19,7 @@ const int B =   0;
 // - Angle en radian
 // - 0rad signifie un mouvement vers la droite
 // - On augmente dans le sens anti-horaire( sens trigonométrique )
-double Tay::deplacement() {
+double Tay::deplacement(std::vector<InfoEntitee> joueurs,std::vector<InfoEntitee> nourritures) {
   //Pour l'instant on va toujours en bas à gauche !
   return (5*PI) / 4;
 }

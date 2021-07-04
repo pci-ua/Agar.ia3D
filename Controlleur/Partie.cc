@@ -1,6 +1,8 @@
 #include "Partie.hh"
-#include "../Modele/generateur/couleur.hh"
-
+#include "../Modele/generateur/g_couleur.hh"
+#include "../constante.hh"
+#include <math.h> // PI (M_PI), cos , sin
+#include <iostream>
 Partie::Partie(const std::vector<Joueur*> & v,unsigned int duree,int nbFood)
 :tempRestant(duree) {
   for(const auto & p:v) {
@@ -31,7 +33,7 @@ void Partie::nextFrame() {
 
   // Déplacement
   for(auto participant:participants) {
-    participant->request_deplacement();
+    participant->request_deplacement(*this);
   }
 
   // Collision
@@ -55,4 +57,41 @@ void Partie::nextFrame() {
       }
     }
   }
+}
+
+void Joueur::request_deplacement(const Partie & partie) {
+   double angle = deplacement(
+        partie.playerNearFrom(getPosition(),getTaille()*JOUEUR::ROV,this),
+        partie.foodNearFrom(getPosition(),getTaille()*JOUEUR::ROV)
+   );
+   Vect2D<double> k(cos(angle),sin(angle));
+   k.setMagnitude(vitesse);
+   auto pos = getPosition() + k;
+
+   const Vect2D<double> TopLeft(-CARTE::LONGUEUR+getTaille(),-CARTE::LARGEUR+getTaille());
+   const Vect2D<double> BotRight(CARTE::LONGUEUR-getTaille(),CARTE::LARGEUR-getTaille());
+
+   if( TopLeft <= pos && pos <= BotRight) {
+     getPosition() = pos;
+   }
+}
+
+std::vector<InfoEntitee> Partie::playerNearFrom(Vect2D<double> pos,double distMax,Joueur* self) const {
+     std::vector<InfoEntitee> result;
+     for(auto participant:participants) {
+          if( (self != participant) && ((participant->getPosition()-pos).getMagnitude() <= distMax )) {
+               result.push_back({ participant->getPosition(), participant->getTaille() });
+          }
+     }
+     return result;
+}
+
+std::vector<InfoEntitee> Partie::foodNearFrom(Vect2D<double> pos,double distMax) const {
+     std::vector<InfoEntitee> result;
+     for(auto nourriture:nourritures) {
+          if( (nourriture->getPosition()-pos).getMagnitude() <= distMax ) {
+               result.push_back({ nourriture->getPosition(), nourriture->getTaille() });
+          }
+     }
+     return result;
 }
