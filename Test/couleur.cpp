@@ -1,7 +1,7 @@
 #include "../Modele/couleur/couleur.hh"
 #include "../Modele/couleur/couleur.cc"
-#include "../Modele/generateur/couleur.hh"
-#include "../Modele/generateur/couleur.cc"
+#include "../Modele/generateur/g_couleur.hh"
+#include "../Modele/generateur/g_couleur.cc"
 #include "err.cc"
 
 int main() {
