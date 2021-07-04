@@ -2,7 +2,7 @@
 
 Agar.ia est un jeu vidéo développé en C++ par l'association PC[i], une version de Agar.io destiné a des IA
 
-![Build linux](https://github.com/pci-ua/Agar.ia3D/actions/workflows/c-cpp.yml/badge.svg)
+![Build linux](https://github.com/pci-ua/Agar.ia3D/actions/workflows/l-cpp.yml/badge.svg)
 ![Build Windows](https://github.com/pci-ua/Agar.ia3D/actions/workflows/w-cpp.yml/badge.svg)
 ## Installation
 
