@@ -18,13 +18,13 @@ int main(int argc,char* argv[]) {
 
 	// Création de la partie
 	std::vector<Joueur*> v;
-	for(int i=0;i<2;i++) {
+	for(int i=0;i<7;i++) {
 		v.push_back(new IPA());
 		v.push_back(new Tay());
 		v.push_back(new Indila());
 	}
 
-	p = new Partie(v,4800,120);
+	p = new Partie(v,4800,1020);
 
 	InitialisationRendu(argc,argv);
 

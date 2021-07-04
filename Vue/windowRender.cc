@@ -26,7 +26,7 @@ void Modelisation() {
 	auto posCam = (*p->p_begin())->getPosition();
 	gluLookAt(
 		// Caméra:
-		posCam.getX()-15,45,posCam.getZ(),
+		posCam.getX()-15,15,posCam.getZ(),
 		// Cible
 		posCam.getX(),0,posCam.getZ(),
 		// Orientation

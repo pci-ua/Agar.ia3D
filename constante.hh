@@ -1,7 +1,7 @@
 namespace CARTE {
      // Taille :
-     const int LARGEUR = 10; // axe Z
-     const int LONGUEUR = 10; // axe X
+     const int LARGEUR = 40; // axe Z
+     const int LONGUEUR = 40; // axe X
 };
 
 namespace NOURRITURE {
