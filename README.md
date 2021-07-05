@@ -23,7 +23,9 @@ Agar.ia est un jeu vidéo développé en C++ par l'association PC[i], une versio
     ```
 
 3. Compilez le programme :
+_Assurez-vous d'être dans le repertoire du projet !_
      ```bash
+    qmake
     make
     ```
 
