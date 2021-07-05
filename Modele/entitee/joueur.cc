@@ -1,25 +1,11 @@
+#include <iostream>
+
 #include "joueur.hh"
 
 #include "../generateur/position.hh"
 
-#include <math.h> // PI (M_PI), cos , sin
-
 Joueur::Joueur(Couleur c)
-  :Boule(EmplacementRandom(),NOURRITURE::TAILLE),vitesse(JOUEUR::VITESSE),couleur(c) {}
-
-void Joueur::request_deplacement() {
-   double angle = deplacement();
-   Vect2D<double> k(cos(angle),sin(angle));
-   k.setMagnitude(vitesse);
-   auto p = getPosition() + k;
-
-   const Vect2D<double> TopLeft(0,0);
-   const Vect2D<double> BotRight(CARTE::LARGEUR,CARTE::LONGUEUR);
-
-   if( TopLeft <= p && p <= BotRight) {
-     getPosition() = p;
-   }
-}
+  :Boule(EmplacementRandom(),JOUEUR::TAILLE),vitesse(JOUEUR::VITESSE),couleur(c) {}
 
 void Joueur::manger(Joueur* j) {
   setTaille(getTaille() + j->getTaille());
@@ -32,6 +18,7 @@ void Joueur::manger(Nourriture* n) {
 }
 
 void Joueur::etre_manger(Joueur* j) {
+     std::cout << "Le joueur d'id" << this << " a été manger par le joueur d'id : " << j << std::endl;
   setTaille(JOUEUR::TAILLE);
   getPosition() = EmplacementRandom();
 }

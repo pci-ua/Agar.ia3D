@@ -1,22 +1,32 @@
-#include <stdlib.h>
-#include <time.h>
+#include <stdlib.h>      // Initialisation de la seed pour rand() avec srand()
+#include <time.h>        // Pour générer une seed différente pour chaque itération de srand()
+#include <unistd.h>      // Pour sleep(), pour ralentir l'éxécution
 
 #include "Controlleur/Partie.hh"
 
 #include "Intelligence/Indila.hh"
+#include "Intelligence/Tay.hh"
+#include "Intelligence/IPA.hh"
+#include "Modele/generateur/position.hh"
+extern void InitialisationRendu(int argc,char* argv[]);
 
-int main() {
-  srand(time(nullptr));
+Partie* p = nullptr;
+#include <iostream>
+int main(int argc,char* argv[]) {
 
-  std::vector<Joueur*> v;
-  for(int i=0;i<4;i++) {
-    v.push_back(new Indila());
-  }
+	srand(time(nullptr));
 
-  Partie p(v,20,80);
-  for(int i=0;i<20;i++) {
-    p.nextFrame();
-    p.renduTerminal();
-  }
-  return EXIT_SUCCESS;
+	// Création de la partie
+	std::vector<Joueur*> v;
+	for(int i=0;i<7;i++) {
+		v.push_back(new IPA());
+		v.push_back(new Tay());
+		v.push_back(new Indila());
+	}
+
+	p = new Partie(v,4800,1020);
+
+	InitialisationRendu(argc,argv);
+
+	return EXIT_SUCCESS;
 }

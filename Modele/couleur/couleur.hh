@@ -3,10 +3,19 @@
 #include <cstdint>
 #include <string>
 
+#include <GL/glut.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/freeglut.h>
+
+#include <iostream>
+
 using Composant = std::uint8_t;
 class Couleur {
 private:
   Composant _r,_g,_b;
+  GLfloat r,g,b;
+  bool glutOpti;
 
 public:
 
@@ -20,9 +29,9 @@ public:
   Composant getR() { return _r; }
   Composant getG() { return _g; }
   Composant getB() { return _b; }
-  void setR(Composant r) { _r = r; }
-  void setG(Composant g) { _g = g; }
-  void setB(Composant b) { _b = b; }
+  void setR(Composant r) { _r = r; glutOpti = false;}
+  void setG(Composant g) { _g = g; glutOpti = false;}
+  void setB(Composant b) { _b = b; glutOpti = false;}
 
   // Méthode de conversion
   std::string toString();
