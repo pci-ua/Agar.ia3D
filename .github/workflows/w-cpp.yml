@@ -22,6 +22,8 @@ jobs:
         platform: x64
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
+    - name: test
+      run: cl.exe -v
     - name: qmake
       run: qmake
     - name: make
