@@ -22,8 +22,6 @@ jobs:
         platform: x64
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
-    - name: Install OpenGL
-      uses: NishkarshRaj/Computer-Graphics@0.1
     - name: test
       run: cl.exe -v
     - name: qmake
