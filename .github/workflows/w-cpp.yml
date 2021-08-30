@@ -20,7 +20,9 @@ jobs:
       uses: egor-tensin/setup-mingw@v2
       with:
         platform: x64
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2
+    - name: qmake
+      run: qmake
     - name: make
       run: make
-    - name: make check
-      run: make check
