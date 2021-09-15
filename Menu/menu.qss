@@ -1,0 +1,88 @@
+QPushButton#_colorPicker{
+    border : 2px solid gray;
+    border-radius : 15px;
+    position : relative;
+    min-width : 30px;
+    min-height : 30px;
+    max-width : 30px;
+    max-height : 30px;
+}
+
+
+QLineEdit#_username{
+    background-color : lightgray;
+    border : 0px ;
+    color : gray;
+    font-size : 25px;
+    position : relative;
+	min-width: 400px;
+    min-height : 50px;
+    max-width : 300px;
+    margin-bottom : 20%;
+}
+
+QLineEdit#_serverIP{
+    background-color : lightgray;
+    border : 0px ;
+    color : gray;
+    font-size : 25px;
+    position : relative;
+	min-width: 400px;
+    min-height : 50px;
+    max-width : 300px;
+    margin-bottom : 20%;
+}
+
+QLineEdit#_colorPickerText{
+    background-color : lightgray;
+    border : 0px ;
+    color : gray;
+    font-size : 25px;
+    position : relative;
+    min-width : 400px;
+    min-height : 50px;
+    max-width : 300px;
+    margin-left : 20px;
+    margin-bottom : 20%;
+}
+
+
+QPushButton#_rejoindre{
+    background-color : #C4C4C4;
+    border : 2px solid #C4C4C4;
+    border-radius : 15px;
+    color : black;
+    font-size : 25px;
+    position : relative;
+    min-width : 400px;
+    min-height : 50px;
+    margin: 20px 50px;
+    margin-top : 20px;
+    margin-bottom : 30%;
+}
+
+
+QLabel#_Icon {
+    max-height: 40px;
+    max-width: 40px;
+}
+
+QWidget {
+    background: black;
+}
+
+
+QGroupBox {
+    background: lightgray;
+    border-radius: 10px;
+    border: none;
+
+    width: 500px;
+    max-width: 500px;
+
+    max-height: 60px;
+}
+
+QGroupBox * {
+    background: none;
+}
