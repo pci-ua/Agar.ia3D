@@ -4,6 +4,7 @@ Agar.ia est un jeu vidéo développé en C++ par l'association PC[i], une versio
 
 ![Build linux](https://github.com/pci-ua/Agar.ia3D/actions/workflows/l-cpp.yml/badge.svg)
 ![Build Windows](https://github.com/pci-ua/Agar.ia3D/actions/workflows/w-cpp.yml/badge.svg)
+
 ## Installation
 
 #### Linux
@@ -22,8 +23,17 @@ Agar.ia est un jeu vidéo développé en C++ par l'association PC[i], une versio
     sudo apt install qt5-default qtmultimedia5-dev build-essential freeglut3-dev
     ```
 
+3. Récupérez le code :
+
+    ```bash
+    git clone https://github.com/pci-ua/Agar.ia3D.git
+    cd Agar.ia3D/
+    ```
+
 3. Compilez le programme :
+
      ```bash
+    qmake
     make
     ```
 
@@ -47,8 +57,8 @@ soit en partant de zéro, soit en partant d'un modèle déjà éxistant :
     un code qui n'attend que votre implémentation, toutes les indications sur les prérequis sont à l'interrieur de ces dernier!
 
 
-## Contribué
-Pour l'instant toutes les contributions sont limités au groupes de développeur qui y sont affecté
+## Contribuer
+Les contributions sont pour l'instant réservé aux membres de l'association [PC[i]](https://projetcohesion.info/), n'hésitez pas à nous rejoindre !
 
 ## License
 Pour l'instant aucune utilisiation (qu'elle soit personnel ou non,commercial ou non)
