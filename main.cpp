@@ -22,6 +22,9 @@ Partie* p = nullptr;
 
 #include <iostream>	
 
+void Etape3_Recap(Data u) {
+	std::cout << "Fin de partie" << u.a << std::endl;
+}
 
 void Etape2_Jeu(PlayerData pd) {
 	// Création de la partie
@@ -31,11 +34,12 @@ void Etape2_Jeu(PlayerData pd) {
 		v.push_back(new Tay());
 		v.push_back(new Indila());
 	}
-
+	std::cout << pd.PlayerName.toStdString() << std::endl;
 	p = new Partie(v,4800,1020);
 
-	InitialisationRendu(0,nullptr);
+	QObject::connect(p, &Partie::PartieTermine, &Etape3_Recap);
 
+	InitialisationRendu(0,nullptr);
 }
 
 void Etape1_Menu(QApplication & app) {

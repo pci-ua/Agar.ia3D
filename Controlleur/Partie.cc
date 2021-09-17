@@ -27,7 +27,8 @@ Partie::~Partie() {
 void Partie::nextFrame() {
   // Délais
   if(tempRestant == 0) {
-    throw "_";
+    emit PartieTermine({1,2});
+    return;
   }
   tempRestant--;
 
@@ -95,3 +96,5 @@ std::vector<InfoEntitee> Partie::foodNearFrom(Vect2D<double> pos,double distMax)
      }
      return result;
 }
+
+
