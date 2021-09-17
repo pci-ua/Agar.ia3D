@@ -14,7 +14,7 @@ void InitialisationRendu(int argc,char* argv[]) {
 
 	glutInitWindowSize(1280,1280);
 	glutInitWindowPosition(0, 0);
-	int window = glutCreateWindow("Agar.ia");
+	glutCreateWindow("Agar.ia");
 	glutDisplayFunc(&Modelisation);
 	glutReshapeFunc(&Redimensionne);
 
