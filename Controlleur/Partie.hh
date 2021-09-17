@@ -3,13 +3,10 @@
 #include "../Modele/entitee/joueur.hh"
 #include "../Modele/entitee/nourriture.hh"
 #include <vector>
+
 #include <QObject>
 
-struct Data {
-  int a;
-  int b;
-};
-class Partie {
+class Partie:public QObject {
   Q_OBJECT;
 private:
   std::vector<Joueur*> participants;
@@ -36,5 +33,5 @@ public:
   std::vector<InfoEntitee> foodNearFrom(Vect2D<double> pos,double size) const;
 
 signals:
-  void PartieTermine(Data d);
+  void PartieTermine(int test);
 };

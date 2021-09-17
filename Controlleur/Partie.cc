@@ -27,7 +27,7 @@ Partie::~Partie() {
 void Partie::nextFrame() {
   // Délais
   if(tempRestant == 0) {
-    emit PartieTermine({1,2});
+    emit PartieTermine(25);
     return;
   }
   tempRestant--;

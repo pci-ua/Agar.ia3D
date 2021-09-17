@@ -22,8 +22,10 @@ Partie* p = nullptr;
 
 #include <iostream>	
 
-void Etape3_Recap(Data u) {
-	std::cout << "Fin de partie" << u.a << std::endl;
+void Etape3_Recap(int test) {
+	glutLeaveMainLoop();
+	std::cout << "Fin de partie" << test << std::endl;
+	delete p;
 }
 
 void Etape2_Jeu(PlayerData pd) {
@@ -37,12 +39,12 @@ void Etape2_Jeu(PlayerData pd) {
 	std::cout << pd.PlayerName.toStdString() << std::endl;
 	p = new Partie(v,4800,1020);
 
-	QObject::connect(p, &Partie::PartieTermine, &Etape3_Recap);
+	QObject::connect(p, &Partie::PartieTermine, &Etape3_Recap );
 
 	InitialisationRendu(0,nullptr);
 }
 
-void Etape1_Menu(QApplication & app) {
+	void Etape1_Menu(QApplication & app) {
 	// 1.1 Import du style
     QFile styleFile("./Menu/menu.qss");
     styleFile.open(QFile::ReadOnly);
