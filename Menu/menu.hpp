@@ -8,6 +8,8 @@
 #include <QColorDialog>
 #include <QImage>
 #include <QGroupBox>
+#include <QtMultimedia>
+#include <QtMultimediaWidgets>
 
 #include "./colorbutton.hpp"
 
@@ -21,6 +23,10 @@ class Menu : public QWidget {
     Q_OBJECT
 
     private:
+        // Vidéo en fond du menu
+        QMediaPlayer* backgroundVideoPlayer;
+        QVideoWidget* backgroundVideoWidget;
+        QMediaPlaylist* backgroundVideoPlaylist;
 
         QVBoxLayout* layout;
 
@@ -62,6 +68,8 @@ class Menu : public QWidget {
 
     public:
         Menu();
+        void setAnimatedBackground();
+        void resizeEvent(QResizeEvent* event) override;
 
     signals:
         void EnvoieFormulaire(PlayerData d);

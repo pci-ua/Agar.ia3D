@@ -4,11 +4,12 @@
 #include <QRegExpValidator>
 
 #include <iostream>
+#include <QCoreApplication>
 
 Menu::Menu() {
 
     layout = new QVBoxLayout();
-
+    
     /* LABEL */
     _pci_image = new QImage("./Menu/ressource/icon.png");
     _pci = new QLabel();
@@ -104,8 +105,34 @@ Menu::Menu() {
 
 
     this->setLayout(layout);
+
+
+    backgroundVideoWidget = new QVideoWidget(this);
+    backgroundVideoPlayer = new QMediaPlayer();
+    backgroundVideoPlaylist = new QMediaPlaylist();
+    backgroundVideoPlaylist->addMedia(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + "/Menu/ressource/background.mp4"));
+    backgroundVideoPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
+    backgroundVideoPlayer->setPlaylist(backgroundVideoPlaylist);
+    backgroundVideoPlayer->setVideoOutput(backgroundVideoWidget);
+    for(int i=0;i<5;i++) {backgroundVideoWidget->lower();}
+    
 }
 
+void Menu::resizeEvent(QResizeEvent* event) {
+    setAnimatedBackground();
+}
+
+void Menu::setAnimatedBackground() {
+    this->updateGeometry();
+    int H = this->height();
+    int W = this->width();
+    QString s = "max-width: "+QString::number(W)+"px; max-height: "+QString::number(H)+"; min-width: "+QString::number(W)+"px; min-height: "+QString::number(H)+"px;";
+
+    backgroundVideoWidget->setStyleSheet(s);
+
+    backgroundVideoPlayer->play();
+
+}
 void Menu::setNewColorText() { _colorPicker->setColor(_colorPickerText->text()); }
 void Menu::setNewTextColor() { _colorPickerText->setText(_colorPicker->getColor().name()); }
 
