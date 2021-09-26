@@ -10,4 +10,7 @@ double Indila::deplacement(std::vector<InfoEntitee> joueurs,std::vector<InfoEnti
      // pour cela on donne juste un angle de direction qui s'incrémente
      i+=0.1;
      return i;
+     //Retirer les warnings du compilateur (cosmétique)
+     joueurs.pop_back();
+     nourritures.pop_back();
 }

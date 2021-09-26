@@ -18,9 +18,11 @@ void InitialisationRendu(int argc,char* argv[]) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
 
+	glutSetOption( GLUT_ACTION_ON_WINDOW_CLOSE , GLUT_ACTION_CONTINUE_EXECUTION );
+
 	glutInitWindowSize(1280,1280);
 	glutInitWindowPosition(0, 0);
-	int window = glutCreateWindow("Agar.ia");
+	glutCreateWindow("Agar.ia");
 	glutDisplayFunc(&Modelisation);
 	glutReshapeFunc(&Redimensionne);
 

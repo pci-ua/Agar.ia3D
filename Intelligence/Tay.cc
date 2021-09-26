@@ -22,4 +22,7 @@ const int B =   0;
 double Tay::deplacement(std::vector<InfoEntitee> joueurs,std::vector<InfoEntitee> nourritures) {
   //Pour l'instant on va toujours en bas à gauche !
   return (5*PI) / 4;
+  //Retirer les warnings du compilateur (cosmétique)
+  joueurs.pop_back();
+  nourritures.pop_back();
 }
