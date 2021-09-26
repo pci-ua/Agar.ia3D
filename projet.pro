@@ -1,6 +1,9 @@
 QT   += core gui
 LIBS += -lglut -lGLU
 
+QMAKE_CC = gcc
+QMAKE_CXX = g++
+
 greaterThan(QT_MAJOR_VERSION, 5): QT += widgetss
 
 TARGET = Agaria
