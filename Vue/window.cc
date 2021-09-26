@@ -20,7 +20,7 @@ void InitialisationRendu(int argc,char* argv[]) {
 
 	glutSetOption( GLUT_ACTION_ON_WINDOW_CLOSE , GLUT_ACTION_CONTINUE_EXECUTION );
 
-	glutInitWindowSize(1280,1280);
+	glutInitWindowSize(900,900);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Agar.ia");
 	glutDisplayFunc(&Modelisation);
