@@ -1,4 +1,4 @@
-QT   += core gui opengl
+QT   += core gui
 LIBS += -lglut -lGLU
 
 greaterThan(QT_MAJOR_VERSION, 5): QT += widgetss
