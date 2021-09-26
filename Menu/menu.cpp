@@ -6,7 +6,10 @@
 #include <iostream>
 #include <QCoreApplication>
 
+#include "Modele/config/reader.hh"
+
 Menu::Menu() {
+	config::readFromFile("./config.txt");
 
     layout = new QVBoxLayout();
     
@@ -43,7 +46,7 @@ Menu::Menu() {
 
     _serverGroup->setLayout(_serverLayout);
 	
-	_serverIP = new QLineEdit("");
+	_serverIP = new QLineEdit(QString::fromStdString(config::get("DEFAULT_SERVER")));
     _serverIP->setPlaceholderText("IP serveur");
 	_serverIP->setObjectName(QStringLiteral("_serverIP"));
 	_serverIP->setAlignment(Qt::AlignCenter);
@@ -66,7 +69,7 @@ Menu::Menu() {
     /* SELECTION DE COULEUR */
     _colorPickerLayout = new QHBoxLayout();
 
-    _colorPicker = new QColorButton("#008080", this);
+    _colorPicker = new QColorButton(QString::fromStdString(config::get("DEFAULT_COLOR")), this);
     _colorPicker->setObjectName(QStringLiteral("_colorPicker"));
 
     QRegExp er = QRegExp("\\#([0-9A-Fa-f]{3}){1,2}"); // #RGB ou #RRGGBB
