@@ -15,20 +15,25 @@
 #include "Modele/generateur/position.hh"
 
 #include "Menu/menu.hpp"
+#include "Resultat/resultat.hpp"
 
-extern void InitialisationRendu(int argc,char* argv[]);
+extern int InitialisationRendu(int argc,char* argv[]);
 
+QApplication* app = nullptr;
 Partie* p = nullptr;
+Menu* menu = nullptr;
+Resultat* result = nullptr;
 
-#include <iostream>	
-
-void Etape3_Recap(int test) {
+void Etape3_Recap(Result_Player a,Result_Classement b) {
+	result = new Resultat(a,b);
+	result->showMaximized();
+	app->setActiveWindow(result);
 	glutLeaveMainLoop();
-	std::cout << "Fin de partie" << test << std::endl;
-	delete p;
 }
 
 void Etape2_Jeu(PlayerData pd) {
+	menu->close();
+
 	// Création de la partie
 	std::vector<Joueur*> v;
 	for(int i=0;i<7;i++) {
@@ -37,21 +42,21 @@ void Etape2_Jeu(PlayerData pd) {
 		v.push_back(new Indila());
 	}
 	std::cout << pd.PlayerName.toStdString() << std::endl;
-	p = new Partie(v,4800,1020);
+	p = new Partie(v,1000,1020);
 
 	QObject::connect(p, &Partie::PartieTermine, &Etape3_Recap );
 
 	InitialisationRendu(0,nullptr);
 }
 
-	void Etape1_Menu(QApplication & app) {
+void Etape1_Menu() {
 	// 1.1 Import du style
     QFile styleFile("./Menu/menu.qss");
     styleFile.open(QFile::ReadOnly);
     QString style(styleFile.readAll());
 
 	// 1.3 Création du menu
-    Menu* menu = new Menu();
+    menu = new Menu();
     menu->setStyleSheet(style);
 
 	// 1.2 Liaison d'événements
@@ -59,25 +64,22 @@ void Etape2_Jeu(PlayerData pd) {
 
 	// 1.4 Rendu et affichage
 	menu->showMaximized();
-    app.setActiveWindow(menu);
+    app->setActiveWindow(menu);
 
 }
 
-QApplication* Initialisation(int argc,char* argv[]) {
+void Initialisation(int argc,char* argv[]) {
 	// 0.1 Initilisation générateur random
 	srand(time(nullptr));
 	
 	// 0.2 Création de l'application
-    QApplication* app = new QApplication(argc,argv);
+    app = new QApplication(argc,argv);
     QCoreApplication::setApplicationName(QString("Agar[IA]"));
 
-	return app;
 }
 
 int main(int argc,char* argv[]) {
-    QApplication app(argc,argv);
-    QCoreApplication::setApplicationName(QString("Agar[IA]"));
-
-	Etape1_Menu(app);
-	return app.exec();
+	Initialisation(argc,argv);
+	Etape1_Menu();
+	return app->exec();
 }
