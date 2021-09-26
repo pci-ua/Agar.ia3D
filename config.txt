@@ -1,0 +1,8 @@
+# Fichier de configuration éditable !
+# Toutes les lignes débutant par # sont des commentaires
+# les autres lignes sont au formats X=Y
+# avec X une chaine de caractère sans = et Y une chaine de caractère quelconque
+# X étant la clé pour la valeur Y
+
+DEFAULT_SERVER=projetcohesion.info
+DEFAULT_COLOR=#008080
