@@ -7,6 +7,8 @@
 #include "Intelligence/Indila.hh"
 #include "Intelligence/Tay.hh"
 #include "Intelligence/IPA.hh"
+#include "Intelligence/Manuel.hh"
+
 #include "Modele/generateur/position.hh"
 extern void InitialisationRendu(int argc,char* argv[]);
 
@@ -18,6 +20,7 @@ int main(int argc,char* argv[]) {
 
 	// Création de la partie
 	std::vector<Joueur*> v;
+	v.push_back(new JoueurManuel(255,255,255));
 	for(int i=0;i<7;i++) {
 		v.push_back(new IPA());
 		v.push_back(new Tay());
