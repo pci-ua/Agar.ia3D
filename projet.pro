@@ -1,10 +1,8 @@
-QT   += core gui opengl
+QT   += core gui widgets multimedia multimediawidgets
 LIBS += -lglut -lGLU
 
 QMAKE_CC = gcc
 QMAKE_CXX = g++
-
-greaterThan(QT_MAJOR_VERSION, 5): QT += widgetss
 
 TARGET = Agaria
 TEMPLATE = app
@@ -19,6 +17,8 @@ SOURCES += \
      $$files(Vue/*.cc) \
      $$files(Controlleur/*.cc) \
      $$files(Intelligence/*.cc) \
+     $$files(Menu/*.cpp) \
+     $$files(Resultat/*.cpp) \
      main.cpp \
 
 HEADERS += \
@@ -27,6 +27,8 @@ HEADERS += \
      $$files(Vue/*.hh) \
      $$files(Controlleur/*.hh) \
      $$files(Intelligence/*.hh) \
+     $$files(Menu/*.hpp) \
+     $$files(Resultat/*.hpp) \
      constante.hh \
 
 DESTDIR = ./
