@@ -38,7 +38,7 @@ void Etape2_Jeu(PlayerData pd) {
 	menu->close();
 
 	// Création de la partie
-	m = new JoueurManuel(255,255,255);
+	m = new JoueurManuel(pd.PlayerColor.red(),pd.PlayerColor.green(),pd.PlayerColor.blue());
 
 	std::vector<Joueur*> v;
 
