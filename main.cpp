@@ -29,7 +29,12 @@ Resultat* result = nullptr;
 JoueurManuel* m = nullptr;
 
 void Etape3_Recap(Result_Player a,Result_Classement b) {
+    QFile styleFile("./Resultat/resultat.qss");
+    styleFile.open(QFile::ReadOnly);
+    QString style(styleFile.readAll());
+
 	result = new Resultat(a,b);
+	result->setStyleSheet(style);
 	result->showMaximized();
 	app->setActiveWindow(result);
 	glutLeaveMainLoop();
@@ -50,7 +55,7 @@ void Etape2_Jeu(PlayerData pd) {
 		v.push_back(new Indila());
 	}
 	std::cout << pd.PlayerName.toStdString() << std::endl;
-	p = new Partie(v,1000,1020);
+	p = new Partie(v,2,1020);
 
 	QObject::connect(p, &Partie::PartieTermine, &Etape3_Recap );
 

@@ -1,0 +1,44 @@
+QGroupBox#_result_personnal {
+	max-height: 100px;
+	min-height: 100px;
+
+	background: black;
+
+	border: none;
+}
+
+QGroupBox#_result_personnal QLabel {
+	color: white;
+	font-weight: bold;
+	font-size: 22pt;
+}
+
+QGroupBox#_result_personnal QLabel#rank {
+	font-size: 50pt;
+}
+
+
+
+
+QGroupBox#_result_everyone {
+	max-width: 400px;
+	min-width: 400px;
+
+	background: black;
+
+	border: none;
+}
+
+QGroupBox#_result_personnal QLabel {
+	color: white;
+	font-size: 14pt;
+}
+
+
+
+
+QGroupBox#_result_evolution {
+	background black;
+
+	border: none;
+}

@@ -40,5 +40,5 @@ private:
 	// Interface - Classement
 	QVBoxLayout* allPlayerData_layout;
 
-	
+	std::vector<QLabel*> allPlayerData_playerList;
 };

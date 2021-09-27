@@ -38,7 +38,7 @@ void Partie::nextFrame() {
 			emit PartieTermine(
 				{
 					"Temp",
-					0,
+					2,
 					1,
 					2,
 					3,
