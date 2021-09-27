@@ -22,6 +22,7 @@
 extern int InitialisationRendu(int argc,char* argv[]);
 
 QApplication* app = nullptr;
+QIcon* appIcon = nullptr;
 Partie* p = nullptr;
 Menu* menu = nullptr;
 Resultat* result = nullptr;
@@ -72,7 +73,9 @@ void Etape1_Menu() {
 	// 1.4 Rendu et affichage
 	menu->showMaximized();
     app->setActiveWindow(menu);
-
+	
+	appIcon = new QIcon("./Menu/ressource/icon.png");
+	app->setWindowIcon(*appIcon);
 }
 
 void Initialisation(int argc,char* argv[]) {
