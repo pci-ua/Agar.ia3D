@@ -16,6 +16,6 @@ class Tay
 
 public:
   Tay()
-    :Joueur(Couleur(R,G,B)) {}
+    :Joueur(Couleur(R,G,B),"Tay") {}
   double deplacement(std::vector<InfoEntitee> joueurs,std::vector<InfoEntitee> nourritures) override;
 };

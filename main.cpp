@@ -44,7 +44,7 @@ void Etape2_Jeu(PlayerData pd) {
 	menu->close();
 
 	// Création de la partie
-	m = new JoueurManuel(pd.PlayerColor.red(),pd.PlayerColor.green(),pd.PlayerColor.blue());
+	m = new JoueurManuel(pd.PlayerColor.red(),pd.PlayerColor.green(),pd.PlayerColor.blue(),pd.PlayerName);
 
 	std::vector<Joueur*> v;
 
@@ -54,7 +54,6 @@ void Etape2_Jeu(PlayerData pd) {
 		v.push_back(new Tay());
 		v.push_back(new Indila());
 	}
-	std::cout << pd.PlayerName.toStdString() << std::endl;
 	p = new Partie(v,2,1020);
 
 	QObject::connect(p, &Partie::PartieTermine, &Etape3_Recap );
