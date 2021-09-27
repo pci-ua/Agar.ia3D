@@ -4,8 +4,8 @@
 
 #include "../generateur/position.hh"
 
-Joueur::Joueur(Couleur c)
-  :Boule(EmplacementRandom(),JOUEUR::TAILLE),vitesse(JOUEUR::VITESSE),couleur(c) {}
+Joueur::Joueur(Couleur c,QString p)
+  :Boule(EmplacementRandom(),JOUEUR::TAILLE),vitesse(JOUEUR::VITESSE),couleur(c),pseudo(p) {}
 
 void Joueur::manger(Joueur* j) {
   setTaille(getTaille() + j->getTaille());
