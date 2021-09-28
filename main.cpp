@@ -54,7 +54,7 @@ void Etape2_Jeu(PlayerData pd) {
 		v.push_back(new Tay());
 		v.push_back(new Indila());
 	}
-	p = new Partie(v,2,1020);
+	p = new Partie(v,2048,1020);
 
 	QObject::connect(p, &Partie::PartieTermine, &Etape3_Recap );
 
@@ -88,7 +88,7 @@ void Initialisation(int argc,char* argv[]) {
 	
 	// 0.2 Création de l'application
     app = new QApplication(argc,argv);
-    QCoreApplication::setApplicationName(QString("Agar[IA]"));
+    QCoreApplication::setApplicationName(QString("Agar.ia"));
 
 }
 

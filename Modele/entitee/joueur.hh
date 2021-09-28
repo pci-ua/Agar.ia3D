@@ -21,6 +21,11 @@ private:
   Couleur couleur;
   QString pseudo;
 
+  unsigned int killCount = 0;
+  unsigned int deathCount = 0;
+
+  double maxScore = 0;
+
 public:
 
   // Constructeurs ...
@@ -43,5 +48,10 @@ public:
 
   // Rendu
   void draw();
+
+  // get
+  unsigned int getKillCount() { return killCount; }
+  unsigned int getDeathCount() { return deathCount; }
+  double getMaxScore() { return maxScore; }
 
 };
