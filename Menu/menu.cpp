@@ -55,8 +55,8 @@ Menu::Menu() {
 	_serverIcon->setObjectName(QStringLiteral("_Icon"));
     _serverIcon->setPixmap(QPixmap::fromImage(*_serverIconImage));
 	
-	QRegExp hostnameReg ( "^(([a-zA-Z0-9]|[[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]).)([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9]*[a-zA-Z0-9])$" );
-	QRegExp ipAdressReg ( "^(([0-9]|[1-9][0-9]1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([0-9]|[1-9][0-9]1[0-9]{2}|2[0-4][0-9]|25[0-5])$" );
+	QRegExp hostnameReg ( "^(([a-zA-Z0-9]+\\.)+)([a-zA-Z0-9]+)$" );
+	QRegExp ipAdressReg ( "^((([0-9])|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5]))\\.){3}(([0-9])|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5]))$" );
 	
 	_hostnameValidator = new QRegExpValidator(hostnameReg, this);
 	_IPAdressValidator = new QRegExpValidator(ipAdressReg, this);
