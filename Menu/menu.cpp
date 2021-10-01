@@ -153,9 +153,11 @@ void Menu::rejoindre() {
             isInputAcceptable( _serverIP , _hostnameValidator )
         ) &&
         isInputAcceptable( _colorPickerText , _colorValidator )
-    )
-    emit EnvoieFormulaire( {
-        _username->text(),
-        _colorPicker->getColor(),
-        _serverIP->text() } );
+    ) {
+		_colorPicker->interrupt();
+		emit EnvoieFormulaire( {
+			_username->text(),
+			_colorPicker->getColor(),
+			_serverIP->text() } );
+	}
 }
