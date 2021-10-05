@@ -32,7 +32,10 @@ private:
 	std::vector<Nourriture*> nourritures;
 	unsigned int tempRestant; /*seconde*/
 
-
+private:
+	Result_Classement getClassement();
+	Result_Player getStatPlayer(Joueur* p,const Result_Classement & rc);
+	
 public:
 
 	Partie(const std::vector<Joueur*> & v,unsigned int duree,int nmbFood);
@@ -54,6 +57,8 @@ public:
 	std::vector<InfoEntitee> foodNearFrom(Vect2D<double> pos,double size) const;
 
 	bool finished = false;
+
+	void FinDePartie();
 	
 signals:
 	void PartieTermine(Result_Player a,Result_Classement b);

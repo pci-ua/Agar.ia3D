@@ -12,8 +12,8 @@ private:
 	double angle = 0;
 
 public:
-  JoueurManuel(int r,int g,int b)
-    :Joueur(Couleur(r, g, b)) {}
+  JoueurManuel(int r,int g,int b,QString pseudo)
+    :Joueur(Couleur(r, g, b),pseudo) {}
   double deplacement(std::vector<InfoEntitee> joueurs,std::vector<InfoEntitee> nourritures) override;
 
 public slots:

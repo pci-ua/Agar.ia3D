@@ -14,7 +14,7 @@
 IPA::IPA()
   // Seul la couleur est nécessaire par défaut,
   // mais vous pouvez ajouter / modifier ce que vous voulez !
-  :Joueur(Couleur(128,255,128)),ite(0),dir(PI/4) {}
+  :Joueur(Couleur(128,255,128),"IPA"),ite(0),dir(PI/4) {}
 
 double IPA::deplacement(std::vector<InfoEntitee> joueurs,std::vector<InfoEntitee> nourritures) {
 // Ici l'idée est de tracker le joueur le plus proche et le plus petit s'il est plus petit sinon une nourriture

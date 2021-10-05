@@ -5,6 +5,7 @@
 
 #include <math.h> // PI (M_PI), cos , sin
 #include <iostream>
+#include <algorithm>
 
 // Création d'une partie
 Partie::Partie(const std::vector<Joueur*> & v,unsigned int duree,int nbFood)
@@ -35,23 +36,7 @@ void Partie::nextFrame() {
 	if(tempRestant == 0) {
 		if(!finished) {
 			finished=true;
-			emit PartieTermine(
-				{
-					"Temp",
-					0,
-					1,
-					2,
-					3,
-					4
-				}
-				,
-				{
-					{"a", 9},
-					{"b", 5},
-					{"Temp", 3},
-					{"c", 0}
-				}
-			);
+			FinDePartie();
 		}
 		return;
 	}
@@ -126,4 +111,38 @@ std::vector<InfoEntitee> Partie::foodNearFrom(Vect2D<double> pos,double distMax)
 	return result;
 }
 
+bool getClassementSort(Result_Classement_unit a,Result_Classement_unit b) {
+	return a.score > b.score;
+}
 
+Result_Classement Partie::getClassement() {
+	Result_Classement r;
+
+	for(auto participant:participants) {
+		unsigned int score = participant->getTaille() > 0 ? participant->getTaille() * 100 : 0;
+		r.push_back({participant->getPseudo(),score});
+	}
+	std::sort( r.begin() , r.end() , getClassementSort);
+
+	return r;
+}
+
+Result_Player Partie::getStatPlayer(Joueur* p,const Result_Classement & rc) {
+	unsigned int rank = 0; for(auto player:rc) { rank++; if( player.pseudo == p->getPseudo() ) { break; } }
+
+	return {
+	/* pseudo */		p->getPseudo(),
+	/* rank */			rank,
+	/* deathCount */	p->getDeathCount(),
+	/* killCount */		p->getKillCount(),
+	/* maxScore */		static_cast<unsigned int>(p->getMaxScore()) * 1000,
+	/* finalScore */	static_cast<unsigned int>(p->getTaille()) * 1000
+	};
+}
+
+
+void Partie::FinDePartie() {
+	Result_Classement rc = getClassement();
+	Result_Player rp = getStatPlayer( *(participants.begin()) , rc );
+	emit PartieTermine( rp, rc );
+}

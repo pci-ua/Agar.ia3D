@@ -4,6 +4,8 @@
 #include "../couleur/couleur.hh"
 #include "../entitee/nourriture.hh"
 #include <vector>
+#include <QString>
+
 // Informations transmises aux IA, à propos des entitées à proximités
 struct InfoEntitee {
      Vect2D<double> position;
@@ -17,11 +19,17 @@ class Joueur
 private:
   float vitesse;
   Couleur couleur;
+  QString pseudo;
+
+  unsigned int killCount = 0;
+  unsigned int deathCount = 0;
+
+  double maxScore = 0;
 
 public:
 
   // Constructeurs ...
-  Joueur(Couleur c);
+  Joueur(Couleur c,QString p);
   Joueur(const Joueur & c) = delete;
   virtual ~Joueur() = default;
 
@@ -36,8 +44,14 @@ public:
 
   // Accesseurs ...
   Couleur getCouleur() { return couleur; }
+  QString getPseudo() { return pseudo; }
 
   // Rendu
   void draw();
+
+  // get
+  unsigned int getKillCount() { return killCount; }
+  unsigned int getDeathCount() { return deathCount; }
+  double getMaxScore() { return maxScore; }
 
 };

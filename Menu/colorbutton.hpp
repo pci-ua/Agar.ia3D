@@ -23,6 +23,10 @@ public:
      QColor getColor() {
           return _color;
      }
+	 void interrupt() {
+		 if(_dialog != nullptr)
+		 _dialog->hide();
+	 }
 
 signals:
      void colorChanged();
