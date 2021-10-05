@@ -22,13 +22,19 @@
 extern int InitialisationRendu(int argc,char* argv[]);
 
 QApplication* app = nullptr;
+QIcon* appIcon = nullptr;
 Partie* p = nullptr;
 Menu* menu = nullptr;
 Resultat* result = nullptr;
 JoueurManuel* m = nullptr;
 
 void Etape3_Recap(Result_Player a,Result_Classement b) {
+    QFile styleFile("./Resultat/resultat.qss");
+    styleFile.open(QFile::ReadOnly);
+    QString style(styleFile.readAll());
+
 	result = new Resultat(a,b);
+	result->setStyleSheet(style);
 	result->showMaximized();
 	app->setActiveWindow(result);
 	glutLeaveMainLoop();
@@ -38,7 +44,7 @@ void Etape2_Jeu(PlayerData pd) {
 	menu->close();
 
 	// Création de la partie
-	m = new JoueurManuel(pd.PlayerColor.red(),pd.PlayerColor.green(),pd.PlayerColor.blue());
+	m = new JoueurManuel(pd.PlayerColor.red(),pd.PlayerColor.green(),pd.PlayerColor.blue(),pd.PlayerName);
 
 	std::vector<Joueur*> v;
 
@@ -48,8 +54,7 @@ void Etape2_Jeu(PlayerData pd) {
 		v.push_back(new Tay());
 		v.push_back(new Indila());
 	}
-	std::cout << pd.PlayerName.toStdString() << std::endl;
-	p = new Partie(v,1000,1020);
+	p = new Partie(v,2048,1020);
 
 	QObject::connect(p, &Partie::PartieTermine, &Etape3_Recap );
 
@@ -72,7 +77,9 @@ void Etape1_Menu() {
 	// 1.4 Rendu et affichage
 	menu->showMaximized();
     app->setActiveWindow(menu);
-
+	
+	appIcon = new QIcon("./Menu/ressource/icon.png");
+	app->setWindowIcon(*appIcon);
 }
 
 void Initialisation(int argc,char* argv[]) {
@@ -81,7 +88,7 @@ void Initialisation(int argc,char* argv[]) {
 	
 	// 0.2 Création de l'application
     app = new QApplication(argc,argv);
-    QCoreApplication::setApplicationName(QString("Agar[IA]"));
+    QCoreApplication::setApplicationName(QString("Agar.ia"));
 
 }
 

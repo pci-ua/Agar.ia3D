@@ -34,6 +34,8 @@ void InitialisationRendu(int argc,char* argv[]) {
 
 	glutPassiveMotionFunc(gestionSouris);
 
+	glutSetIconTitle("./Menu/ressource/icon.ico");
+
 	glutMainLoop();
 
 }
